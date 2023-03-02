@@ -1,0 +1,65 @@
+// start call sass pages
+
+@import "./Global/helpers/_variables.scss";
+
+@import "./Global/helpers/_mixins.scss";
+
+@import "./Global/layout/_grid.scss";
+
+@import "./Global/components/_buttons.scss";
+
+@import "./Global/components/_headings.scss";
+
+@import "./Global/layout/_globalPages.scss";
+
+// start layouts
+
+@import "./Global/layout/_navbar.scss";
+
+@import "./Global/layout/footer.scss";
+
+@import "./Global/layout/_header.scss";
+
+// end layouts
+
+// start pages
+
+@import "./Global/pages/home";
+
+@import "./Global/pages/About";
+
+@import "./Global/pages/profile";
+
+@import "./Global/pages/contact";
+
+@import "./Global/pages/courses";
+
+@import "./Global/pages/result";
+
+@import "./Global/pages/coursecontentbeforesubscribe";
+
+@import "./Global/pages/why_us";
+
+@import "./Global/pages/terms";
+
+@import "./Global/pages/beforesubscribe";
+
+// start Auth
+
+@import "./Global/AuthScss/signup";
+
+// end Auth
+
+@import "./Global/pages/errorpage";
+
+@import "./Global/layout/_media.scss";
+
+// end pages
+
+// start global components
+
+@import "./Global/components/_up-button.scss";
+
+// end global components
+
+// end call sass pages

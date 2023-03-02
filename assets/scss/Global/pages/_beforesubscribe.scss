@@ -1,0 +1,180 @@
+// ================== start home =============
+.courses_before_subcribe {
+  .all_content {
+    margin: 40px 0;
+
+    .course_info {
+      margin-top: 30px;
+      margin-bottom: 40px;
+      h3 {
+        font-size: 20px;
+        margin-bottom: 32px;
+        color: #1a1a1a;
+        font-family: "Bahij-Helvetica-Neue-75-Bold";
+      }
+      p {
+        color: #232323;
+      }
+    }
+
+    .tabs {
+      ul.nav-tabs {
+        margin-bottom: 32px;
+        border-bottom: 3px solid #bdccec;
+        li {
+          padding-inline-end: 44px;
+          a {
+            font-size: 18px;
+            border: none;
+            color: #000000;
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+            &.active {
+              color: #013fcd;
+
+              border-bottom: 3px solid $secondColor;
+            }
+          }
+        }
+      }
+
+      .tab-content {
+        .course_guide {
+          .about_course {
+            margin-bottom: 32px;
+            h4 {
+              font-size: 18px;
+              margin-bottom: 30px;
+
+              &:after {
+                bottom: 0;
+              }
+            }
+            ul {
+              display: flex;
+              // justify-content: space-between;
+              flex-wrap: wrap;
+              gap: 20px 90px;
+              li {
+                svg {
+                  color: #3edb10;
+                  font-size: 16px;
+                }
+              }
+            }
+
+            .table {
+              border: 1px solid #bdccec;
+              border-radius: 5px;
+
+              thead {
+                background: #013fcd;
+                color: #fff;
+                border-radius: 5px 5px 0px 0px;
+              }
+
+              tbody {
+                color: #3b568f;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .side_info {
+      border: 1px solid #bdccec;
+      border-radius: 5px;
+      min-height: 712px;
+
+      .image_video {
+        img {
+          border: 1px solid #bdccec;
+          border-radius: 5px 5px 0px 0px;
+          height: 270px;
+          object-fit: cover;
+        }
+
+        .video {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 62px;
+          height: 62px;
+
+          .icon {
+            width: 40px;
+            height: 40px;
+            svg {
+              height: 15px;
+            }
+          }
+        }
+      }
+
+      .price {
+        margin: 17px 0 10px;
+        text-align: center;
+        span {
+          color: #f7c553;
+          font-size: 32px;
+
+          &.num {
+            font-size: 42px;
+            margin-inline-end: 15px;
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+          }
+        }
+      }
+
+      button {
+        background: #3f63b6;
+        width: 95%;
+        margin: 0 auto 20px;
+
+        &:hover {
+          background: #fff;
+        }
+      }
+
+      ul {
+        padding: 0 20px;
+        gap: 20px 0;
+        display: flex;
+        flex-direction: column;
+        li {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 14px;
+          border-bottom: 1px solid #93a9d9;
+
+          &:last-child {
+            border: none;
+          }
+
+          a.result {
+            text-decoration: underline !important;
+          }
+
+          .detail {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+
+            svg {
+              color: #93a9d9;
+              width: 20px;
+              height: 20px;
+            }
+            span {
+            }
+          }
+
+          span.result {
+            color: #6e6e6e;
+          }
+        }
+      }
+    }
+  }
+}
+// ================== end home ===============

@@ -1,0 +1,246 @@
+//========== start media =========
+@media (min-width: 1200px) {
+  .about .content {
+    margin-inline-start: 70px;
+  }
+}
+@media (max-width: 1200px) {
+  .box_current {
+    flex-wrap: wrap;
+    height: auto !important;
+    .head.current {
+      width: 100%;
+      height: 45px;
+    }
+  }
+
+  .navbar_page .nav_items,
+  .btns-auth,
+  .d-none-custom {
+    display: none;
+  }
+
+  .sidebar {
+    display: block !important;
+  }
+
+  .custom-center {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (max-width: 991px) {
+  .about {
+    padding-bottom: 30px;
+  }
+
+  .profile_side_component .profile_content .profile_guide_component {
+    margin-top: 30px;
+  }
+
+  .nav_auth {
+    justify-content: flex-end !important;
+  }
+
+  footer .copy_right p {
+    text-align: center;
+  }
+  footer .copy_right .cont_img {
+    justify-content: center;
+    margin-top: 10px;
+  }
+  footer .site_links {
+    margin: 50px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile_side_component .profile_content .profile_guide_component {
+    min-height: auto;
+    margin-top: 30px;
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  .single_article .all_content .image_course {
+    height: 220px;
+  }
+
+  .result_exam .all_content .box {
+    padding: 60px 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  .contact .all_content .all_info form {
+    input,
+    button {
+      margin: auto;
+    }
+
+    .vue-tel-input {
+      margin: 0 auto 20px;
+    }
+    textarea {
+      margin: 0 auto 20px;
+    }
+  }
+  .contact .all_content .all_info .head {
+    text-align: center;
+  }
+
+  .contact .all_content .box_contact {
+    padding: 30px 20px;
+
+    .head {
+      text-align: center;
+    }
+  }
+
+  .contact .all_content .left_box ul {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .result_exam .all_content .box {
+    padding: 50px 20px;
+
+    .box_info {
+      padding: 18px;
+    }
+  }
+
+  .courses_content_before_subscribe
+    .all_info
+    .course_content
+    .box_content
+    .card
+    .accordion_content {
+    margin: 0 10px;
+    padding: 10px;
+  }
+  .courses_content_before_subscribe .all_info .image_video .overlay span {
+    right: 0;
+  }
+  .courses_content_before_subscribe
+    .all_info
+    .course_content
+    .box_content
+    .card
+    .card-header {
+    margin: 0;
+  }
+
+  .courses_content_before_subscribe .all_info .image_video {
+    height: 300px;
+    min-height: auto;
+    margin-top: 30px;
+  }
+
+  .why_us .image_video img {
+    height: auto;
+  }
+
+  .about_us .all_content_vision .box.box_center {
+    margin: 30px 0;
+  }
+  .about_us .all_content_vision {
+    margin-bottom: 30px;
+  }
+
+  .terms .all_content {
+    margin: 40px 0 30px;
+
+    .content {
+      margin-bottom: 20px;
+      h2 {
+        font-size: 17px;
+        &::after {
+          bottom: 1px;
+        }
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+  .navbar_page {
+    padding: 12px 0 0;
+  }
+
+  .profile_side_component .profile_content .course_rate .boxes_rate .box .head {
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .profile_side_component .profile_content .my-courses {
+    padding: 35px 13px;
+    .boxes .box {
+      height: auto;
+      flex-direction: column;
+
+      .head {
+        height: 65px;
+      }
+
+      ul {
+        margin: 20px;
+      }
+    }
+  }
+
+  .signup.passcode .all_info p {
+    font-size: 14px;
+  }
+  .signup.passcode .pass_numbers {
+    gap: 10px;
+
+    input {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .why_us .advantages {
+    text-align: center;
+    .box {
+      max-width: 100%;
+      flex: 100%;
+
+      .image_advantage {
+        margin: auto;
+      }
+    }
+  }
+
+  footer .footer_content {
+    text-align: center;
+  }
+  footer .footer_content ul.info_contact {
+    align-items: center;
+  }
+
+  footer .footer_content .site_links .all_site_pages,
+  footer .footer_content ul.social {
+    justify-content: center;
+  }
+  footer .copy_right p {
+    font-size: 14px;
+  }
+
+  .signup .all_info {
+    padding: 20px 10px;
+  }
+  .signup .all_info button.share_go span,
+  .signup .all_info form .box_check {
+    font-size: 13px;
+  }
+}
+//========== end media ===========

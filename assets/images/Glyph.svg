@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="33.015" height="22.01" viewBox="0 0 33.015 22.01">
+  <g id="Glyph" transform="translate(-2 -2)">
+    <path id="Path_387" data-name="Path 387" d="M33.03,20.426a.55.55,0,0,0,.7.7l2.016-.721a5.542,5.542,0,1,0-2-2Zm5.51-9.247a4.441,4.441,0,1,1-2.421,8.162.55.55,0,0,0-.486-.055l-1.173.419.419-1.173a.55.55,0,0,0-.058-.486,4.44,4.44,0,0,1,3.721-6.864Z" transform="translate(-13.94 -3.633)" fill="#fff"/>
+    <g id="Group_66725" data-name="Group 66725" transform="translate(2 2)">
+      <path id="Path_386" data-name="Path 386" d="M33.364,2H3.651A1.651,1.651,0,0,0,2,3.651V22.359A1.651,1.651,0,0,0,3.651,24.01H33.364a1.651,1.651,0,0,0,1.651-1.651V3.651A1.651,1.651,0,0,0,33.364,2ZM31.713,20.708H18.465a6.119,6.119,0,0,0-12.19,0H5.3V5.3H31.713Z" transform="translate(-2 -2)" fill="#fff"/>
+      <circle id="Ellipse_11" data-name="Ellipse 11" cx="1.841" cy="1.841" r="1.841" transform="translate(8.967 8.433)" fill="#fff"/>
+      <path id="Polygon_1" data-name="Polygon 1" d="M1.251,0,2.5,2.5H0Z" transform="translate(23.821 8.848) rotate(92)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13.144" viewBox="0 0 12 13.144">
+  <g id="Layer_2" data-name="Layer 2" transform="translate(-4.253 -3)">
+    <g id="download" transform="translate(4 3)">
+      <rect id="Rectangle_1246" data-name="Rectangle 1246" width="12" height="1" rx="0.5" transform="translate(0.253 12.144)" fill="#f7c553"/>
+      <rect id="Rectangle_1247" data-name="Rectangle 1247" width="3" height="1" rx="0.5" transform="translate(0.253 13.144) rotate(-90)" fill="#f7c553"/>
+      <rect id="Rectangle_1248" data-name="Rectangle 1248" width="3" height="1" rx="0.5" transform="translate(11.253 13.144) rotate(-90)" fill="#f7c553"/>
+      <path id="Path_2703" data-name="Path 2703" d="M10.908,13.908a.782.782,0,0,1-.453-.141l-3.126-2.2a.782.782,0,1,1,.907-1.274l2.673,1.868,2.657-2a.782.782,0,1,1,.938,1.251l-3.126,2.345a.782.782,0,0,1-.469.156Z" transform="translate(-4.655 -4.529)" fill="#f7c553"/>
+      <path id="Path_2704" data-name="Path 2704" d="M11.782,10.816A.782.782,0,0,1,11,10.035V3.782a.782.782,0,0,1,1.563,0v6.253A.782.782,0,0,1,11.782,10.816Z" transform="translate(-5.529 -3)" fill="#f7c553"/>
+    </g>
+  </g>
+</svg>

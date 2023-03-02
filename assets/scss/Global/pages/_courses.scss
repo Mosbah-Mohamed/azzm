@@ -1,0 +1,377 @@
+// ========== start courses page ============
+.courses_component {
+  margin: 100px 0;
+
+  &.articles_page {
+    margin: 0;
+    .all_content {
+      margin: 80px 0;
+
+      .card_course {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .card_course {
+    border: 1px solid #cfd8ec;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+
+    &:hover {
+      box-shadow: 0px 21px 36px #5e5c5c1a;
+
+      .image_course {
+        overflow: hidden;
+        transition: all 0.5s ease-in-out;
+        img {
+          transform: scale(1.1);
+          transition: all 0.5s ease-in-out;
+        }
+      }
+    }
+    .image_course {
+      overflow: hidden;
+      width: 100%;
+      height: 250px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+
+  .card_content {
+    direction: rtl;
+    padding: 16px 16px 25px;
+    h3 {
+      margin: 16px 0;
+      font-size: 18px;
+      color: $mainColor;
+      font-family: "Bahij-Helvetica-Neue-75-Bold";
+    }
+    .appoint {
+      display: flex;
+      align-items: center;
+      gap: 90px;
+      padding-bottom: 20px;
+      color: #3b568f;
+      .time {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .calender {
+      }
+    }
+
+    .course_link {
+      margin-top: 32px;
+      a {
+        font-family: "Bahij-Helvetica-Neue-75-Bold";
+        color: #eeaf23;
+        display: flex;
+        gap: 5px;
+        span {
+        }
+      }
+    }
+
+    .trainer_desc {
+      display: flex;
+      gap: 16px;
+      padding-top: 15px;
+      border-top: 1px solid #e9f0ff;
+      .image {
+        img {
+          width: 56px;
+          height: 56px;
+          border-radius: 50px;
+          box-shadow: 0px 3px 6px #00000014;
+          object-fit: cover;
+        }
+      }
+      .trainer_name {
+        h4 {
+          color: #292929;
+          font-size: 18px;
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+        }
+        span {
+          color: #6e6e6e;
+        }
+      }
+    }
+  }
+
+  &.articles {
+    .course_link {
+      margin-top: 0 !important;
+    }
+  }
+
+  .head {
+    h2 {
+      font-size: 37px;
+      margin-bottom: 45px;
+    }
+  }
+
+  .tabs {
+    .tab-content {
+      margin-top: 70px;
+
+      .card_course {
+        border: 1px solid #cfd8ec;
+        margin-bottom: 50px;
+        transition: all 0.5s ease-in-out;
+        overflow: hidden;
+
+        &:hover {
+          box-shadow: 0px 21px 36px #5e5c5c1a;
+
+          .image_course {
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+            img {
+              transform: scale(1.1);
+              transition: all 0.5s ease-in-out;
+            }
+          }
+        }
+        .image_course {
+          overflow: hidden;
+          width: 100%;
+          height: 250px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease-in-out;
+          }
+        }
+      }
+
+      .card_content {
+        direction: rtl;
+        padding: 16px 16px 25px;
+        h3 {
+          margin: 16px 0;
+          font-size: 18px;
+          color: $mainColor;
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+        }
+        .appoint {
+          display: flex;
+          align-items: center;
+          gap: 90px;
+          padding-bottom: 20px;
+          color: #3b568f;
+          .time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .calender {
+          }
+        }
+
+        .course_link {
+          margin-top: 32px;
+          a {
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+            color: #eeaf23;
+            display: flex;
+            gap: 5px;
+            span {
+            }
+          }
+        }
+
+        .trainer_desc {
+          display: flex;
+          gap: 16px;
+          padding-top: 15px;
+          border-top: 1px solid #e9f0ff;
+          .image {
+            img {
+              width: 56px;
+              height: 56px;
+              border-radius: 50px;
+              box-shadow: 0px 3px 6px #00000014;
+              object-fit: cover;
+            }
+          }
+          .trainer_name {
+            h4 {
+              color: #292929;
+              font-size: 18px;
+              font-family: "Bahij-Helvetica-Neue-75-Bold";
+            }
+            span {
+              color: #6e6e6e;
+            }
+          }
+        }
+      }
+    }
+
+    .nav-tabs {
+      @include centering;
+
+      li.nav-item {
+        a {
+          background: none;
+          border: none;
+          padding: 0;
+
+          span {
+            color: #232323;
+            font-size: 18px;
+            border-bottom: 4px solid #ddd;
+            padding-bottom: 20px;
+            padding-inline-start: 40px;
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+
+            sup {
+              color: #f7c553;
+              font-family: "Dubai-Bold";
+            }
+          }
+
+          &.active {
+            span {
+              color: $mainColor;
+              border-bottom: 4px solid #f7c553;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .all_courses {
+    box-shadow: 0px 0px 20px #013fcd57;
+    border-radius: 50px;
+    min-width: 202px;
+    margin: 0 auto 50px;
+  }
+}
+
+.single_article {
+  .all_content {
+    .image_course {
+      height: 420px;
+      border-radius: 5px;
+      overflow: hidden;
+
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        transition: 0.5s;
+        object-fit: cover;
+      }
+    }
+
+    .date {
+      margin: 20px 0;
+
+      span {
+        color: #232323;
+      }
+
+      svg {
+        color: #d6b05a;
+      }
+    }
+
+    h2 {
+      color: $mainColor;
+      font-size: 18px !important;
+      margin-bottom: 20px;
+    }
+
+    p {
+      padding-bottom: 20px;
+    }
+
+    ul {
+      li {
+        position: relative;
+        margin-bottom: 12px;
+        padding-inline-start: 20px;
+
+        &:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 5px;
+          width: 10px;
+          height: 10px;
+          border-radius: 50px;
+          background: #2cbdd75e;
+        }
+      }
+    }
+  }
+}
+
+.slick-slide > div {
+  max-width: 95%;
+  margin: auto;
+}
+
+[dir="rtl"] .slick-prev {
+  left: -25px;
+  right: auto;
+}
+
+[dir="rtl"] .slick-next {
+  right: auto !important;
+  left: -60px !important;
+}
+
+[dir="rtl"] .slick-next:before {
+  content: "←";
+  width: 54px;
+  height: 54px;
+  background: #3b568f 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  display: block;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[dir="rtl"] .slick-prev:before {
+  content: ">";
+  width: 54px;
+  height: 54px;
+  background: #3b568f 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  display: block;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slide {
+  user-select: none;
+}
+
+// ========== courses page ==========

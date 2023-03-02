@@ -1,0 +1,441 @@
+// ================== start profile ===========
+.profile_side_component {
+  .profile_content {
+    margin: 50px 0 80px;
+
+    .side_menu_profile {
+      border: 1px solid #bdccec;
+      border-radius: 5px;
+      text-align: center;
+
+      .image {
+        position: relative;
+        margin-top: 20px;
+        img {
+          width: 130px;
+          height: 130px;
+        }
+        h4 {
+          color: #3b568f;
+          font-size: 16px;
+        }
+      }
+
+      .upload {
+        width: 32px;
+        height: 32px;
+        background: #ffffff 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        position: absolute;
+        bottom: 49px;
+        right: 55%;
+
+        label {
+          margin-bottom: 0;
+
+          svg {
+            font-size: 14px;
+            color: #bdccec;
+          }
+        }
+
+        input {
+          display: none;
+          opacity: 0;
+        }
+      }
+
+      ul {
+        margin-top: 20px;
+        li {
+          display: block;
+
+          a {
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+            padding: 12px 0;
+            display: block;
+            border-top: 1px solid #bdccec;
+            color: #013fcd;
+            transition: 0.5s;
+
+            &:hover,
+            &.nuxt-link-active {
+              background-color: #013fcd;
+              color: #fff;
+            }
+          }
+
+          &.active {
+            a {
+              background-color: #013fcd;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    .profile_guide_component {
+      border: 1px solid #bdccec;
+      border-radius: 5px;
+      min-height: 485px;
+      flex-wrap: wrap;
+      gap: 50px;
+      @include centering;
+
+      h5 {
+        color: #000000;
+        font-size: 18px;
+      }
+
+      button {
+        gap: 7px;
+      }
+    }
+
+    .my-courses {
+      border: 1px solid #bdccec;
+      border-radius: 5px;
+      min-height: 485px;
+      padding: 35px 50px;
+
+      .boxes {
+        .box {
+          border: 1px solid #cfd8ec;
+          border-radius: 5px;
+          margin-bottom: 25px;
+          display: flex;
+          gap: 15px;
+          height: 122px;
+
+          .all_course_detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 17px 0;
+
+            .course_detail {
+              display: flex;
+              gap: 7px;
+
+              .image {
+                img {
+                  width: 110px;
+                  height: 88px;
+                  border-radius: 5px;
+                  object-fit: contain;
+                }
+              }
+
+              .info {
+                margin-bottom: 10px;
+
+                .gress {
+                  display: flex;
+                  gap: 8px;
+
+                  span {
+                    color: #013fcd;
+                  }
+                }
+
+                .progress {
+                  width: 100%;
+                  margin: 8px 0px;
+                  height: 10px;
+                }
+
+                .course_link {
+                  margin: 7px 0;
+                  a {
+                    color: #eeaf23;
+                    font-family: "Bahij-Helvetica-Neue-75-Bold";
+                  }
+                }
+
+                h6 {
+                  color: #013fcd;
+                  margin-bottom: 7px;
+                  font-family: "Bahij-Helvetica-Neue-75-Bold";
+                }
+              }
+            }
+          }
+
+          .head {
+            background: #ecf2ff;
+            @include centering;
+            // padding: 33px;
+            min-width: 176px;
+
+            &.current {
+              background: #f7c553;
+
+              h5 {
+                color: #013fcd;
+              }
+            }
+
+            h5 {
+              color: $black;
+              font-size: 18px;
+              margin-bottom: 0;
+              white-space: nowrap;
+              font-family: "Bahij-Helvetica-Neue-75-Bold";
+            }
+          }
+
+          ul {
+            margin: 33px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 95px;
+            li {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              span.dot {
+                min-width: 12px;
+                height: 12px;
+                border-radius: 50px;
+                background: #bdccec;
+              }
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .course_rate {
+      .boxes_rate {
+        .box {
+          margin-bottom: 45px;
+          .head {
+            display: flex;
+            justify-content: space-between;
+            .name {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              span {
+                color: #013fcd;
+                font-family: "Bahij-Helvetica-Neue-75-Bold";
+              }
+              span.dot {
+                display: block;
+                width: 12px;
+                height: 12px;
+                background: #f7c553;
+                border-radius: 50px;
+              }
+            }
+
+            .rate {
+              display: flex;
+              gap: 5px;
+
+              svg {
+                font-size: 14px;
+                color: #f7c553;
+              }
+
+              .full {
+                svg {
+                }
+              }
+              .empty {
+                svg {
+                  color: #bdccec;
+                }
+              }
+            }
+
+            .edit_rate {
+              span {
+                svg {
+                  color: #013fcd;
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+
+          .box_body {
+            border: 1px solid #bdccec;
+            border-radius: 5px;
+            margin-top: 30px;
+            padding: 20px;
+            p {
+              color: #232323;
+            }
+          }
+        }
+      }
+    }
+
+    .course_certificate {
+      .boxes_cert {
+        .box {
+          border: 1px solid #cfd8ec;
+          border-radius: 0px 0px 5px 5px;
+          text-align: center;
+          margin-bottom: 25px;
+          transition: 0.5s;
+
+          &:hover {
+            .image {
+              img {
+                transform: scale(1.1);
+              }
+            }
+          }
+
+          .image {
+            margin-bottom: 20px;
+            height: 161px;
+            width: 100%;
+
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+              transition: 0.5s;
+              object-fit: cover;
+            }
+          }
+
+          h3 {
+            font-size: 18px;
+            margin: 0;
+          }
+
+          p {
+            color: #013fcd;
+            padding: 15px 0;
+          }
+          button {
+            margin: auto;
+            margin-bottom: 20px;
+            gap: 3px;
+          }
+        }
+      }
+    }
+
+    .personal_info {
+      .eye {
+        top: 11px;
+        color:$black
+      }
+      .all_info {
+        background: none;
+        box-shadow: none;
+
+        .head {
+          margin-bottom: 20px;
+          color: #3f64b8;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  background: #3f64b8e3;
+  backdrop-filter: blur(30px);
+}
+
+.modal-content {
+  form {
+    textarea {
+      height: 106px;
+      background: #ffffff;
+      border: 1px solid #cfd8ec;
+      border-radius: 5px;
+      resize: none;
+    }
+
+    .rate {
+      @include centering;
+      gap: 6px;
+      margin-top: 25px;
+
+      svg {
+        font-size: 14px;
+        color: #bdccec;
+
+        &:focus {
+          color: #eeaf23;
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    border: none;
+    margin-bottom: 30px;
+    button {
+      margin: auto;
+    }
+  }
+
+  header {
+    margin: 0;
+    border: none !important;
+    button.close {
+      position: absolute;
+      border: none;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      top: 2px;
+      left: 3px;
+      background: $mainColor;
+      color: #fff;
+    }
+  }
+}
+
+#modal-2 {
+  button {
+    gap: 10px;
+    background: #fff;
+    color: $mainColor;
+
+    &:hover {
+      background: $mainColor;
+      color: #fff;
+    }
+  }
+
+  .modal-content {
+    background: none;
+    border: none;
+  }
+
+  img {
+    width: 728px;
+    height: 485px;
+    object-fit: cover;
+  }
+
+  header {
+    display: none;
+    border: none !important;
+  }
+}
+
+// ================== end profile =============

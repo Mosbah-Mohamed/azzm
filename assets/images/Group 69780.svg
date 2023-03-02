@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <g id="Group_69780" data-name="Group 69780" transform="translate(-829 -440)">
+    <circle id="Ellipse_2058" data-name="Ellipse 2058" cx="13" cy="13" r="13" transform="translate(829 440)" fill="#cd012a"/>
+    <path id="Path_2329" data-name="Path 2329" d="M15.309,25.3q.375-.073.746-.167.628-.175,1.236-.413t1.19-.53a13.042,13.042,0,0,0,1.131-.649q.548-.353,1.06-.759a13.041,13.041,0,0,0,.98-.862q.468-.454.888-.953t.789-1.038q.368-.537.681-1.11t.567-1.174q.254-.6.448-1.225.165-.546.283-1.1L17.559,7.568A7.065,7.065,0,1,0,7.57,17.56l7.74,7.739Z" transform="translate(829.435 440.438)" fill="#810f25"/>
+    <g id="Group_69779" data-name="Group 69779">
+      <circle id="Ellipse_2059" data-name="Ellipse 2059" cx="8" cy="8" r="8" transform="translate(834 445)" fill="#fff"/>
+      <g id="Group_69778" data-name="Group 69778" transform="translate(-1.5 0.5)">
+        <line id="Line_939" data-name="Line 939" x2="6" y2="6" transform="translate(840.5 449.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+        <line id="Line_940" data-name="Line 940" x1="6" y2="6" transform="translate(840.5 449.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

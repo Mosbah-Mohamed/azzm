@@ -1,0 +1,76 @@
+// ================== start home =============
+.result_exam {
+  .all_content {
+    margin: 70px 0;
+    .box {
+      box-shadow: 0px 13px 66px #86848429;
+      text-align: center;
+      padding: 60px 110px;
+      h2 {
+        font-size: 24px;
+        margin-bottom: 32px;
+        &:after {
+          bottom: 0;
+        }
+      }
+
+      p {
+        padding-bottom: 32px;
+        span {
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+          font-size: 20px;
+        }
+        badge {
+          color: #fff;
+          background: #10a711;
+        }
+        svg {
+          color: #10a711;
+        }
+      }
+
+      .box_info {
+        background: #ecf2ff;
+        border-radius: 5px;
+        padding: 21px 35px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > span {
+          color: #000;
+          font-size: 18px;
+        }
+
+        badge {
+          background: #f7c553;
+          font-size: 20px;
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+        }
+
+        span:last-child {
+          font-size: 20px;
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+          color: $mainColor;
+
+          &.right {
+            color: #01cd08;
+          }
+
+          &.wrong {
+            color: #cd012a;
+          }
+        }
+      }
+    }
+
+    button {
+      // margin-top: 50px;
+      margin: 50px auto 0;
+      width: 242px;
+      height: 42px;
+    }
+  }
+}
+// ================== end home ===============
