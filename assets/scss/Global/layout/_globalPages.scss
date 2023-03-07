@@ -64,11 +64,6 @@ body {
   overflow-x: hidden;
 }
 
-html[lang="en-US"] body {
-  direction: ltr;
-  text-align: left;
-}
-
 html[lang="ar-EG"] body {
   direction: rtl;
   text-align: right;
@@ -172,6 +167,14 @@ label {
   color: $black;
   margin-bottom: 10px;
   padding-inline-start: 2px;
+}
+
+.swal2-popup .swal2-title {
+  font-size: 20px !important;
+}
+.swal2-popup .swal2-styled {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 p {

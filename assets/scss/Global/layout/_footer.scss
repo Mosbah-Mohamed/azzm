@@ -1,5 +1,6 @@
 // ================ start footer ==================
 footer {
+  overflow: hidden;
   .partners {
     display: flex;
     justify-content: center;
@@ -118,6 +119,16 @@ footer {
         width: 15px;
       }
     }
+  }
+}
+
+.mapping {
+  width: 100%;
+  height: 161px;
+
+  iframe {
+    width: 100%;
+    height: 100%;
   }
 }
 // ================ end footer ====================

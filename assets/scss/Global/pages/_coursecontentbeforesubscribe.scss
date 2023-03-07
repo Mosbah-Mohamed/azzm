@@ -50,6 +50,7 @@
             // margin: 0 25px;
 
             button {
+              margin: 0;
               border-radius: 5px;
               color: $mainColor;
               padding: 10px 16px;
@@ -133,6 +134,320 @@
         transform: translate(-50%, -50%);
         bottom: auto;
         z-index: 99;
+      }
+    }
+  }
+
+  &.diploma_attend {
+    .all_info {
+      .box_head.qr_code {
+        display: flex;
+        justify-content: space-around;
+
+        .all_span {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          span {
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+            color: #000000;
+
+            &.qr {
+              color: #013fcd;
+            }
+          }
+        }
+
+        img {
+          width: 139px;
+          height: 139px;
+          border-radius: 5px;
+        }
+      }
+
+      .course_content .box_content {
+        min-height: 80vh;
+
+        .card .accordion_content {
+          margin: 0px 10px;
+          padding: 10px;
+          border: none;
+
+          .card-header {
+            padding: 0;
+          }
+
+          .inner {
+            border: 1px solid #cfd8ec;
+            border-radius: 5px;
+            padding: 10px;
+          }
+          .inner-btn {
+            border: 1px solid #cfd8ec;
+            border-radius: 5px;
+            background: none;
+          }
+        }
+      }
+
+      .box_content_team {
+        border: 1px solid #bdccec;
+        border-radius: 5px;
+        margin-top: 32px;
+
+        h3 {
+          background: #d3dff8;
+          color: $mainColor;
+          border-radius: 5px 5px 0px 0px;
+          padding: 9px 24px;
+          font-size: 20px;
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+        }
+
+        .all_trainers {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          padding-inline-start: 25px;
+          padding-bottom: 20px;
+          padding-top: 20px;
+
+          .trainer_desc {
+            display: flex;
+            gap: 16px;
+            // padding-top: 15px;
+            // border-top: 1px solid #e9f0ff;
+            .image {
+              img {
+                width: 56px;
+                height: 56px;
+                border-radius: 50px;
+                box-shadow: 0px 3px 6px #00000014;
+                object-fit: cover;
+              }
+            }
+            .trainer_name {
+              h4 {
+                color: #292929;
+                font-size: 18px;
+                font-family: "Bahij-Helvetica-Neue-75-Bold";
+              }
+              span {
+                color: #6e6e6e;
+              }
+            }
+          }
+        }
+      }
+
+      .rate_box {
+        margin: 30px 0;
+        padding: 33px 30px;
+        border: 1px solid #bdccec;
+        border-radius: 5px;
+
+        > p {
+          padding-top: 17px;
+          text-align: center;
+          display: block;
+          font-size: 14px;
+          color: #3f64b8;
+        }
+
+        .all_information {
+          display: flex;
+          justify-content: space-evenly;
+
+          .about_rate {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+
+            .rate {
+              .stars {
+                display: flex;
+                gap: 3px;
+
+                .full {
+                  svg {
+                    color: #f7c553;
+                    font-size: 14px;
+                  }
+                }
+
+                .empty {
+                  svg {
+                    color: #bdccec;
+                  }
+                }
+              }
+              span {
+                color: #6e6e6e;
+              }
+            }
+
+            .add_rate {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+
+              svg {
+                color: #f7c553;
+              }
+
+              p {
+                color: #3f64b8;
+                font-size: 18px;
+                font-family: "Bahij-Helvetica-Neue-75-Bold";
+              }
+            }
+          }
+          .percentage {
+            padding: 10px 20px;
+            box-shadow: 0px 3px 16px #bdccec94;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+
+            .num {
+              color: #f7c553;
+              font-size: 42px;
+              font-family: "Bahij-Helvetica-Neue-75-Bold";
+            }
+          }
+        }
+      }
+
+      button {
+        margin-bottom: 16px;
+      }
+
+      .hint {
+        color: #3f64b8;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .attachment {
+        padding: 32px 0;
+        border-bottom: 1px solid #bdccec;
+        h4 {
+          font-size: 18px;
+          margin-bottom: 20px;
+          &:after {
+            bottom: 0;
+          }
+        }
+
+        .content {
+          display: flex;
+          justify-content: space-between;
+          p {
+          }
+
+          a {
+            svg {
+              color: #f7c553;
+              font-size: 20px;
+            }
+
+            span {
+              color: #013fcd;
+              font-size: 18px;
+              font-family: "Bahij-Helvetica-Neue-75-Bold";
+              text-decoration: underline !important;
+            }
+          }
+        }
+      }
+
+      .bar_prog {
+        margin: 32px 0;
+        h5 {
+          font-size: 18px;
+          margin-bottom: 20px;
+          &:after {
+            bottom: 0;
+          }
+        }
+
+        .progress {
+          background: #d6b05a !important;
+          height: 30px;
+          border-radius: 50px;
+
+          .progress-bar {
+            height: 100%;
+            background: #f7c553;
+            color: $mainColor;
+            font-size: 18px;
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+          }
+        }
+      }
+
+      .comments {
+        padding: 27px 40px;
+        border: 1px solid #bdccec;
+        border-radius: 5px;
+        h6 {
+          font-size: 18px;
+          margin-bottom: 20px;
+          &:after {
+            bottom: 0;
+          }
+        }
+
+        .comment_box {
+          margin-bottom: 16px;
+          textarea {
+            box-shadow: 0px 3px 16px #bdccec94;
+            border-radius: 5px;
+            min-height: 87px;
+            height: auto;
+            padding: 18px;
+            margin-bottom: 12px;
+            resize: none;
+            border: none;
+          }
+
+          .actions {
+            display: flex;
+            justify-content: space-between;
+
+            .action_right {
+              display: flex;
+              gap: 8px;
+
+              span {
+                cursor: pointer;
+              }
+
+              .update {
+                color: #013fcd;
+              }
+              .clear {
+                color: #e60a0a;
+              }
+            }
+
+            .add_comment {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+
+              svg {
+                color: #f7c553;
+              }
+              p {
+                font-family: "Bahij-Helvetica-Neue-75-Bold";
+                font-size: 18px;
+                color: #013fcd;
+              }
+            }
+          }
+        }
       }
     }
   }

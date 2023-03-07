@@ -3,37 +3,40 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-12">
-          <div class="all_info">
+          <div class="all_info" data-aos="fade-up">
+
+
+            <h3>{{ loggedIn }}</h3>
 
             <div class="head">
-              <h3 class="main_head">تسجيل الدخول</h3>
+              <h3 class="main_head">{{ $t('login.login_acc') }}</h3>
             </div>
 
             <p>
-              <span>ليس لدي حساب ؟</span>
-              <a href="#" aria-label="login" target="_blank" rel="noopener" class="login">تسجيل حساب</a>
+              <span>{{ $t('login.no_account') }}</span>
+              <a href="#" aria-label="login" target="_blank" rel="noopener" class="login">{{ $t('login.create_acc') }}</a>
             </p>
 
             <button class="share_go">
               <img data-src="@/assets/images/google.svg" title="partner" v-lazy-load alt="partner image" width="20"
                 height="100%" />
-              <span>تسجيل دخول عن طريق حسابك في جوجل</span>
+              <span>{{ $t('login.google_acc') }}</span>
             </button>
 
-            <form action="">
-              <ValidationObserver ref='observer'>
+            <ValidationObserver v-slot="{ invalid }" ref='observer'>
+              <form action="" @submit.prevent="sendData">
 
-                <ValidationProvider rules="max:4" v-slot="{ errors }">
+                <ValidationProvider rules="required|email" v-slot="{ errors }">
                   <div class="form-group">
-                    <input type="email" placeholder="البريد الإلكتروني" />
+                    <input type="email" :placeholder="$t('login.email')" v-model="form.email" />
                     <span>{{ errors[0] }}</span>
                   </div>
                 </ValidationProvider>
 
-                <ValidationProvider rules="required|alpha|englishLettersOnly" v-slot="{ errors }">
+                <ValidationProvider rules="required|max:8|min:3" name="password" v-slot="{ errors }">
                   <div class="form-group position-relative">
-                    <input :type="[showPassword ? 'text' : 'password']" placeholder="********" required
-                      v-model="formData.password">
+                    <input :type="[showPassword ? 'text' : 'password']" placeholder="******" required
+                      v-model="form.password">
                     <div class="eye" @click="showPassword = !showPassword">
                       <font-awesome-icon :icon="icon" />
                     </div>
@@ -43,17 +46,18 @@
 
                 <div class="form-group box_check">
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    نسيت كلمة السر ؟ الاسترجاع
+                    {{ $t('login.return') }}
                   </a>
                 </div>
 
                 <div class="form-group">
-                  <button class="sign_btn main--btn" aria-label="sign" title="sign" type="submit">تسجيل الدخول</button>
+                  <button class="sign_btn main--btn" :disabled="invalid" aria-label="sign" title="sign" type="submit"> {{
+                    $t('login.login_acc') }}</button>
                 </div>
 
 
-              </ValidationObserver>
-            </form>
+              </form>
+            </ValidationObserver>
 
           </div>
         </div>
@@ -64,6 +68,8 @@
 
 <script>
 
+import { mapActions, mapState, mapMutations } from "vuex";
+
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 
 export default {
@@ -71,6 +77,8 @@ export default {
   name: "loginPage",
 
   layout: 'auth-layout',
+
+  // middleware: 'auth',
 
   components: {
     ValidationProvider,
@@ -90,7 +98,7 @@ export default {
 
       showPassword: false,
 
-      formData: {
+      form: {
         email: "",
         password: "",
       },
@@ -104,22 +112,26 @@ export default {
   // async asyncData({ $axios }) {
   //   try {
   //     // let response = await this.$axios.$get("main_page/main");
-  //     return await $axios.$get(process.env.baseUrl + "main_page/main").then(res => {
+  //     return await $axios.$post("login", { form: this.form }).then(response => {
+
+  //       console.log(response.data)
 
   //       return {
-  //         jjj: res.data.content.title
+
   //       };
+
+  //     }).catch(error => {
+
+  //       console.log("catch" + error.response.data);
 
   //     })
 
-  //   } catch (err) {
+  //   } catch (error) {
 
-  //     console.log(err);
+  //     console.log("catch" + error);
 
   //   }
   // },
-
-
 
 
   created() {
@@ -128,6 +140,9 @@ export default {
 
 
   computed: {
+
+    ...mapState(['loggedIn']),
+
     icon() {
       if (this.showPassword) {
         return ["fas", "eye-slash"];
@@ -150,6 +165,56 @@ export default {
   // All methods and logic
 
   methods: {
+
+    // ...mapActions(['selectedPackage']),
+    ...mapMutations(['LOGIN']),
+
+    // send form data method
+
+    async sendData() {
+
+      try {
+        await this.$axios.$post('login', this.form).then(response => {
+
+          this.LOGIN(response.user);
+
+
+          this.form.email = '';
+          this.form.password = '';
+
+          this.$refs.observer.reset();
+
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            title: 'logged in Successfully',
+            text: `${response.msg}`,
+            showConfirmButton: false,
+            timer: 3000
+          })
+
+          this.$router.push(this.localePath({ path: "/" }));
+
+          console.log(this.loggedIn)
+
+
+        }).catch(error => {
+          console.log(error.response.msg)
+
+          this.$swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.response.msg}`,
+            timer: 3000,
+            confirmButtonColor: '#ff7400',
+          })
+
+        })
+      } catch (error) {
+        console.log('try catch =>', error);
+      }
+
+    },
 
 
   }

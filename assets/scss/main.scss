@@ -12,6 +12,8 @@
 
 @import "./Global/layout/_globalPages.scss";
 
+@import "./Global/layout/_style-en.scss";
+
 // start layouts
 
 @import "./Global/layout/_navbar.scss";
@@ -34,7 +36,11 @@
 
 @import "./Global/pages/courses";
 
+@import "./Global/pages/exam";
+
 @import "./Global/pages/result";
+
+@import "./Global/pages/filter";
 
 @import "./Global/pages/coursecontentbeforesubscribe";
 

@@ -1,0 +1,28 @@
+// ============ style en ===========
+html[lang="en-US"] body {
+  direction: ltr;
+  text-align: left;
+
+  .eye {
+    left: auto;
+    right: 20px;
+  }
+
+  .courses_component .card_content {
+    .appoint {
+      justify-content: flex-end;
+
+      .calender {
+        flex-direction: row-reverse;
+      }
+    }
+    .course_link a {
+      flex-direction: row-reverse;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+// ============ style en ===========

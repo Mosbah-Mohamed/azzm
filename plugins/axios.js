@@ -5,7 +5,7 @@ export default function ({ $axios, redirect, store, app }) {
     // ? add accepted language
 
     console.log(app.i18n.locale);
-    config.headers.common["Accept-Language"] = app.i18n.locale;
+    config.headers.common["localization"] = app.i18n.locale;
 
     // ? add token to each request
 
@@ -24,10 +24,10 @@ export default function ({ $axios, redirect, store, app }) {
     console.log("Making request to " + config.url);
   });
 
-  $axios.onError((error) => {
-    const code = parseInt(error.response && error.response.status);
-    if (code === 400 || code === 404) {
-      redirect("/404");
-    }
-  });
+  // $axios.onError((error) => {
+  //   const code = parseInt(error.response && error.response.status);
+  //   if (code === 400 || code === 404) {
+  //     redirect("/404");
+  //   }
+  // });
 }

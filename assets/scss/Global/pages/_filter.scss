@@ -1,0 +1,120 @@
+// ================== start home =============
+.course_filter {
+  &.courses_component {
+    margin: 0;
+  }
+
+  .all_content_filter {
+    margin: 80px 0;
+
+    .filter_box {
+      box-shadow: 0px 13px 66px #86848429;
+
+      h3 {
+        padding: 16px 22px;
+        background: #ecf2ff;
+        border-radius: 5px 5px 0px 0px;
+        font-size: 24px;
+        margin-bottom: 21px;
+        color: $mainColor;
+        font-family: "Bahij-Helvetica-Neue-75-Bold";
+      }
+
+      .all_check_boxes {
+        padding: 0 22px 65px;
+        h4,
+        h5 {
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+          font-size: 16px;
+          color: #000;
+          margin-bottom: 24px;
+        }
+
+        h5 {
+          margin-top: 35px;
+        }
+      }
+    }
+
+    .head_arrange {
+      background: #ecf2ff;
+      border-radius: 5px 5px 0px 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 21px;
+
+      .filter_methods {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .icons {
+        display: flex;
+        gap: 10px;
+        svg {
+          color: #bdccec;
+          width: 22px;
+          height: 25px;
+          cursor: pointer;
+
+          &.activeColor {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+.range-slider-rail {
+  height: 7px !important;
+}
+
+.range-slider-fill {
+  background-color: #f7c553 !important;
+}
+
+.range-slider-knob {
+  background-color: #f7c553 !important;
+  box-shadow: 0px 3px 6px #00000029 !important;
+  border: none !important;
+}
+
+.has-search {
+  position: relative;
+
+  .icon_sea {
+    position: absolute;
+    top: 25%;
+    left: 20px;
+    cursor: pointer;
+    svg {
+      color: #013fcd;
+    }
+  }
+}
+
+.has-search .form-control {
+  height: 41px !important;
+  width: 263px;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.activeColor {
+  color: $mainColor;
+}
+// ================== end home ===============

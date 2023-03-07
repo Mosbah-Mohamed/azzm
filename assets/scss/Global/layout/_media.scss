@@ -36,6 +36,22 @@
 }
 
 @media (max-width: 991px) {
+  .about .image_botton {
+    margin-bottom: 60px;
+    img {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  header .staticis {
+    width: 100%;
+  }
+
+  .course_filter .all_content_filter .filter_box .all_check_boxes {
+    margin-bottom: 30px;
+  }
+
   .about {
     padding-bottom: 30px;
   }
@@ -61,6 +77,21 @@
 }
 
 @media (max-width: 767px) {
+  .courses_component {
+    margin: 50px 0;
+  }
+
+  .about {
+    padding: 50px 0;
+  }
+
+  header {
+    margin-bottom: 40px;
+    .hero_content {
+      margin-bottom: 50px;
+    }
+  }
+
   .profile_side_component .profile_content .profile_guide_component {
     min-height: auto;
     margin-top: 30px;
@@ -75,9 +106,126 @@
   .result_exam .all_content .box {
     padding: 60px 30px;
   }
+  .courses_content_before_subscribe.diploma_attend
+    .all_info
+    .attachment
+    .content {
+    flex-direction: column;
+  }
+
+  .exam .all_questions .question_info {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 575px) {
+  .exam .all_questions .question_result {
+    padding: 10px;
+  }
+
+  .exam .all_questions .question_body {
+    padding: 10px;
+  }
+
+  .courses_content_before_subscribe.diploma_attend .all_info .rate_box {
+    padding: 10px 0;
+  }
+
+  .courses_content_before_subscribe.diploma_attend .all_info .comments {
+    padding: 20px 10px;
+  }
+
+  .courses_component .tabs .nav-tabs li.nav-item a.active span {
+    border-bottom: none;
+  }
+
+  .courses_component .tabs .nav-tabs li.nav-item a span {
+    border: none;
+  }
+
+  .about .content h3 {
+    font-size: 20px;
+
+    &:after {
+      bottom: 0;
+    }
+  }
+
+  header .staticis {
+    height: 150px;
+    border-radius: unset;
+    .trainee {
+      flex-direction: column;
+      gap: 3px;
+
+      .icon {
+        width: 45px;
+        height: 45px;
+
+        svg {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+
+  header .all_images .image_back {
+    position: absolute;
+    top: -54px;
+    left: -99px;
+
+    img {
+      width: 250px;
+      height: 250px;
+      transform: rotate(140deg);
+    }
+  }
+
+  header .hero_image {
+    width: 230px;
+    height: 432px;
+
+    &:after {
+      right: -32px;
+      width: 280px;
+      height: 433px;
+    }
+  }
+
+  header .hero_content {
+    h1 {
+      font-size: 30px;
+
+      &:after {
+        bottom: 0;
+      }
+    }
+
+    p {
+      width: 100%;
+    }
+  }
+
+  .course_filter .all_content_filter .head_arrange {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .courses_component .card_course .card_course {
+    margin-bottom: 20px;
+  }
+  .card--row .col-md-6 .card_course {
+    flex-direction: column;
+
+    .image_course,
+    .card_content {
+      width: 100%;
+    }
+  }
+
   .contact .all_content .all_info form {
     input,
     button {

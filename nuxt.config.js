@@ -99,7 +99,7 @@ export default {
   // customize progress bar color for router move
 
   loading: {
-    color: "yellow",
+    color: "blue",
     height: "3px",
     duration: "8000",
   },
@@ -130,7 +130,7 @@ export default {
 
     */
 
-    name: "fade2",
+    name: "intro",
     // mode: "out-in",
   },
 
@@ -161,6 +161,13 @@ export default {
     "@nuxtjs/i18n",
     "@nuxtjs/axios",
     "nuxt-lazy-load",
+    "nuxt-vue-multiselect",
+    [
+      "nuxt-sweetalert2",
+      {
+        // confirmButtonColor: '#FFFFFF'
+      },
+    ],
   ],
 
   fontawesome: {
@@ -199,7 +206,7 @@ export default {
   },
 
   axios: {
-    baseURL: "https://mahe.azq1.com/azmstar/api/",
+    baseURL: "https://trainees.azq1.com/azmstar/api/",
     retry: { retries: 3 },
     headers: {
       common: {
@@ -252,7 +259,7 @@ export default {
   router: {
     // base: "/Dzit/", for build path
     // middleware: "log",
-    // middleware: ["auth"],
+    middleware: ["auth"],
     // scrollBehavior(to, from, savedPosition) {
     //   if (to.hash) {
     //     return { selector: to.hash };
@@ -265,6 +272,6 @@ export default {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || "https://mahe.azq1.com/azmstar/api/",
+    baseUrl: process.env.BASE_URL || "https://trainees.azq1.com/azmstar/api/",
   },
 };

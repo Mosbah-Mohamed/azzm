@@ -1,0 +1,125 @@
+// ================== start exam ==========
+.exam {
+  .all_questions {
+    margin: 50px 0 80px;
+
+    .question_info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ecf2ff;
+      border-radius: 5px 5px 0px 0px;
+      padding: 16px 33px;
+
+      .all_num_ques {
+        font-family: "Bahij-Helvetica-Neue-75-Bold";
+        color: #013fcd;
+      }
+
+      .question_number {
+        display: flex;
+        gap: 5px;
+      }
+      .time,
+      .question_number {
+        background: #ffffff;
+        padding: 6px 9px;
+        border-radius: 3px;
+
+        svg {
+          color: #3b568f;
+          font-size: 18px;
+        }
+
+        .time_clock {
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+          color: #013fcd;
+        }
+      }
+
+      .current_question {
+        span.num {
+          color: #013fcd;
+        }
+      }
+    }
+    .question_body {
+      min-height: 86px;
+      background: #ecf2ff;
+      border-radius: 5px;
+      padding: 15px 32px;
+      text-align: center;
+      margin: 20px 0 32px;
+
+      p {
+        color: #232323;
+      }
+    }
+    .question_result {
+      padding: 34px 55px;
+      min-height: 216px;
+      background: #ffffff;
+      border: 1px solid #bdccec;
+      border-radius: 5px;
+    }
+
+    .question_btns {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      margin-bottom: 25px;
+
+      button {
+        width: 96px;
+
+        &.finish {
+          width: 170px;
+          color: #013fcd;
+          box-shadow: none;
+          background: #f7c553;
+
+          &:hover{
+            background: #FFF;
+          }
+        }
+      }
+    }
+
+    .side_menu_question {
+      h3 {
+        padding: 18px 0;
+        font-size: 16px;
+        margin-bottom: 0;
+        text-align: center;
+        background: #ecf2ff;
+        border-radius: 5px 5px 0px 0px;
+        color: #013fcd;
+        font-family: "Bahij-Helvetica-Neue-75-Bold";
+      }
+      .box {
+        border: 1px solid #bdccec;
+        border-radius: 0px 0px 5px 5px;
+        padding: 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        span {
+          flex: 45%;
+          max-width: 45%;
+          text-align: center;
+
+          svg {
+            color: #ff0011;
+            font-size: 14px;
+          }
+
+          &.current_question {
+            color: #f7c553;
+            font-family: "Bahij-Helvetica-Neue-75-Bold";
+          }
+        }
+      }
+    }
+  }
+}
+// ================== end exam =============

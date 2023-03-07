@@ -64,6 +64,15 @@
         gap: 6px;
       }
       .calender {
+        display: flex;
+        // align-items: center;
+        gap: 10px;
+        flex-direction: row;
+
+        svg {
+          font-size: 22px;
+          color: #6e6e6e;
+        }
       }
     }
 

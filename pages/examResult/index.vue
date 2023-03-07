@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
 
           <div class="col-lg-8 col-12">
-            <div class="box">
+            <div class="box" data-aos="fade-up">
               <h2 class="main_head">نتيجة الاختبار</h2>
 
               <p>

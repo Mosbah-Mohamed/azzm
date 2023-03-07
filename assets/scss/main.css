@@ -48,6 +48,9 @@
   border: 1px solid #ddd;
   color: #3f63b6;
 }
+.main--btn:hover a, .main--btn:focus a {
+  color: #3f63b6;
+}
 
 .second--btn {
   width: 150px;
@@ -81,6 +84,9 @@
   box-shadow: inset 12em 0 0 0 #3f63b6;
   color: #fff;
   border: 1px solid transparent;
+}
+.second--btn:hover a, .second--btn:focus a {
+  color: #fff;
 }
 
 /* ============== end main buttons component ================ */
@@ -162,11 +168,6 @@ body {
   background: #fff;
   height: 5000px;
   overflow-x: hidden;
-}
-
-html[lang=en-US] body {
-  direction: ltr;
-  text-align: left;
 }
 
 html[lang=ar-EG] body {
@@ -273,6 +274,15 @@ label {
   margin-bottom: 10px;
   -webkit-padding-start: 2px;
           padding-inline-start: 2px;
+}
+
+.swal2-popup .swal2-title {
+  font-size: 20px !important;
+}
+
+.swal2-popup .swal2-styled {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 p {
@@ -663,6 +673,27 @@ button:disabled {
 }
 
 /*====================== end global page ======================================*/
+html[lang=en-US] body {
+  direction: ltr;
+  text-align: left;
+}
+html[lang=en-US] body .eye {
+  left: auto;
+  right: 20px;
+}
+html[lang=en-US] body .courses_component .card_content .appoint {
+  justify-content: flex-end;
+}
+html[lang=en-US] body .courses_component .card_content .appoint .calender {
+  flex-direction: row-reverse;
+}
+html[lang=en-US] body .courses_component .card_content .course_link a {
+  flex-direction: row-reverse;
+}
+html[lang=en-US] body .courses_component .card_content .course_link a svg {
+  transform: rotate(180deg);
+}
+
 .navbar_page {
   padding: 32px 0;
 }
@@ -676,6 +707,7 @@ button:disabled {
 }
 .navbar_page .nav_items > ul {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 25px;
 }
@@ -697,6 +729,7 @@ button:disabled {
   border: none;
 }
 .navbar_page .nav_items > ul li .dropdown-menu.show li a {
+  text-align: start;
   padding: 14px;
 }
 .navbar_page .nav_items > ul li .dropdown-menu li {
@@ -740,11 +773,13 @@ button:disabled {
   color: #0c0c0c;
 }
 
-.router-link-exact-active.router-link-active a,
-.router-link-exact-active.router-link-active i {
+.nuxt-link-exact-active.nuxt-link-active {
   color: #013fcd !important;
 }
 
+footer {
+  overflow: hidden;
+}
 footer .partners {
   display: flex;
   justify-content: center;
@@ -849,6 +884,15 @@ footer .copy_right .cont_img {
 }
 footer .copy_right .image img {
   width: 15px;
+}
+
+.mapping {
+  width: 100%;
+  height: 161px;
+}
+.mapping iframe {
+  width: 100%;
+  height: 100%;
 }
 
 /*======= start header layout =============*/
@@ -1492,11 +1536,11 @@ header .staticis .trainee .info span:last-child {
   padding: 10px 16px;
   height: 79px;
   background: #e7f0ff;
-  margin-bottom: 80px;
   border: none;
   resize: none;
 }
-.contact .all_content .all_info form button.send {
+.contact .all_content .all_info form button.send_btn {
+  margin-top: 80px;
   width: 104px;
 }
 .contact .all_content .left_box h4 {
@@ -1592,6 +1636,15 @@ header .staticis .trainee .info span:last-child {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+.courses_component .card_content .appoint .calender {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+.courses_component .card_content .appoint .calender svg {
+  font-size: 22px;
+  color: #6e6e6e;
 }
 .courses_component .card_content .course_link {
   margin-top: 32px;
@@ -1851,6 +1904,112 @@ header .staticis .trainee .info span:last-child {
           user-select: none;
 }
 
+.exam .all_questions {
+  margin: 50px 0 80px;
+}
+.exam .all_questions .question_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ecf2ff;
+  border-radius: 5px 5px 0px 0px;
+  padding: 16px 33px;
+}
+.exam .all_questions .question_info .all_num_ques {
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+  color: #013fcd;
+}
+.exam .all_questions .question_info .question_number {
+  display: flex;
+  gap: 5px;
+}
+.exam .all_questions .question_info .time,
+.exam .all_questions .question_info .question_number {
+  background: #ffffff;
+  padding: 6px 9px;
+  border-radius: 3px;
+}
+.exam .all_questions .question_info .time svg,
+.exam .all_questions .question_info .question_number svg {
+  color: #3b568f;
+  font-size: 18px;
+}
+.exam .all_questions .question_info .time .time_clock,
+.exam .all_questions .question_info .question_number .time_clock {
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+  color: #013fcd;
+}
+.exam .all_questions .question_info .current_question span.num {
+  color: #013fcd;
+}
+.exam .all_questions .question_body {
+  min-height: 86px;
+  background: #ecf2ff;
+  border-radius: 5px;
+  padding: 15px 32px;
+  text-align: center;
+  margin: 20px 0 32px;
+}
+.exam .all_questions .question_body p {
+  color: #232323;
+}
+.exam .all_questions .question_result {
+  padding: 34px 55px;
+  min-height: 216px;
+  background: #ffffff;
+  border: 1px solid #bdccec;
+  border-radius: 5px;
+}
+.exam .all_questions .question_btns {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  margin-bottom: 25px;
+}
+.exam .all_questions .question_btns button {
+  width: 96px;
+}
+.exam .all_questions .question_btns button.finish {
+  width: 170px;
+  color: #013fcd;
+  box-shadow: none;
+  background: #f7c553;
+}
+.exam .all_questions .question_btns button.finish:hover {
+  background: #FFF;
+}
+.exam .all_questions .side_menu_question h3 {
+  padding: 18px 0;
+  font-size: 16px;
+  margin-bottom: 0;
+  text-align: center;
+  background: #ecf2ff;
+  border-radius: 5px 5px 0px 0px;
+  color: #013fcd;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+.exam .all_questions .side_menu_question .box {
+  border: 1px solid #bdccec;
+  border-radius: 0px 0px 5px 5px;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.exam .all_questions .side_menu_question .box span {
+  flex: 45%;
+  max-width: 45%;
+  text-align: center;
+}
+.exam .all_questions .side_menu_question .box span svg {
+  color: #ff0011;
+  font-size: 14px;
+}
+.exam .all_questions .side_menu_question .box span.current_question {
+  color: #f7c553;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+
 .result_exam .all_content {
   margin: 70px 0;
 }
@@ -1915,6 +2074,113 @@ header .staticis .trainee .info span:last-child {
   height: 42px;
 }
 
+.course_filter.courses_component {
+  margin: 0;
+}
+.course_filter .all_content_filter {
+  margin: 80px 0;
+}
+.course_filter .all_content_filter .filter_box {
+  box-shadow: 0px 13px 66px rgba(134, 132, 132, 0.1607843137);
+}
+.course_filter .all_content_filter .filter_box h3 {
+  padding: 16px 22px;
+  background: #ecf2ff;
+  border-radius: 5px 5px 0px 0px;
+  font-size: 24px;
+  margin-bottom: 21px;
+  color: #013fcd;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+.course_filter .all_content_filter .filter_box .all_check_boxes {
+  padding: 0 22px 65px;
+}
+.course_filter .all_content_filter .filter_box .all_check_boxes h4,
+.course_filter .all_content_filter .filter_box .all_check_boxes h5 {
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 24px;
+}
+.course_filter .all_content_filter .filter_box .all_check_boxes h5 {
+  margin-top: 35px;
+}
+.course_filter .all_content_filter .head_arrange {
+  background: #ecf2ff;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 21px;
+}
+.course_filter .all_content_filter .head_arrange .filter_methods {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.course_filter .all_content_filter .head_arrange .icons {
+  display: flex;
+  gap: 10px;
+}
+.course_filter .all_content_filter .head_arrange .icons svg {
+  color: #bdccec;
+  width: 22px;
+  height: 25px;
+  cursor: pointer;
+}
+.course_filter .all_content_filter .head_arrange .icons svg.activeColor {
+  color: #013fcd;
+}
+
+.range-slider-rail {
+  height: 7px !important;
+}
+
+.range-slider-fill {
+  background-color: #f7c553 !important;
+}
+
+.range-slider-knob {
+  background-color: #f7c553 !important;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137) !important;
+  border: none !important;
+}
+
+.has-search {
+  position: relative;
+}
+.has-search .icon_sea {
+  position: absolute;
+  top: 25%;
+  left: 20px;
+  cursor: pointer;
+}
+.has-search .icon_sea svg {
+  color: #013fcd;
+}
+
+.has-search .form-control {
+  height: 41px !important;
+  width: 263px;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.activeColor {
+  color: #013fcd;
+}
+
 .courses_content_before_subscribe .all_info {
   margin: 80px 0;
 }
@@ -1959,6 +2225,7 @@ header .staticis .trainee .info span:last-child {
   border: none;
 }
 .courses_content_before_subscribe .all_info .course_content .box_content .card .card-header button {
+  margin: 0;
   border-radius: 5px;
   color: #013fcd;
   padding: 10px 16px;
@@ -2028,6 +2295,261 @@ header .staticis .trainee .info span:last-child {
   transform: translate(-50%, -50%);
   bottom: auto;
   z-index: 99;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code {
+  display: flex;
+  justify-content: space-around;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code .all_span {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code .all_span span {
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+  color: #000000;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code .all_span span.qr {
+  color: #013fcd;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code img {
+  width: 139px;
+  height: 139px;
+  border-radius: 5px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .course_content .box_content {
+  min-height: 80vh;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .course_content .box_content .card .accordion_content {
+  margin: 0px 10px;
+  padding: 10px;
+  border: none;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .course_content .box_content .card .accordion_content .card-header {
+  padding: 0;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .course_content .box_content .card .accordion_content .inner {
+  border: 1px solid #cfd8ec;
+  border-radius: 5px;
+  padding: 10px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .course_content .box_content .card .accordion_content .inner-btn {
+  border: 1px solid #cfd8ec;
+  border-radius: 5px;
+  background: none;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_content_team {
+  border: 1px solid #bdccec;
+  border-radius: 5px;
+  margin-top: 32px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_content_team h3 {
+  background: #d3dff8;
+  color: #013fcd;
+  border-radius: 5px 5px 0px 0px;
+  padding: 9px 24px;
+  font-size: 20px;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_content_team .all_trainers {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  -webkit-padding-start: 25px;
+          padding-inline-start: 25px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_content_team .all_trainers .trainer_desc {
+  display: flex;
+  gap: 16px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_content_team .all_trainers .trainer_desc .image img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.0784313725);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_content_team .all_trainers .trainer_desc .trainer_name h4 {
+  color: #292929;
+  font-size: 18px;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+.courses_content_before_subscribe.diploma_attend .all_info .box_content_team .all_trainers .trainer_desc .trainer_name span {
+  color: #6e6e6e;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box {
+  margin: 30px 0;
+  padding: 33px 30px;
+  border: 1px solid #bdccec;
+  border-radius: 5px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box > p {
+  padding-top: 17px;
+  text-align: center;
+  display: block;
+  font-size: 14px;
+  color: #3f64b8;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information {
+  display: flex;
+  justify-content: space-evenly;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate .rate .stars {
+  display: flex;
+  gap: 3px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate .rate .stars .full svg {
+  color: #f7c553;
+  font-size: 14px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate .rate .stars .empty svg {
+  color: #bdccec;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate .rate span {
+  color: #6e6e6e;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate .add_rate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate .add_rate svg {
+  color: #f7c553;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .about_rate .add_rate p {
+  color: #3f64b8;
+  font-size: 18px;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .percentage {
+  padding: 10px 20px;
+  box-shadow: 0px 3px 16px rgba(189, 204, 236, 0.5803921569);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .rate_box .all_information .percentage .num {
+  color: #f7c553;
+  font-size: 42px;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+.courses_content_before_subscribe.diploma_attend .all_info button {
+  margin-bottom: 16px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .hint {
+  color: #3f64b8;
+  font-size: 14px;
+  text-align: center;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .attachment {
+  padding: 32px 0;
+  border-bottom: 1px solid #bdccec;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .attachment h4 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .attachment h4:after {
+  bottom: 0;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .attachment .content {
+  display: flex;
+  justify-content: space-between;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .attachment .content a svg {
+  color: #f7c553;
+  font-size: 20px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .attachment .content a span {
+  color: #013fcd;
+  font-size: 18px;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+  text-decoration: underline !important;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .bar_prog {
+  margin: 32px 0;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .bar_prog h5 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .bar_prog h5:after {
+  bottom: 0;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .bar_prog .progress {
+  background: #d6b05a !important;
+  height: 30px;
+  border-radius: 50px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .bar_prog .progress .progress-bar {
+  height: 100%;
+  background: #f7c553;
+  color: #013fcd;
+  font-size: 18px;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments {
+  padding: 27px 40px;
+  border: 1px solid #bdccec;
+  border-radius: 5px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments h6 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments h6:after {
+  bottom: 0;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box {
+  margin-bottom: 16px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box textarea {
+  box-shadow: 0px 3px 16px rgba(189, 204, 236, 0.5803921569);
+  border-radius: 5px;
+  min-height: 87px;
+  height: auto;
+  padding: 18px;
+  margin-bottom: 12px;
+  resize: none;
+  border: none;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions {
+  display: flex;
+  justify-content: space-between;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions .action_right {
+  display: flex;
+  gap: 8px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions .action_right span {
+  cursor: pointer;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions .action_right .update {
+  color: #013fcd;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions .action_right .clear {
+  color: #e60a0a;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions .add_comment {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions .add_comment svg {
+  color: #f7c553;
+}
+.courses_content_before_subscribe.diploma_attend .all_info .comments .comment_box .actions .add_comment p {
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+  font-size: 18px;
+  color: #013fcd;
 }
 
 .why_us h4 {
@@ -2156,8 +2678,16 @@ header .staticis .trainee .info span:last-child {
 }
 .terms .all_content .content p {
   font-family: "BAHIJ_HELVETICA_45-NEUE_LIGHT" !important;
-  padding-top: 18px;
+  font-size: 16px !important;
+  padding-top: 18px !important;
   color: #232323 !important;
+}
+.terms .all_content .content p span {
+  font-family: "BAHIJ_HELVETICA_45-NEUE_LIGHT" !important;
+  font-size: 16px !important;
+  padding-top: 18px !important;
+  color: #232323 !important;
+  background: none !important;
 }
 
 .courses_before_subcribe .all_content {
@@ -2465,6 +2995,19 @@ header .staticis .trainee .info span:last-child {
   }
 }
 @media (max-width: 991px) {
+  .about .image_botton {
+    margin-bottom: 60px;
+  }
+  .about .image_botton img {
+    width: 100%;
+    left: 0;
+  }
+  header .staticis {
+    width: 100%;
+  }
+  .course_filter .all_content_filter .filter_box .all_check_boxes {
+    margin-bottom: 30px;
+  }
   .about {
     padding-bottom: 30px;
   }
@@ -2486,6 +3029,18 @@ header .staticis .trainee .info span:last-child {
   }
 }
 @media (max-width: 767px) {
+  .courses_component {
+    margin: 50px 0;
+  }
+  .about {
+    padding: 50px 0;
+  }
+  header {
+    margin-bottom: 40px;
+  }
+  header .hero_content {
+    margin-bottom: 50px;
+  }
   .profile_side_component .profile_content .profile_guide_component {
     min-height: auto;
     margin-top: 30px;
@@ -2498,8 +3053,98 @@ header .staticis .trainee .info span:last-child {
   .result_exam .all_content .box {
     padding: 60px 30px;
   }
+  .courses_content_before_subscribe.diploma_attend .all_info .attachment .content {
+    flex-direction: column;
+  }
+  .exam .all_questions .question_info {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
 }
 @media (max-width: 575px) {
+  .exam .all_questions .question_result {
+    padding: 10px;
+  }
+  .exam .all_questions .question_body {
+    padding: 10px;
+  }
+  .courses_content_before_subscribe.diploma_attend .all_info .rate_box {
+    padding: 10px 0;
+  }
+  .courses_content_before_subscribe.diploma_attend .all_info .comments {
+    padding: 20px 10px;
+  }
+  .courses_component .tabs .nav-tabs li.nav-item a.active span {
+    border-bottom: none;
+  }
+  .courses_component .tabs .nav-tabs li.nav-item a span {
+    border: none;
+  }
+  .about .content h3 {
+    font-size: 20px;
+  }
+  .about .content h3:after {
+    bottom: 0;
+  }
+  header .staticis {
+    height: 150px;
+    border-radius: unset;
+  }
+  header .staticis .trainee {
+    flex-direction: column;
+    gap: 3px;
+  }
+  header .staticis .trainee .icon {
+    width: 45px;
+    height: 45px;
+  }
+  header .staticis .trainee .icon svg {
+    font-size: 17px;
+  }
+  header .all_images .image_back {
+    position: absolute;
+    top: -54px;
+    left: -99px;
+  }
+  header .all_images .image_back img {
+    width: 250px;
+    height: 250px;
+    transform: rotate(140deg);
+  }
+  header .hero_image {
+    width: 230px;
+    height: 432px;
+  }
+  header .hero_image:after {
+    right: -32px;
+    width: 280px;
+    height: 433px;
+  }
+  header .hero_content h1 {
+    font-size: 30px;
+  }
+  header .hero_content h1:after {
+    bottom: 0;
+  }
+  header .hero_content p {
+    width: 100%;
+  }
+  .course_filter .all_content_filter .head_arrange {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .courses_component .card_course .card_course {
+    margin-bottom: 20px;
+  }
+  .card--row .col-md-6 .card_course {
+    flex-direction: column;
+  }
+  .card--row .col-md-6 .card_course .image_course,
+  .card--row .col-md-6 .card_course .card_content {
+    width: 100%;
+  }
   .contact .all_content .all_info form input,
   .contact .all_content .all_info form button {
     margin: auto;

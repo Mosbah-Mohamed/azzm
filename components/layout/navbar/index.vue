@@ -4,21 +4,26 @@
       <div class="row align-items-baseline custom-center">
 
         <div class="col-lg-2 col-md-5 col-4">
-          <div class="logo">
-            <img :data-src="logoImage" title="logo" v-lazy-load alt="nav logo" width="190" height="53" />
-          </div>
+          <nuxt-link :to="localePath('/')">
+            <div class="logo">
+              <img :data-src="logoImage" title="logo" v-lazy-load alt="nav logo" width="190" height="53" />
+            </div>
+          </nuxt-link>
+
         </div>
 
         <div class="col-lg-6 col-5 d-none-custom auth_lay">
           <div class="nav_items">
             <ul>
-              <li><a href="#" aria-label="mainPage" target="_blank" rel="noopener">الرئيسية</a></li>
-              <li><a href="#" aria-label="about" target="_blank" rel="noopener">عن المنصة</a></li>
-              <li><a href="#" aria-label="diploma" target="_blank" rel="noopener">الدبلومات</a></li>
+              <li><a href="#" aria-label="mainPage" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
+                $t('navbar.home') }}</nuxt-link></a></li>
+              <li><a href="#" aria-label="about" target="_blank" rel="noopener"><nuxt-link
+                    :to="localePath('/about-us')">{{ $t('navbar.about') }}</nuxt-link></a></li>
+              <li><a href="#" aria-label="diploma" target="_blank" rel="noopener">{{ $t('navbar.diploma') }}</a></li>
 
               <li>
                 <div @mouseover="onOver" @mouseleave="onLeave">
-                  <b-dropdown id="dropdown-1" text="الدورات" ref="dropdown">
+                  <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown">
 
                     <b-dropdown-item>دورات الموارد البشرية</b-dropdown-item>
                     <b-dropdown-item>تحليل الاعمال</b-dropdown-item>
@@ -27,8 +32,11 @@
                 </div>
               </li>
 
-              <li><a href="#" aria-label="article" target="_blank" rel="noopener">المقالات</a></li>
-              <li><a href="#" aria-label="contactUs" target="_blank" rel="noopener">اتصل بنا</a></li>
+              <li><a href="#" aria-label="articles" target="_blank" rel="noopener"><nuxt-link
+                    :to="localePath('/articles')">{{ $t('navbar.articles') }}</nuxt-link></a></li>
+
+              <li><a href="#" aria-label="contactUs" target="_blank" rel="noopener"><nuxt-link
+                    :to="localePath('/contact-us')">{{ $t('navbar.contact') }}</nuxt-link></a></li>
             </ul>
           </div>
         </div>
@@ -37,16 +45,23 @@
 
           <div class="nav_auth flex-center">
             <div class="icon_search">
-              <font-awesome-icon :icon="['fas', 'search']" />
+              <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
             </div>
 
             <div class="language">
-              <span>English</span>
+              <nuxt-link v-if="$i18n.locale == 'en'" :to="switchLocalePath('ar')">
+                <span>Arabic</span>
+              </nuxt-link>
+              <nuxt-link v-else :to="switchLocalePath('en')">
+                <span>English</span>
+              </nuxt-link>
             </div>
 
             <div class="btns-auth flex-center">
-              <button aria-label="account" title="account" class="main--btn">إنشاء حساب</button>
-              <button aria-label="login" title="login" class="second--btn">تسجيل الدخول</button>
+              <button aria-label="account" title="account" class="main--btn"><nuxt-link :to="localePath('/signup')">{{
+                $t('navbar.signup') }}</nuxt-link></button>
+              <button aria-label="login" title="login" class="second--btn"><nuxt-link :to="localePath('/login')">{{
+                $t('navbar.login') }}</nuxt-link></button>
             </div>
 
             <div class="sidebar d-none">
@@ -79,33 +94,32 @@ export default {
   data() {
     return {
       logoImage: '',
-
     }
   },
 
   created() {
-    // this.getData()
+
   },
 
   mounted() {
-
+    this.getData()
   },
 
 
   methods: {
 
-    // async getData() {
-    //   try {
-    //     return await this.$axios.get(`setting/layout`).then(response => {
-    //       this.logoImage = response.data.data.logo;
-    //       console.log(response.data.data.logo)
-    //     }).catch(error => {
-    //       console.log(error)
-    //     })
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // },
+    async getData() {
+      try {
+        return await this.$axios.get(`setting/layout`).then(response => {
+          this.logoImage = response.data.data.logo;
+          // console.log(response.data.data.log)
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
 
     onOver() {
       this.$refs.dropdown.visible = true;

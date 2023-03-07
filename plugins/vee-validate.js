@@ -5,7 +5,7 @@ import {
   ValidationObserver,
   ValidationProvider,
 } from "vee-validate";
-import { required, alpha, max } from "vee-validate/dist/rules";
+import { required, alpha, max, min, email } from "vee-validate/dist/rules";
 
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("ValidationProvider", ValidationProvider);
@@ -13,6 +13,8 @@ Vue.component("ValidationProvider", ValidationProvider);
 extend("required", required);
 extend("alpha", alpha);
 extend("max", max);
+extend("min", min);
+extend("email", email);
 
 export default function VeeValidatePlugin({ app }) {
   configure({

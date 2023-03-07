@@ -33,6 +33,10 @@
     background-color: $white;
     border: 1px solid #ddd;
     color: #3f63b6;
+
+    a {
+      color: #3f63b6;
+    }
   }
 }
 
@@ -70,6 +74,10 @@
     box-shadow: inset 12em 0 0 0 #3f63b6;
     color: $white;
     border: 1px solid transparent;
+
+    a {
+      color: $white;
+    }
   }
 }
 /* ============== end main buttons component ================ */
