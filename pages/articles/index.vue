@@ -2,7 +2,7 @@
   <section class="courses_component articles articles_page">
 
     <div class="crumb">
-      <h3>{{ $t('navbar.articles') }}</h3>
+      <h3>{{ $t('navbar.articles') }}</h3> 
       <ul>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
           $t('navbar.home') }}</nuxt-link></a></li>

@@ -163,7 +163,7 @@
 
                 </div>
               </div>
-              <div class="col-md-6 col-12">
+              <!-- <div class="col-md-6 col-12">
                 <div class="card_course">
                   <div class="image_course">
                     <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
@@ -211,7 +211,7 @@
                   </div>
 
                 </div>
-              </div>
+              </div> -->
             </div>
 
           </div>
@@ -250,32 +250,19 @@ export default {
       status: '',
 
       values: null,
-      options: ['list', 'of', 'options']
+      options: ['list', 'of', 'options'],
+
+
+      items: [],
+
+      from_price: '',
+      category: '',
+      from_price:'',
+      to_price: '',
+      order:''
 
     }
   },
-
-  //  fetch data on server side only in pages not component ( fetch ,async data)
-
-  // async asyncData({ $axios }) {
-  //   try {
-  //     // let response = await this.$axios.$get("main_page/main");
-  //     return await $axios.$get(process.env.baseUrl + "main_page/main").then(res => {
-
-  //       return {
-  //         jjj: res.data.content.title
-  //       };
-
-  //     })
-
-  //   } catch (err) {
-
-  //     console.log(err);
-
-  //   }
-  // },
-
-
 
 
   created() {
@@ -289,6 +276,9 @@ export default {
   //  when component load
 
   mounted() {
+
+    this.getData();
+
     window.scrollTo(0, 0);
     this.$nextTick(() => {
       window.scrollTo(0, 0);
@@ -299,6 +289,23 @@ export default {
   // All methods and logic
 
   methods: {
+
+
+    async getData() {
+      try {
+        return await this.$axios.get(`courses?type=0&order=asc`).then(response => {
+
+          console.log(response.data.data)
+
+          this.items = response.data.data;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
 
     addClassToDiv() {
       const divElement = document.getElementById('my-div');

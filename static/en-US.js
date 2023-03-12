@@ -35,6 +35,12 @@ export default {
     ryad: "Designed by Riyadh Company",
   },
 
+  hero: {
+    trainee: "trainee",
+    trainer: "trainer",
+    course: "course",
+  },
+
   login: {
     login_acc: "sign in",
     no_account: "I dont have an account ?",
@@ -45,10 +51,47 @@ export default {
     return: "Forgot your password ? loopback",
   },
 
+  courses: {
+    Training_programmes: "Training programmes",
+    Training_course_system: "Training course system",
+    Scientific_diploma_system: "Scientific diploma system",
+    browse_diploma: "Browse Diploma",
+    browse_courses: "Browse courses",
+  },
+
+  attendance: {
+    Please_delete: "Please delete",
+    able_attend: "To be able to attend the diploma",
+    training_team: "Training team",
+    active_option:
+      "It will activate this option when the course is fully completed",
+    interest_eval: "interested in your evaluation ",
+    comments: "comments",
+    progress_level: "progress level",
+    update: "update",
+    clear: "clear",
+    add_comment: "add comment",
+    Lesson_extensions: "Lesson extensions",
+    download_hint:
+      "You can download all the attachments for this lesson by clicking on the download button",
+    download_attach: "Download attachments",
+    diploma_content: "Diploma content",
+    total_rating: "Total rating",
+    add_rate: "Add evaluation",
+  },
+
   pages: {
     why_us: "Why Us",
     course_detail: "Course details",
+    diploma_detail: "Diploma Details",
     article_title: "article title",
+    all_articles: "Browse All Articles",
+    experience: "year of experience",
+    Diploma_attendance: "Diploma attendance",
+  },
+
+  buttons: {
+    join: "join us",
   },
 
   contact: {
@@ -59,6 +102,22 @@ export default {
     message: "message",
     phone: "phone",
     send: "send",
+  },
+
+  profile: {
+    profile: " Trainee's guide",
+    guidetrainer: "Trainee's guide",
+    mycourses: "my courses",
+    coursesrate: "Course evaluation",
+    certificates: "my testimonials",
+    personalinfo: "My personal information",
+    changepassword: "Password modification",
+    profile_per: "personal profile",
+    download_guide: "Download guide",
+    down_desc:
+      "You can see all the items inside the guide after downloading it",
+    course_complete: "Courses completed",
+    current_courses: "current courses",
   },
 
   message: {

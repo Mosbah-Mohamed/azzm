@@ -118,9 +118,31 @@
     gap: 20px;
     justify-content: center;
   }
+
+  .courses_before_subscribe .all_content .tabs {
+    > div {
+      overflow-x: auto;
+      overflow-y: hidden;
+      ul.nav-tabs {
+        min-width: 700px;
+        margin-bottom: 0;
+        border-bottom: unset;
+        padding-bottom: 10px;
+      }
+    }
+  }
 }
 
 @media (max-width: 575px) {
+  .courses_before_subscribe
+    .all_content
+    .tabs
+    .tab-content
+    .about_trainer
+    .all_content_trainer {
+    flex-direction: column;
+  }
+
   .exam .all_questions .question_result {
     padding: 10px;
   }
@@ -153,7 +175,8 @@
     }
   }
 
-  header .staticis {
+  header .staticis,
+  html[lang="en-US"] body header .staticis {
     height: 150px;
     border-radius: unset;
     .trainee {

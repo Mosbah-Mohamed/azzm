@@ -7,20 +7,18 @@
           <!-- <vue-countup :delay="delay" :endVal="endVal" :options="options" /> -->
 
           <div class="hero_content">
-            <span class="name">شركة عزم للتدريب</span>
-            <h1 class="main_head">معهد عـزم ستـار للتـدريـب</h1>
-            <p>نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة في شتئ المجالات
-              التعليمية والتي من خلالها تستطيع ان تصبح مطوراً في العلوم الحاسوبية والتجارية</p>
+            <span class="name">{{ name }}</span>
+            <h1 class="main_head">{{ title1 }}</h1>
+            <p>{{ description }}</p>
             <button aria-label="join" title="join" class="main--btn">
-              إنضم إلينا
+              {{ $t('buttons.join') }}
             </button>
           </div>
         </div>
         <div class="col-lg-6 col-12">
           <div class="all_images">
             <div class="hero_image">
-              <img data-src="@/assets/images/IIUEODf.png" title="hero" v-lazy-load alt="hero image" width="100%"
-                height="100%" />
+              <img :data-src="image1" title="hero" v-lazy-load alt="hero image" width="100%" height="100%" />
             </div>
 
             <div class="image_back">
@@ -37,14 +35,18 @@
       <img data-src="@/assets/images/flower.png" title="flower" v-lazy-load alt="hero image" width="100%" height="100%" />
     </div>
 
+    <div class="flex-center m-5" v-if="!loading">
+      <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+    </div>
+
     <div class="staticis">
       <div class="trainee">
         <div class="icon">
           <font-awesome-icon :icon="['fas', 'user-group']" />
         </div>
         <div class="info">
-          <span>2500</span>
-          <span>مُتدرب</span>
+          <span>{{ traineesCount }}</span>
+          <span>{{ $t('hero.trainee') }}</span>
         </div>
       </div>
       <div class="trainer trainee">
@@ -52,8 +54,8 @@
           <font-awesome-icon :icon="['fas', 'user-tie']" />
         </div>
         <div class="info">
-          <span>120</span>
-          <span>مـُدرب</span>
+          <span>{{ trainersCount }}</span>
+          <span>{{ $t('hero.trainer') }}</span>
         </div>
       </div>
       <div class="course trainee">
@@ -61,8 +63,8 @@
           <font-awesome-icon :icon="['fas', 'object-group']" />
         </div>
         <div class="info">
-          <span>25</span>
-          <span>دورة</span>
+          <span>{{ courseCount }}</span>
+          <span>{{ $t('hero.course') }}</span>
         </div>
       </div>
     </div>
@@ -89,30 +91,51 @@ export default {
         suffix: "",
       },
 
+      loading: false,
+
+      // data from api
+
+      name: '',
+      title1: '',
+      description: '',
+      image1: '',
+      trainersCount: '',
+      traineesCount: '',
+      courseCount: '',
+
     }
   },
 
-  //  fetch data on server side
 
-  async asyncData({ $axios }) {
-
-    // const NavbarContent = await $axios.get(`setting/layout`).then(response =>
-    //   console.log(response.data)
-    // ).catch(error => {
-    //   console.log(error)
-    // })
-
-    return {
-      // NavbarContent: NavbarContent,
-    }
-  },
 
   mounted() {
-
+    this.getData()
   },
 
 
   methods: {
+
+    // get description data in hero section
+
+    async getData() {
+      try {
+        return await this.$axios.get(`setting/description`).then(response => {
+          this.loading = true;
+          this.name = response.data.data.name;
+          this.title1 = response.data.data.title1;
+          this.description = response.data.data.description;
+          this.image1 = response.data.data.image1;
+          this.trainersCount = response.data.data.trainersCount;
+          this.traineesCount = response.data.data.traineesCount;
+          this.courseCount = response.data.data.courseCount;
+          // console.log(response.data.data)
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
 
   }
 }

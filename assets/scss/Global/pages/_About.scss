@@ -46,6 +46,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 6px;
       background: transparent;
       font-size: 20px;
       color: #013fcd;
@@ -131,10 +132,15 @@
       }
 
       p {
-        color: #232323;
+        font-family: "BAHIJ_HELVETICA_45-NEUE_LIGHT" !important;
+        color: #232323 !important;
+        font-size: 16px !important;
       }
     }
   }
 }
 
+.about_us .about .content a {
+  display: none;
+}
 // ================= end about page ======================

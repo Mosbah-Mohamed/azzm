@@ -94,6 +94,8 @@
 
       button {
         gap: 7px;
+        min-width: 150px;
+        width: unset;
       }
     }
 
@@ -110,7 +112,7 @@
           margin-bottom: 25px;
           display: flex;
           gap: 15px;
-          height: 122px;
+          min-height: 122px;
 
           .all_course_detail {
             display: flex;
@@ -333,7 +335,7 @@
     .personal_info {
       .eye {
         top: 11px;
-        color:$black
+        color: $black;
       }
       .all_info {
         background: none;

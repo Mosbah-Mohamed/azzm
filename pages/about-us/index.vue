@@ -2,11 +2,15 @@
   <section class="about_us">
 
     <div class="crumb">
-      <h3>عن المنصة</h3>
+      <h3>{{ $t('navbar.about') }}</h3>
       <ul>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">الرئيسية</a></li>
+        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
+          $t('navbar.home') }}</nuxt-link></a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">عن المنصة</a></li>
+
+        <li><a href="#" aria-label="about" target="_blank" rel="noopener"><nuxt-link :to="localePath('/about-us')">{{
+          $t('navbar.about') }}</nuxt-link></a></li>
+
       </ul>
     </div>
 
@@ -16,24 +20,22 @@
     <div class="all_content_vision">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-6 col-12">
+          <div class="col-lg-4 col-md-6 col-12" v-for="(item, index) in items" :key="index">
 
-            <div class="box">
+            <div class="box" data-aos="fade-up" :class="{ 'box_center': index == 1 }">
 
               <div class="image">
-                <img data-src="@/assets/images/target.svg" title="vision" v-lazy-load alt="nav logo" width="100%"
-                  height="100%" />
+                <img :data-src="item.icon" title="vision" v-lazy-load alt="nav logo" width="100%" height="100%" />
               </div>
 
-              <h3>هدفنا</h3>
+              <h3>{{ item.title }}</h3>
 
-              <p>نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة في شتئ المجالات
-                التعليمية والتي من خلالها تستطيع ان تصبح مطوراً في العلوم الحاسوبية والتجارية نقوم بتقديم الدورات عن</p>
+              <p v-html="item.object"></p>
 
             </div>
 
           </div>
-          <div class="col-lg-4 col-md-6 col-12">
+          <!-- <div class="col-lg-4 col-md-6 col-12">
 
             <div class="box box_center">
 
@@ -68,7 +70,7 @@
 
             </div>
 
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -94,32 +96,29 @@ export default {
 
   data() {
     return {
-
-
+      items: [],
     }
   },
 
-  //  fetch data on server side only in pages not component ( fetch ,async data)
+  async asyncData({ $axios }) {
 
-  // async asyncData({ $axios }) {
-  //   try {
-  //     // let response = await this.$axios.$get("main_page/main");
-  //     return await $axios.$get(process.env.baseUrl + "main_page/main").then(res => {
+    try {
 
-  //       return {
-  //         jjj: res.data.content.title
-  //       };
+      return $axios.get('setting/about').then(response => {
+        return {
+          items: response.data.data
+        }
+      }).catch(error => {
+        console.error(error)
+      })
 
-  //     })
+    } catch (error) {
 
-  //   } catch (err) {
+      console.log("catch :" + error)
 
-  //     console.log(err);
+    }
 
-  //   }
-  // },
-
-
+  },
 
 
   created() {

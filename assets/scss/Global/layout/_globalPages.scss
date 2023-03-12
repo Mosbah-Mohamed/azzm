@@ -28,18 +28,21 @@ html {
 
 body::-webkit-scrollbar,
 .profile .tabs .tab-content .table-responsive::-webkit-scrollbar,
-.all_ranges::-webkit-scrollbar {
+.all_ranges::-webkit-scrollbar,
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar {
   width: 8px;
 }
 
-.table-responsive::-webkit-scrollbar {
+.table-responsive::-webkit-scrollbar,
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar {
   height: 7px;
 }
 
 body::-webkit-scrollbar-track,
 .profile .tabs .tab-content .table-responsive::-webkit-scrollbar-track,
 .table-responsive::-webkit-scrollbar-track,
-.all_ranges::-webkit-scrollbar-track {
+.all_ranges::-webkit-scrollbar-track,
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-track {
   border-radius: 1rem;
   box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
 }
@@ -47,7 +50,8 @@ body::-webkit-scrollbar-track,
 body::-webkit-scrollbar-thumb,
 .profile .tabs .tab-content .table-responsive::-webkit-scrollbar-thumb,
 .table-responsive::-webkit-scrollbar-thumb,
-.all_ranges::-webkit-scrollbar-thumb {
+.all_ranges::-webkit-scrollbar-thumb,
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background-color: $mainColor;
 }

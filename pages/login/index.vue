@@ -24,7 +24,7 @@
             </button>
 
             <ValidationObserver v-slot="{ invalid }" ref='observer'>
-              <form action="" @submit.prevent="sendData">
+              <form action="" @submit.prevent="login">
 
                 <ValidationProvider rules="required|email" v-slot="{ errors }">
                   <div class="form-group">
@@ -79,6 +79,8 @@ export default {
   layout: 'auth-layout',
 
   // middleware: 'auth',
+
+  middleware: 'guest-user',
 
   components: {
     ValidationProvider,
@@ -176,7 +178,9 @@ export default {
       try {
         await this.$axios.$post('login', this.form).then(response => {
 
-          this.LOGIN(response.user);
+          console.log(response.data)
+
+          this.LOGIN(response.data);
 
 
           this.form.email = '';
@@ -215,6 +219,21 @@ export default {
       }
 
     },
+
+
+    async login() {
+      try {
+        await this.$auth.loginWith('local', { data: { email: this.form.email, password: this.form.password } })
+
+        // console.log(response)
+        console.log('$auth user' + this.$auth)
+        // localStorage.setItem('client', response.data.data.token)
+        // this.$auth.strategy.token.setToken('local', response.data.data.token)
+        this.$router.push('/')
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
 
   }

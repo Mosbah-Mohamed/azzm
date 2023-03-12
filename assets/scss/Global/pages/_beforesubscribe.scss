@@ -1,5 +1,5 @@
 // ================== start home =============
-.courses_before_subcribe {
+.courses_before_subscribe {
   .all_content {
     margin: 40px 0;
 
@@ -74,6 +74,185 @@
 
               tbody {
                 color: #3b568f;
+              }
+            }
+          }
+        }
+
+        .box_content_diploma {
+          .accordion {
+            background: none !important;
+
+            .card {
+              border: none;
+              .card_head,
+              .card-header {
+                // padding-bottom: 0;
+                background: none;
+                border: none;
+
+                button {
+                  background: #ecf2ff;
+                  border: none;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  color: #013fcd;
+                  font-family: "Bahij-Helvetica-Neue-75-Bold";
+                }
+              }
+
+              .card_head_inner {
+                button {
+                  background: #ffffff;
+                  border: 1px solid #cfd8ec;
+                  border-radius: 5px;
+                  font-family: "BAHIJ_HELVETICA_55-NEUE_ROMAN";
+                  color: #013fcd;
+                }
+
+                .inner {
+                  border: 1px solid #cfd8ec;
+                  border-radius: 5px;
+                  padding: 15px;
+
+                  .lessons {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 16px;
+
+                    .lesson {
+                      color: #013fcd;
+                      display: flex;
+                      gap: 5px;
+                    }
+                    .discover {
+                      background: #3edb;
+                      border-radius: 3px;
+                      color: #000;
+                    }
+
+                    .lock {
+                      svg {
+                        color: #8f9ebc;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .about_trainer {
+          > P {
+            color: #232323;
+            font-size: 16px;
+            padding-bottom: 20px;
+          }
+
+          .all_content_trainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+
+            .trainer_info {
+              display: flex;
+              gap: 20px;
+
+              .image {
+                width: 68px;
+                height: 68px;
+
+                img {
+                  border-radius: 50%;
+                }
+              }
+
+              .trainer_name {
+                h4 {
+                  color: #f7c553;
+                  font-size: 18px;
+                }
+
+                span {
+                  color: #3b568f;
+                }
+              }
+            }
+
+            .stars {
+              display: flex;
+              gap: 6px;
+
+              .full {
+                svg {
+                  color: #f7c553;
+                }
+              }
+
+              .empty {
+                svg {
+                  color: #bdccec;
+                }
+              }
+            }
+          }
+        }
+
+        .rate_dipolma {
+          .total_rate {
+            box-shadow: 0px 3px 16px #bdccec94;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            span {
+              &.percentage {
+                font-family: "Bahij-Helvetica-Neue-75-Bold";
+                color: #f7c553;
+                font-size: 42px;
+              }
+            }
+          }
+
+          .rate_one {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid #bdccec;
+            margin-bottom: 20px;
+
+            .image {
+              min-width: 54px;
+              height: 54px;
+              border: 1px solid #ecf2ff;
+              img {
+                border-radius: 50%;
+              }
+            }
+
+            .rate_body {
+              width: 100%;
+              .rate_info {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                span.name {
+                  font-family: "Bahij-Helvetica-Neue-75-Bold";
+                  color: #013fcd;
+                }
+              }
+
+              > p {
+                color: #232323;
+                font-size: 16px;
               }
             }
           }
@@ -173,6 +352,53 @@
             color: #6e6e6e;
           }
         }
+      }
+    }
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 6px;
+
+  .full {
+    svg {
+      color: #f7c553;
+    }
+  }
+
+  .empty {
+    svg {
+      color: #bdccec;
+    }
+  }
+}
+
+.inner {
+  border: 1px solid #cfd8ec;
+  border-radius: 5px;
+  padding: 15px;
+
+  .lessons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .lesson {
+      color: #013fcd;
+      display: flex;
+      gap: 5px;
+    }
+    .discover {
+      background: #3edb;
+      border-radius: 3px;
+      color: #000;
+    }
+
+    .lock {
+      svg {
+        color: #8f9ebc;
       }
     }
   }

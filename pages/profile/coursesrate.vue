@@ -137,20 +137,7 @@ export default {
     }
   },
 
-  //  fetch data on server side
 
-  async asyncData({ $axios }) {
-
-    // const NavbarContent = await $axios.get(`setting/layout`).then(response =>
-    //   console.log(response.data)
-    // ).catch(error => {
-    //   console.log(error)
-    // })
-
-    return {
-      // NavbarContent: NavbarContent,
-    }
-  },
 
   mounted() {
 

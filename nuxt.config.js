@@ -157,6 +157,8 @@ export default {
   // Modules
   modules: [
     // "@nuxtjs/auth-next",
+    "@nuxtjs/auth",
+    "cookie-universal-nuxt",
     "bootstrap-vue/nuxt",
     "@nuxtjs/i18n",
     "@nuxtjs/axios",
@@ -217,36 +219,46 @@ export default {
     },
   },
 
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: {
-  //           url: "https://studyblood.com/Dashboard/api/login",
-  //           method: "post",
-  //           propertyName: "token",
-  //         },
-  //         logout: {
-  //           url: "https://studyblood.com/Dashboard/api/logout",
-  //           method: "get",
-  //           propertyName: "token",
-  //         },
-  //         user: {
-  //           url: "https://a-ibrahem.azq1.com/Ahruf/Dashboards/api/user",
-  //           method: "get",
-  //           propertyName: "data",
-  //         },
-  //       },
-  //       // tokenRequired: true,
-  //     },
-  //   },
-  //   // watchLoggedIn: true,
-  //   redirect: {
-  //     login: "/login",
-  //     logout: "/login",
-  //     home: "/",
-  //   },
-  // },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "login",
+            method: "post",
+            propertyName: "data.token",
+          },
+          logout: {
+            url: "logout",
+            method: "post",
+            propertyName: "token",
+          },
+          // user: false,
+          user: { url: "user", method: "get", propertyName: "data" },
+        },
+
+        token: {
+          property: "token",
+          global: true,
+          required: true,
+          type: "Bearer",
+        },
+        cookie: {
+          prefix: "auth.",
+          options: {
+            path: "/",
+            expires: 7,
+          },
+        },
+      },
+    },
+
+    // redirect: {
+    //   login: "/login",
+    //   logout: "/login",
+    //   home: "/",
+    // },
+  },
 
   build: {
     transpile: ["vee-validate/dist/rules"],
@@ -259,16 +271,7 @@ export default {
   router: {
     // base: "/Dzit/", for build path
     // middleware: "log",
-    middleware: ["auth"],
-    // scrollBehavior(to, from, savedPosition) {
-    //   if (to.hash) {
-    //     return { selector: to.hash };
-    //   } else if (process.client) {
-    //     return { x: 0, y: 0 };
-    //   } else {
-    //     return savedPosition;
-    //   }
-    // },
+    middleware: ["auth-user"],
   },
 
   env: {

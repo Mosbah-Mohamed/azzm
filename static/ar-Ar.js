@@ -35,6 +35,12 @@ export default {
     ryad: "تصميم شركة الرياض",
   },
 
+  hero: {
+    trainee: "مُتدرب",
+    trainer: "مـُدرب",
+    course: "دورة",
+  },
+
   login: {
     login_acc: "تسجيل الدخول",
     no_account: "ليس لدي حساب ",
@@ -45,10 +51,46 @@ export default {
     return: "نسيت كلمة السر ؟ الاسترجاع",
   },
 
+  courses: {
+    Training_programmes: "البرامـج التدريبيـــة",
+    Training_course_system: "نظام الدورات التدريبية",
+    Scientific_diploma_system: "نظام الدبلومات العلمية",
+    browse_diploma: "تصفح جميع الدبلومات",
+    browse_courses: "تصفح جميع الدورات ",
+  },
+
+  attendance: {
+    Please_delete: "فضلاً قُم بمسح",
+    able_attend: "لتتمكن من حضور الدبلوم",
+    training_team: "فريق التدريب",
+    active_option: "سوف يفعل هذا الخيار عند الانتهاء من الدورة بشكل كامل",
+    interest_eval: "يهُمنا تقييمك عن الدورة",
+    comments: "التعليقات",
+    progress_level: "مستوى التقدم",
+    update: "تعديل",
+    clear: "حذف",
+    add_comment: "اضافة تعليق",
+    Lesson_extensions: "ملحقات الدرس",
+    download_hint:
+      "يمكنك تحميل كافة الملحقات الخاصة بهذا الدرس من خلال الضغط علي زر تحميل",
+    download_attach: " حمل ملحقات الدرس",
+    diploma_content: "محتوى الدبلوم",
+    total_rating: "اجمالي التقييم",
+    add_rate:"اضافة تقييم"
+  },
+
   pages: {
     why_us: "لماذا تختارنا",
     course_detail: "تفاصيل الدورة",
-    article_title:"عنوان المقالة"
+    diploma_detail: "تفاصيل الدبلومه",
+    article_title: "عنوان المقالة",
+    all_articles: "تصفح جميع المقالات",
+    experience: "عام من الخبرة",
+    Diploma_attendance: "حضور الدبلوم",
+  },
+
+  buttons: {
+    join: "إنضم إلينا",
   },
 
   contact: {
@@ -59,6 +101,21 @@ export default {
     message: "الرسالة",
     phone: "الجوال",
     send: "ارسال",
+  },
+
+  profile: {
+    profile: "دليل المتدرب",
+    guidetrainer: "دليل المتدرب",
+    mycourses: "دوراتي",
+    coursesrate: "تقييم الدورات",
+    certificates: "شهاداتي",
+    personalinfo: "معلوماتي الشخصية",
+    changepassword: "تعديل كلمة المرور",
+    profile_per: "الملف الشخصي",
+    download_guide: "تحميل الدليل",
+    down_desc: "يمكنك الإطلاع علي كافة البنود داخل الدليل بعد تحميله",
+    course_complete: "الدورات المنتهية",
+    current_courses: "الدورات الحالية",
   },
 
   message: {

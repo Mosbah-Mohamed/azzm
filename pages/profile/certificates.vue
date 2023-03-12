@@ -89,29 +89,39 @@ export default {
     }
   },
 
-  //  fetch data on server side
-
-  async asyncData({ $axios }) {
-
-    // const NavbarContent = await $axios.get(`setting/layout`).then(response =>
-    //   console.log(response.data)
-    // ).catch(error => {
-    //   console.log(error)
-    // })
-
-    return {
-      // NavbarContent: NavbarContent,
-    }
-  },
-
   mounted() {
 
+    this.getData();
+
+    window.scrollTo(0, 0);
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+
   },
 
+
+  // All methods and logic
 
   methods: {
 
-  }
+    async getData() {
+      try {
+        return await this.$axios.get(`profile`).then(response => {
+
+          this.name = response.data.data.name;
+          this.avatar = response.data.data.avatar;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
+  },
+
 }
 </script>
 

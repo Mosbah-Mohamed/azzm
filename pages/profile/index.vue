@@ -1,50 +1,62 @@
 <template>
   <div class="profile_guide_component">
 
-    <h5>يمكنك الإطلاع علي كافة البنود داخل الدليل بعد تحميله</h5>
+    <h5>{{ $t('profile.down_desc') }}</h5>
 
-    <button class="main--btn" aria-label="download" title="download">
-      <span> <font-awesome-icon :icon="['fas', 'download']" /> </span>
-      <span>تحميل الدليل</span>
-    </button>
+    <a :href="student_guide" target="_self" rel="noopener noreferrer" download>
+      <button class="main--btn" aria-label="download" title="download">
+        <span> <font-awesome-icon :icon="['fas', 'download']" /> </span>
+        <span>{{ $t('profile.download_guide') }}</span>
+      </button>
+    </a>
 
   </div>
 </template>
 
 <script>
 export default {
-  name: "profile_guide_component",
+  name: "profile_guide",
 
   layout: "second-layout",
 
   data() {
     return {
+      student_guide: ''
     }
   },
 
-  //  fetch data on server side
-
-  async asyncData({ $axios }) {
-
-    // const NavbarContent = await $axios.get(`setting/layout`).then(response =>
-    //   console.log(response.data)
-    // ).catch(error => {
-    //   console.log(error)
-    // })
-
-    return {
-      // NavbarContent: NavbarContent,
-    }
-  },
 
   mounted() {
 
+    this.getData();
+
+    window.scrollTo(0, 0);
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+
   },
 
 
+  // All methods and logic
+
   methods: {
 
-  }
+    async getData() {
+      try {
+        return await this.$axios.get(`certificates`).then(response => {
+
+          this.student_guide = response.data.data.student_guide;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
+  },
 }
 </script>
 

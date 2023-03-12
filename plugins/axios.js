@@ -9,11 +9,11 @@ export default function ({ $axios, redirect, store, app }) {
 
     // ? add token to each request
 
-    // const { token } = store.state
+    console.log(store.state.user.token);
 
-    // if (token) {
-    //   config.headers.common.Authorization = `Bearer ${token}`
-    // }
+    if (store.state.user.token) {
+      config.headers.common.Authorization = `Bearer ${store.state.user.token}`;
+    }
 
     // ? add basic auth to protect apis
 
@@ -24,10 +24,10 @@ export default function ({ $axios, redirect, store, app }) {
     console.log("Making request to " + config.url);
   });
 
-  // $axios.onError((error) => {
-  //   const code = parseInt(error.response && error.response.status);
-  //   if (code === 400 || code === 404) {
-  //     redirect("/404");
-  //   }
-  // });
+  $axios.onError((error) => {
+    const code = parseInt(error.response && error.response.status);
+    if (code === 400 || code === 404 || code === 401) {
+      redirect("/login");
+    }
+  });
 }

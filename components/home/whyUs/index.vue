@@ -21,7 +21,7 @@
               </div>
 
               <h5>{{ item.title }}</h5>
-              <p>{{ item.description }}</p>
+              <p v-html="item.description"></p>
             </div>
 
           </div>
@@ -30,13 +30,14 @@
         <div class="col-lg-6 col-12">
 
           <div class="image_video" data-aos="fade-right">
-            <img data-src="@/assets/images/learn.png" title="course" v-lazy-load alt="course image" width="100%"
-              height="100%" />
+            <img :data-src="image" title="course" v-lazy-load alt="course image" width="100%" height="100%" />
 
             <div class="video">
-              <div class="icon">
-                <font-awesome-icon :icon="['fas', 'play']" />
-              </div>
+              <a :href="video" target="_blank" rel="noopener noreferrer">
+                <div class="icon">
+                  <font-awesome-icon :icon="['fas', 'play']" />
+                </div>
+              </a>
             </div>
 
           </div>
@@ -54,7 +55,9 @@ export default {
 
   data() {
     return {
-      items: []
+      items: [],
+      image: '',
+      video: ''
     }
   },
 
@@ -68,8 +71,10 @@ export default {
     async getData() {
       try {
         return await this.$axios.get(`setting/whyChoose`).then(response => {
-          this.items = response.data.data;
-          console.log(response.data.data)
+          this.items = response.data.data.why_choose;
+          this.image = response.data.data.image;
+          this.video = response.data.data.video;
+          console.log(response.data.data.why_choose)
         }).catch(error => {
           console.log(error)
         })

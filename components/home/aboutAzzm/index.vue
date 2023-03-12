@@ -3,13 +3,12 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 col-12 position-relative">
-          <div class="image_top">
-            <img data-src="@/assets/images/about.png" title="about" v-lazy-load alt="hero image" width="100%"
-              height="100%" />
+          <div class="image_top" data-aos="fade-left">
+            <img :data-src="image" title="about" v-lazy-load alt="hero image" width="100%" height="100%" />
 
             <div class="experience">
-              <span>15</span>
-              <span>عام من الخبرة</span>
+              <span>{{ year }}</span>
+              <span>{{ $t('pages.experience') }}</span>
             </div>
 
           </div>
@@ -21,20 +20,26 @@
 
         </div>
         <div class="col-lg-6 col-12">
-          <div class="content">
+          <div class="content" data-aos="fade-right">
             <h3 class="main_head">
-              معهد عـزم ستـار للتـدريـب
+              {{ title }}
             </h3>
-            <p>نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة في شتئ المجالات
-              التعليمية والتي من خلالها تستطيع ان تصبح مطوراً في العلوم الحاسوبية والتجارية نقوم بتقديم الدورات عن طريق
-              الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة في شتئ المجالات التعليمية والتي من خلالها
-              تستطيع ان تصبح مطوراً في العلوم الحاسوبية والتجارية نقوم في العلوم الحاسوبية والتجارية</p>
-            <button class="main--btn">إنضم إلينا</button>
+            <p v-html="description"></p>
+
+            <nuxt-link :to="localePath('/about-us')">
+              <button class="main--btn">{{ $t('buttons.join') }}</button>
+            </nuxt-link>
+
           </div>
 
         </div>
 
       </div>
+
+      <div class="flex-center m-5" v-if="!loading">
+        <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+      </div>
+
     </div>
 
     <div class="image-right">
@@ -51,33 +56,47 @@ export default {
   data() {
     return {
 
+      loading: false,
 
+      // data from api
+
+      title: '',
+      description: '',
+      image: '',
+      year: ''
     }
   },
 
-  //  fetch data on server side
 
-  async asyncData({ $axios }) {
-
-    // const NavbarContent = await $axios.get(`setting/layout`).then(response =>
-    //   console.log(response.data)
-    // ).catch(error => {
-    //   console.log(error)
-    // })
-
-    return {
-      // NavbarContent: NavbarContent,
-    }
-  },
 
   mounted() {
-
+    this.getData()
   },
 
 
   methods: {
 
+    // get articles data in hero section
+
+    async getData() {
+      try {
+        return await this.$axios.get(`setting/description/section2`).then(response => {
+          this.loading = true;
+          this.title = response.data.data.title;
+          this.description = response.data.data.description;
+          this.year = response.data.data.year;
+          this.image = response.data.data.image;
+          // console.log(response.data.data)
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
   }
+
 }
 </script>
 

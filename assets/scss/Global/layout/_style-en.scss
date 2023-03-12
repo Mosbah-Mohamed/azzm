@@ -3,6 +3,12 @@ html[lang="en-US"] body {
   direction: ltr;
   text-align: left;
 
+  header .staticis {
+    right: 0;
+    left: auto;
+    border-radius: 141px 0 0 0;
+  }
+
   .eye {
     left: auto;
     right: 20px;
@@ -24,5 +30,11 @@ html[lang="en-US"] body {
       }
     }
   }
+
+  .image_video .video {
+    left: auto;
+    right: 65px;
+  }
 }
+
 // ============ style en ===========

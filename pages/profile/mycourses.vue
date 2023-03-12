@@ -5,28 +5,47 @@
       <div class="box">
 
         <div class="head">
-          <h5>الدورات المنتهية</h5>
+          <h5>{{ $t('profile.course_complete') }}</h5>
         </div>
 
         <ul>
-          <li>
+          <li v-for="(diploma, index) in current" :key="index">
             <span class="dot"></span>
-            <span>اسم الدورة المنتهية</span>
-          </li>
-          <li>
-            <span class="dot"></span>
-            <span>اسم الدورة المنتهية</span>
+            <span>{{ diploma.diploma }}</span>
           </li>
         </ul>
       </div>
       <div class="box box_current">
 
         <div class="head current">
-          <h5>الدورات الحالية</h5>
+          <h5>{{ $t('profile.current_courses') }}</h5>
         </div>
 
         <div class="all_course_detail">
-          <div class="course_detail">
+          <div class="course_detail" v-for="(single, index) in finished" :key="'b' + index">
+            <div class="image">
+              <img :data-src="diploma_logo" title="partner" v-lazy-load alt="partner image" width="100%" height="100%" />
+            </div>
+
+            <div class="info">
+              <h6>{{ single.diploma_title }}</h6>
+              <div class="gress">
+                <!-- show-progress -->
+                <b-progress :value="single.progress" max="100" animated variant="warning"></b-progress>
+                <span>50</span>
+              </div>
+
+              <div class="course_link">
+                <nuxt-link :to="localePath({ path: `/DiplomaAttendance/${single.id}` })">
+                  <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
+                    <span>الدخول للدورة</span>
+                    <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
+                  </a></nuxt-link>
+              </div>
+
+            </div>
+          </div>
+          <!-- <div class="course_detail">
             <div class="image">
               <img data-src="@/assets/images/learn.png" title="partner" v-lazy-load alt="partner image" width="100%"
                 height="100%" />
@@ -47,35 +66,13 @@
               </div>
 
             </div>
-          </div>
-          <div class="course_detail">
-            <div class="image">
-              <img data-src="@/assets/images/learn.png" title="partner" v-lazy-load alt="partner image" width="100%"
-                height="100%" />
-            </div>
-
-            <div class="info">
-              <h6>عنوان الدورة يوضع هنا</h6>
-              <div class="gress">
-                <b-progress value="50" max="100" show-progress animated variant="warning"></b-progress>
-                <span>50</span>
-              </div>
-
-              <div class="course_link">
-                <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                  <span>الدخول للدورة</span>
-                  <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                </a>
-              </div>
-
-            </div>
-          </div>
+          </div> -->
         </div>
 
 
       </div>
 
-      <div class="box">
+      <!-- <div class="box">
 
         <div class="head">
           <h5>الدورات المنتهية</h5>
@@ -91,7 +88,7 @@
             <span>اسم الدورة المنتهية</span>
           </li>
         </ul>
-      </div>
+      </div> -->
 
 
     </div>
@@ -107,32 +104,46 @@ export default {
 
   data() {
     return {
-    }
-  },
 
-  //  fetch data on server side
+      // data from api
 
-  async asyncData({ $axios }) {
-
-    // const NavbarContent = await $axios.get(`setting/layout`).then(response =>
-    //   console.log(response.data)
-    // ).catch(error => {
-    //   console.log(error)
-    // })
-
-    return {
-      // NavbarContent: NavbarContent,
+      current: [],
+      finished: [],
     }
   },
 
   mounted() {
 
+    this.getData();
+
+    window.scrollTo(0, 0);
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+
   },
 
 
+  // All methods and logic
+
   methods: {
 
-  }
+    async getData() {
+      try {
+        return await this.$axios.get(`subscriptions`).then(response => {
+
+          this.current = response.data.data.current;
+          this.finished = response.data.data.finished;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
+  },
 }
 </script>
 

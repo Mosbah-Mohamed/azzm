@@ -3,25 +3,45 @@
     <div class="container">
 
       <div class="head text-center">
-        <h2 class="main_head "> المقالات </h2>
+        <h2 class="main_head "> {{ $t('navbar.articles') }} </h2>
       </div>
 
       <div class="row align-items-center">
 
         <b-tabs card>
           <b-tab active>
-            <!--
-            <template #title>
-              <span>نظام الدبلومات العلمية <sup>25</sup></span>
-            </template> -->
-
             <b-card-text>
 
-              <VueSlickCarousel v-bind="slickOptions">
-                <!-- <div v-for="i in 5" :key="i" class="img-wrapper">
-          <img :src="`./${i}-200x100.jpg`" />
-        </div> -->
-                <div class="card_course">
+              <VueSlickCarousel v-bind="slickOptions" v-if="items.length">
+
+                <div class="card_course" v-for="(item, index) in items" :key="index">
+                  <div class="image_course">
+                    <img :data-src="item.image" title="course" v-lazy-load alt="partner image" width="100%"
+                      height="100%" />
+                  </div>
+
+                  <div class="card_content">
+
+                    <h3>{{ item.title }}</h3>
+                    <div class="appoint">
+                      <div class="calender">
+                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
+                        <span>{{ item.created_at }}</span>
+                      </div>
+                    </div>
+
+                    <div class="course_link">
+                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
+                        <span>{{ $t('pages.course_detail') }}</span>
+                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
+                      </a>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- <div class="card_course">
                   <div class="image_course">
                     <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
                       width="100%" height="100%" />
@@ -127,39 +147,18 @@
 
                   </div>
 
-                </div>
-                
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-
+                </div> -->
 
               </VueSlickCarousel>
 
-              <button class="main--btn all_courses">تصفح جميع المقالات</button>
+              <div class="flex-center m-5" v-if="!loading">
+                <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+              </div>
+
+              <nuxt-link :to="localePath('/articles')">
+                <button class="main--btn all_courses" type="button">{{ $t('pages.all_articles') }}</button>
+              </nuxt-link>
+
 
             </b-card-text>
           </b-tab>
@@ -178,6 +177,12 @@ export default {
 
   data() {
     return {
+
+      // data from api
+
+      items: [],
+      loading: false,
+
       slickOptions: {
         slidesToShow: 4,
         arrows: true,
@@ -217,27 +222,29 @@ export default {
     }
   },
 
-  //  fetch data on server side
-
-  async asyncData({ $axios }) {
-
-    const NavbarContent = await $axios.get(`setting/layout`).then(response =>
-      console.log(response.data)
-    ).catch(error => {
-      console.log(error)
-    })
-
-    return {
-      NavbarContent: NavbarContent,
-    }
-  },
 
   mounted() {
-
+    this.getData()
   },
 
 
   methods: {
+
+    // get articles data in hero section
+
+    async getData() {
+      try {
+        return await this.$axios.get(`setting/articles`).then(response => {
+          this.loading = true;
+          this.items = response.data.data;
+          // console.log(response.data.data)
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
 
   }
 }

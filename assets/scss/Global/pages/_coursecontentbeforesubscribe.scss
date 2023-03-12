@@ -419,6 +419,8 @@
             .action_right {
               display: flex;
               gap: 8px;
+              justify-content: space-between;
+              width: 100%;
 
               span {
                 cursor: pointer;
@@ -431,25 +433,30 @@
                 color: #e60a0a;
               }
             }
-
-            .add_comment {
-              display: flex;
-              align-items: center;
-              gap: 5px;
-
-              svg {
-                color: #f7c553;
-              }
-              p {
-                font-family: "Bahij-Helvetica-Neue-75-Bold";
-                font-size: 18px;
-                color: #013fcd;
-              }
-            }
           }
         }
       }
     }
+  }
+}
+
+.heading_comments {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add_comment {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  svg {
+    color: #f7c553;
+  }
+  p {
+    font-family: "Bahij-Helvetica-Neue-75-Bold";
+    font-size: 18px;
+    color: #013fcd;
   }
 }
 // ================== end home ===============
