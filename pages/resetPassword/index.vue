@@ -6,32 +6,33 @@
           <div class="all_info">
 
             <div class="head">
-              <h3 class="main_head">استرجاع كلمة المرور</h3>
+              <h3 class="main_head">{{ $t('login.Password_Recovery') }}</h3>
             </div>
 
             <p>
-              <span>ادخل البريد الإلكتروني لتلقي الرقم المرجعي</span>
+              <span>{{ $t('login.email_to_receive') }}</span>
             </p>
 
 
-            <form action="">
-              <ValidationObserver ref='observer'>
+            <ValidationObserver v-slot="{ invalid }" ref='observer'>
+              <form action="" @submit.prevent="resetEmail">
 
-                <ValidationProvider rules="max:4" v-slot="{ errors }">
+                <ValidationProvider rules="required|email" :name="$t('contact.email')" v-slot="{ errors }">
                   <div class="form-group">
-                    <input type="email" placeholder="البريد الإلكتروني" />
+                    <input type="email" :placeholder="$t('contact.email')" v-model="formData.email" />
+                    <span>{{ errors[0] }}</span>
                   </div>
-                  <span>{{ errors[0] }}</span>
                 </ValidationProvider>
 
 
                 <div class="form-group">
-                  <button class="sign_btn main--btn" aria-label="sign" title="sign" type="submit">ارسال </button>
+                  <button class="sign_btn main--btn" aria-label="sign" :disabled="invalid" title="sign" type="submit">{{
+                    $t('contact.send') }} </button>
                 </div>
 
 
-              </ValidationObserver>
-            </form>
+              </form>
+            </ValidationObserver>
 
           </div>
         </div>
@@ -42,6 +43,8 @@
 
 <script>
 
+
+import { mapMutations } from "vuex";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 
 export default {
@@ -49,6 +52,8 @@ export default {
   name: "resetPasswordPage",
 
   layout: 'auth-layout',
+
+  middleware: 'guest-user',
 
   components: {
     ValidationProvider,
@@ -65,37 +70,11 @@ export default {
       phone: "",
 
       formData: {
-        name: "",
-        email: "",
-        password: "",
-        phone: ""
+        email: ""
       },
 
     }
   },
-
-  //  fetch data on server side only in pages not component ( fetch ,async data)
-
-  // async asyncData({ $axios }) {
-  //   try {
-  //     // let response = await this.$axios.$get("main_page/main");
-  //     return await $axios.$get(process.env.baseUrl + "main_page/main").then(res => {
-
-  //       return {
-  //         jjj: res.data.content.title
-  //       };
-
-  //     })
-
-  //   } catch (err) {
-
-  //     console.log(err);
-
-  //   }
-  // },
-
-
-
 
   created() {
 
@@ -104,7 +83,9 @@ export default {
 
   computed: {
 
+
   },
+
   //  when component load
 
   mounted() {
@@ -119,6 +100,44 @@ export default {
 
   methods: {
 
+    ...mapMutations(['SET_token']),
+
+    // reset email
+
+    async resetEmail() {
+      try {
+        return await this.$axios.post(`reset/password`, this.formData).then(response => {
+
+          this.formData.email = '';
+
+          // this.$store.commit('SET_token', response.data.verify_token)
+          this.SET_token(response.data.verify_token)
+
+          this.$router.push(this.localePath({ path: `/resetCode` }));
+
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            text: `${response.data.msg}`,
+            showConfirmButton: false,
+            timer: 2000
+          })
+
+        }).catch(error => {
+          console.log(error)
+
+          this.$swal.fire({
+            type: 'error',
+            text: `${error.response.data.msg}`,
+            timer: 2000,
+            // confirmButtonColor: '#ff7400',
+          })
+
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
 
   }
 }

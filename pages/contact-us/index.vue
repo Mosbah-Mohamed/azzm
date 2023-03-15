@@ -197,6 +197,8 @@ export default {
 
   methods: {
 
+    //  get contact data
+
     async getData() {
       try {
         return await this.$axios.get(`setting/layout`).then(response => {
@@ -218,6 +220,9 @@ export default {
         console.log("catch : " + error)
       }
     },
+
+
+    // send data from contact form
 
     async sendData() {
 
@@ -247,8 +252,7 @@ export default {
           console.log(error.response.msg)
 
           this.$swal.fire({
-            icon: 'error',
-            title: 'Oops...',
+            type: 'error',
             text: `${error.response.msg}`,
             timer: 3000,
             // confirmButtonColor: '#ff7400',

@@ -10,9 +10,14 @@
             <span class="name">{{ name }}</span>
             <h1 class="main_head">{{ title1 }}</h1>
             <p>{{ description }}</p>
-            <button aria-label="join" title="join" class="main--btn">
-              {{ $t('buttons.join') }}
-            </button>
+
+            <nuxt-link :to="localePath('/about-us')">
+              <button aria-label="join" title="join" class="main--btn">
+                {{ $t('buttons.join') }}
+              </button>
+            </nuxt-link>
+
+
           </div>
         </div>
         <div class="col-lg-6 col-12">

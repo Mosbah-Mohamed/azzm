@@ -31,10 +31,13 @@
                     </div>
 
                     <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>{{ $t('pages.course_detail') }}</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
+                      <nuxt-link :to="localePath({ path: `/singleArticle/${item.id}` })">
+
+                        <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
+                          <span>{{ $t('pages.course_detail') }}</span>
+                          <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
+
+                        </a></nuxt-link>
                     </div>
 
                   </div>

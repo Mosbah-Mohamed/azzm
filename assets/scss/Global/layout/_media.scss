@@ -134,6 +134,17 @@
 }
 
 @media (max-width: 575px) {
+  .navbar_page .logo {
+    width: auto;
+    img {
+      object-fit: contain;
+    }
+  }
+
+  .courses_component .tabs .tab-content .card_content .appoint {
+    gap: 45px;
+  }
+
   .courses_before_subscribe
     .all_content
     .tabs

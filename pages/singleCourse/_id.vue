@@ -2,12 +2,13 @@
   <section class="courses_before_subscribe">
 
     <div class="crumb">
-      <h3>الدورات قبل الإشتراك</h3>
+      <h3>{{ $t('pages.courses_before_enrollment') }}</h3>
       <ul>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
           $t('navbar.home') }}</nuxt-link></a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">الدورات قبل الإشتراك</a></li>
+        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">{{
+          $t('pages.courses_before_enrollment') }}</a></li>
         <!-- <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li> -->
       </ul>
     </div>
@@ -26,17 +27,26 @@
 
             <b-tabs>
 
-              <b-tab title="دليل الدورة" active>
+              <b-tab :title="$t('pages.Course_guide')" active>
 
                 <div class="course_guide">
 
                   <div class="about_course">
-                    <h4 class="main_head">حول الدبلوم</h4>
+                    <h4 class="main_head">{{ $t('pages.About_course') }}</h4>
+
+                    <div class="flex-center m-5" v-if="!loading">
+                      <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+                    </div>
+
                     <p v-html="about"></p>
                   </div>
 
                   <div class="about_course">
-                    <h4 class="main_head">الأهداف العامة من الدبلوم</h4>
+                    <h4 class="main_head">{{ $t('pages.General_objectives_of_course') }}</h4>
+
+                    <div class="flex-center m-5" v-if="!loading">
+                      <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+                    </div>
 
                     <p v-html="public_goals"></p>
 
@@ -62,7 +72,11 @@
                   </div>
 
                   <div class="about_course">
-                    <h4 class="main_head">شروط القبول والتسجيل</h4>
+                    <h4 class="main_head">{{ $t('pages.Admission_registration_requirements') }}</h4>
+
+                    <div class="flex-center m-5" v-if="!loading">
+                      <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+                    </div>
 
                     <p v-html="terms"></p>
 
@@ -89,21 +103,21 @@
 
 
                   <div class="about_course container table-responsive py-5">
-                    <h4 class="main_head">حول الدبلوم</h4>
+                    <h4 class="main_head"> {{ $t('pages.About_course') }}</h4>
                     <table class="table table-bordered table-hover text-center">
                       <thead>
                         <tr>
-                          <th scope="col">اسم الدبلومة</th>
-                          <th scope="col">الساعات</th>
-                          <th scope="col">مدة الدراسة</th>
-                          <th scope="col">نمط الدراسة</th>
-                          <th scope="col">مقر الدراسة</th>
+                          <th scope="col">{{ $t('courses.course_name') }}</th>
+                          <th scope="col">{{ $t('courses.hours') }}</th>
+                          <th scope="col">{{ $t('courses.study_duration') }}</th>
+                          <th scope="col">{{ $t('courses.Study_pattern') }} </th>
+                          <th scope="col">{{ $t('courses.Study_location') }} </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <th>{{ category }}</th>
-                          <td>{{ duration_houres }} ساعه</td>
+                          <td>{{ duration_houres }} {{ $t('courses.hour') }}</td>
                           <td>{{ duration_days }}</td>
                           <td>{{ education_time }}</td>
                           <td>{{ area.title }}</td>
@@ -116,7 +130,7 @@
 
               </b-tab>
 
-              <b-tab title="محتويات الدورة">
+              <b-tab :title="$t('pages.Course_contents')">
                 <div class="box_content_diploma" data-aos="fade-up">
                   <div class="accordion" role="tablist">
 
@@ -136,9 +150,9 @@
                               <span><font-awesome-icon :icon="['fas', 'book']" /></span>
                               <span>{{ lesson.title }}</span>
                             </div>
-                            <a :href="lesson.link" target="_blank" rel="noopener noreferrer">
-                              <span class="discover">تصفح</span>
-                            </a>
+                            <!-- <a :href="lesson.link" target="_blank" rel="noopener noreferrer"> -->
+                              <span class="discover" @click="lessonIdClicked(lesson)">تصفح</span>
+                            <!-- </a> -->
                             <!-- <span class="lock">
                           <font-awesome-icon :icon="['fas', 'lock']" />
                         </span> -->
@@ -151,11 +165,19 @@
 
                     </b-card>
 
+                    <p>{{ video_link }}</p>
+                    <p>{{ lesson_name }}</p>
+
                   </div>
+
+                  <div class="flex-center m-5" v-if="!loading">
+                    <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+                  </div>
+
                 </div>
               </b-tab>
 
-              <b-tab title="عن المدرب">
+              <b-tab :title="$t('pages.About_coach')">
                 <div class="about_trainer" v-for="(teacher, index) in teachers" :key="'c' + index">
 
                   <div class="all_content_trainer">
@@ -188,7 +210,7 @@
 
               </b-tab>
 
-              <b-tab title="تقييم الدورة">
+              <b-tab :title="$t('pages.Course_evaluation')">
                 <div class="rate_dipolma">
 
                   <div class="row">
@@ -225,7 +247,7 @@
 
                       <div class="total_rate">
                         <span class="percentage">{{ site_rate }}%</span>
-                        <span>اجمالي التقييم</span>
+                        <span> {{ $t('attendance.total_rating') }}</span>
                       </div>
                     </div>
 
@@ -252,53 +274,55 @@
 
               <div class="price">
                 <span class="num">{{ price }}</span>
-                <span class="ryal">ريال</span>
+                <span class="ryal">{{ $t('courses.ryal') }}</span>
               </div>
 
-              <button class="main--btn" aria-label="subscribe" title="subscribe">اشترك في الدورة</button>
+              <button class="main--btn" aria-label="subscribe" title="subscribe" @click="subscribe">{{
+                $t('pages.sign_up_course') }}</button>
 
               <ul>
                 <li>
                   <div class="detail">
                     <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                    <span>تبدأ الدورة في</span>
+                    <span>{{ $t('courses.start_in') }}</span>
                   </div>
                   <span class="result">{{ start_at }}</span>
                 </li>
                 <li>
                   <div class="detail">
                     <font-awesome-icon :icon="['fas', 'clock']" />
-                    <span>عدد ايام الدورة</span>
+                    <span>{{ $t('courses.course_days') }}</span>
                   </div>
                   <div class="results">
                     <span class="result">{{ duration_days }}</span>
-                    <span class="result">ايام</span>
+                    <span class="result">{{ $t('courses.day') }}</span>
                   </div>
                 </li>
                 <li>
                   <div class="detail">
                     <font-awesome-icon :icon="['fas', 'clock']" />
-                    <span>عدد ساعات الدورة</span>
+                    <span>{{ $t('courses.course_hours') }}</span>
                   </div>
                   <div class="results">
                     <span class="result">{{ duration_houres }}</span>
-                    <span class="result">ساعه</span>
+                    <span class="result">{{ $t('courses.hour') }}</span>
                   </div>
 
                 </li>
-                <li>
+                <li v-for="(teacher, index) in teachers" :key="'i' + index">
                   <div class="detail">
                     <font-awesome-icon :icon="['fas', 'user-tie']" />
-                    <span>اسم المدرب</span>
+                    <span>{{ $t('courses.coach_name') }}</span>
                   </div>
-                  <span class="result">محمد احمد</span>
+                  <span class="result">{{ teacher.name }}</span>
                 </li>
                 <li>
                   <div class="detail">
                     <font-awesome-icon :icon="['fas', 'location-dot']" />
-                    <span>مكان الدورة</span>
+                    <span>{{ $t('courses.course_place') }}</span>
                   </div>
-                  <a :href="place" aria-label="Twitter" target="_blank" rel="noopener" class="result">لينك جوجل ماب</a>
+                  <a :href="place" aria-label="Twitter" target="_blank" rel="noopener" class="result">{{
+                    $t('courses.google_map_link') }}</a>
                 </li>
               </ul>
 
@@ -333,6 +357,11 @@ export default {
 
   data() {
     return {
+
+      loading: false,
+
+      // data from api
+
       category: '',
       title: '',
       description: '',
@@ -353,6 +382,11 @@ export default {
       rates: [],
       teachers: [],
 
+      // lessons name and link
+
+      video_link: '',
+      lesson_name: ''
+
 
     }
   },
@@ -372,7 +406,7 @@ export default {
 
     this.getData();
 
-    console.log(this.$route.params.id)
+    // console.log(this.$route.params.id)
 
     window.scrollTo(0, 0);
     this.$nextTick(() => {
@@ -386,9 +420,50 @@ export default {
 
   methods: {
 
+    // lessonIdClicked
+
+    lessonIdClicked(lesson) {
+
+      this.video_link = lesson.link;
+      this.lesson_name = lesson.title;
+
+      console.log(lesson)
+
+    },
+    // subscribe course
+
+    async subscribe() {
+
+      try {
+        await this.$axios.$post('enrollment', { diploma_id: this.$route.params.id }).then(response => {
+
+          this.$router.push(this.localePath({ path: `/payment/${this.$route.params.id}` }));
+
+
+        }).catch(error => {
+          console.log(error.response.msg)
+
+          this.$swal.fire({
+            type: 'error',
+            text: `${error.response.msg}`,
+            timer: 3000,
+            // confirmButtonColor: '#ff7400',
+          })
+
+        })
+      } catch (error) {
+        console.log('try catch =>', error);
+      }
+
+    },
+
+    // get single course data from api
+
     async getData() {
       try {
         return await this.$axios.get(`courses/${this.$route.params.id}`).then(response => {
+
+          this.loading = true;
 
           this.category = response.data.data.category;
           this.title = response.data.data.title;
@@ -414,7 +489,7 @@ export default {
 
           this.teachers = response.data.data.teachers;
 
-          console.log('site_rate' + response.data.data.site_rate)
+          // console.log('site_rate' + response.data.data.site_rate)
 
           // console.log(response.data.data)
 

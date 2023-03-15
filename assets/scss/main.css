@@ -170,7 +170,6 @@ body {
   font-family: "BAHIJ_HELVETICA_55-NEUE_ROMAN";
   font-size: 16px;
   background: #fff;
-  height: 5000px;
   overflow-x: hidden;
 }
 
@@ -213,6 +212,10 @@ section {
 
 .slick-slider {
   direction: ltr;
+}
+
+.slick-track {
+  margin: auto;
 }
 
 img {
@@ -289,6 +292,18 @@ label {
   margin: 0 !important;
 }
 
+.swal2-icon {
+  font-size: 10px !important;
+}
+
+.multiselect__tags {
+  background: #fff !important;
+}
+
+.multiselect__single {
+  background: #fff !important;
+}
+
 p {
   margin-bottom: 0 !important;
 }
@@ -300,6 +315,18 @@ textarea {
   display: block;
   width: 100%;
   padding: 10px 16px;
+}
+
+select {
+  width: 100%;
+  height: 45px;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: #e7f0ff 0% 0% no-repeat padding-box;
+}
+select option {
+  background: #fff;
 }
 
 input:focus,
@@ -686,6 +713,10 @@ html[lang=en-US] body header .staticis {
   left: auto;
   border-radius: 141px 0 0 0;
 }
+html[lang=en-US] body .courses_content_before_subscribe .all_info .image_video .video {
+  left: 50%;
+  right: unset;
+}
 html[lang=en-US] body .eye {
   left: auto;
   right: 20px;
@@ -705,6 +736,14 @@ html[lang=en-US] body .courses_component .card_content .course_link a svg {
 html[lang=en-US] body .image_video .video {
   left: auto;
   right: 65px;
+}
+html[lang=en-US] body .second_layout .crumb ul li svg,
+html[lang=en-US] body .profile_side_component .profile_content .my-courses .boxes .box .all_course_detail .course_detail .info .course_link a svg {
+  transform: rotate(180deg);
+}
+html[lang=en-US] body .has-search .icon_sea {
+  left: auto;
+  right: 20px;
 }
 
 .navbar_page {
@@ -819,6 +858,19 @@ html[lang=en-US] body .image_video .video {
   box-shadow: 0px 21px 36px rgba(94, 92, 92, 0.168627451);
   border-radius: 5px;
   border: none;
+}
+.profile_im ul a {
+  text-align: start;
+  width: 100%;
+  display: block;
+  padding: 5px 0;
+  color: #000;
+  -webkit-padding-start: 10px;
+          padding-inline-start: 10px;
+}
+.profile_im ul a:hover {
+  color: #fff !important;
+  background: #013fcd;
 }
 .profile_im ul li {
   display: block;
@@ -1252,6 +1304,7 @@ header .staticis .trainee .info span:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   border-radius: 50px;
   position: absolute;
   bottom: 49px;
@@ -1504,6 +1557,9 @@ header .staticis .trainee .info span:last-child {
   display: flex;
   justify-content: flex-end;
 }
+.profile_side_component .profile_content .personal_info .all_info .head .edit_rate {
+  cursor: pointer;
+}
 
 .modal {
   background: rgba(63, 100, 184, 0.8901960784);
@@ -1657,6 +1713,7 @@ header .staticis .trainee .info span:last-child {
 }
 .courses_component .card_course {
   border: 1px solid #cfd8ec;
+  margin-bottom: 25px;
   transition: all 0.5s ease-in-out;
   overflow: hidden;
 }
@@ -2380,7 +2437,7 @@ header .staticis .trainee .info span:last-child {
 .courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code .all_span span.qr {
   color: #013fcd;
 }
-.courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code img {
+.courses_content_before_subscribe.diploma_attend .all_info .box_head.qr_code svg {
   width: 139px;
   height: 139px;
   border-radius: 5px;
@@ -3013,7 +3070,7 @@ header .staticis .trainee .info span:last-child {
   width: 95%;
   margin: 0 auto 20px;
 }
-.courses_before_subscribe .all_content .side_info button:hover {
+.courses_before_subscribe .all_content .side_info button:hover, .courses_before_subscribe .all_content .side_info button:focus {
   background: #fff;
 }
 .courses_before_subscribe .all_content .side_info ul {
@@ -3097,6 +3154,7 @@ header .staticis .trainee .info span:last-child {
   height: 45px;
 }
 .signup.reset_password {
+  min-height: 70vh;
   margin-top: 30px;
   text-align: center;
 }
@@ -3162,6 +3220,9 @@ header .staticis .trainee .info span:last-child {
 .signup .all_info form .form-group span {
   font-size: 12px;
   color: firebrick;
+}
+.signup .all_info form .form-group span.eye svg {
+  color: #000 !important;
 }
 .signup .all_info form .box_check {
   display: flex;
@@ -3322,6 +3383,16 @@ header .staticis .trainee .info span:last-child {
   }
 }
 @media (max-width: 575px) {
+  .navbar_page .logo {
+    width: auto;
+  }
+  .navbar_page .logo img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .courses_component .tabs .tab-content .card_content .appoint {
+    gap: 45px;
+  }
   .courses_before_subscribe .all_content .tabs .tab-content .about_trainer .all_content_trainer {
     flex-direction: column;
   }

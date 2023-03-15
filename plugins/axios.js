@@ -26,8 +26,14 @@ export default function ({ $axios, redirect, store, app }) {
 
   $axios.onError((error) => {
     const code = parseInt(error.response && error.response.status);
+    // code === 400 || this refer when api failed
+    // code === 403 when api not found
     if (code === 400 || code === 404 || code === 401) {
       redirect("/login");
+    }
+
+    if(code === 403){
+      redirect('/')
     }
   });
 }

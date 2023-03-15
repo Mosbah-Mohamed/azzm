@@ -145,6 +145,7 @@ export default {
     { src: "@/plugins/aos", mode: "client" },
     { src: "@/plugins/vue-slick-carousel.js" },
     { src: "@/plugins/vue-html2pdf.js", mode: "client" },
+    { src: "@/plugins/vue-slider-component.js", ssr: false },
     // { src: "@/plugins/vue-countup", ssr: false },
   ],
 
@@ -152,7 +153,20 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["nuxt-animejs", "@nuxtjs/fontawesome"],
+  // "nuxt-animejs",
+  buildModules: [
+    "@nuxtjs/fontawesome",
+    // Simple usage
+    "@nuxtjs/moment",
+
+    // With options
+    [
+      "@nuxtjs/moment",
+      {
+        /* module options */
+      },
+    ],
+  ],
 
   // Modules
   modules: [
@@ -233,6 +247,11 @@ export default {
             method: "post",
             propertyName: "token",
           },
+          // register: {
+          //   url: "register",
+          //   method: "post",
+          //   propertyName: "data",
+          // },
           // user: false,
           user: { url: "user", method: "get", propertyName: "data" },
         },
@@ -245,10 +264,10 @@ export default {
         },
         cookie: {
           prefix: "auth.",
-          options: {
-            path: "/",
-            expires: 7,
-          },
+          // options: {
+          //   path: "/",
+          //   expires: 7,
+          // },
         },
       },
     },
@@ -271,7 +290,7 @@ export default {
   router: {
     // base: "/Dzit/", for build path
     // middleware: "log",
-    middleware: ["auth-user"],
+    // middleware: ["auth"],
   },
 
   env: {

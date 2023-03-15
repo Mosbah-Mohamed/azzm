@@ -3,117 +3,63 @@
 
     <div class="boxes_rate">
 
-      <div class="box">
+      <div class="box" v-for="(rate, index) in rates" :key="index">
         <div class="head">
           <div class="name">
             <span class="dot"></span>
-            <span>اسم الدورة التي قمت بتقييمها</span>
+            <span>{{ rate.diploma }}</span>
           </div>
 
           <div class="rate">
-            <div class="full">
-              <font-awesome-icon :icon="['fas', 'star']" />
-            </div>
-            <div class="full">
-              <font-awesome-icon :icon="['fas', 'star']" />
-            </div>
-            <div class="full">
-              <font-awesome-icon :icon="['fas', 'star']" />
-            </div>
-            <div class="empty">
-              <font-awesome-icon :icon="['far', 'star']" />
-            </div>
+            <no-ssr>
+              <star-rating :rating="rate.diploma_rate" :star-size="20" :read-only="true"
+                :show-rating="false"></star-rating>
+            </no-ssr>
           </div>
 
-          <div class="edit_rate" v-b-modal.modal-1>
+          <div class="edit_rate" v-b-modal="'modal-' + rate.diploma_id">
+            <!-- {{ rate.diploma_id }} -->
             <span><font-awesome-icon :icon="['fas', 'pen-to-square']" /></span>
-            <span>تعديل التقييم</span>
+            <span>{{ $t('courses.Modify_evaluation') }}</span>
           </div>
 
-          <b-modal id="modal-1" size="lg" ok-only v-model="show">
+          <b-modal :id="'modal-' + rate.diploma_id" size="lg" ok-only v-model="modalVisible['modal-' + rate.diploma_id]">
 
             <div class="blur"></div>
 
             <form action="">
-              <div class="form-group">
-                <textarea></textarea>
-              </div>
 
-              <!-- <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= rating }">
-                <font-awesome-icon :icon="['far', 'star']" />
-              </span> -->
+              <div class="form-group">
+                <textarea v-model="rate.note"></textarea>
+              </div>
 
               <div class="rate">
-                <div class="full">
-                  <font-awesome-icon :icon="['far', 'star']" :class="{ yellow: starClicked }"
-                    @click="starClicked = !starClicked" />
-                </div>
-                <div class="full">
-                  <font-awesome-icon :icon="['far', 'star']" :class="{ yellow: starClicked }"
-                    @click="starClicked = !starClicked" />
-                </div>
-                <div class="full">
-                  <font-awesome-icon :icon="['far', 'star']" :class="{ yellow: starClicked }"
-                    @click="starClicked = !starClicked" />
-                </div>
-                <div class="empty">
-                  <font-awesome-icon :icon="['far', 'star']" :class="{ yellow: starClicked }"
-                    @click="starClicked = !starClicked" />
-                </div>
-                <div class="empty">
-                  <font-awesome-icon :icon="['far', 'star']" :class="{ yellow: starClicked }"
-                    @click="starClicked = !starClicked" />
-                </div>
+                <no-ssr>
+                  <star-rating :rating="rate.diploma_rate" :star-size="20" :show-rating="true"
+                    @rating-selected="setRating"></star-rating>
+                  <!-- {{ rating }} -->
+                </no-ssr>
               </div>
+
             </form>
 
             <template #modal-footer>
-              <b-button class="main--btn" @click="show = false">
-                حفظ التقييم
+              <b-button class="main--btn" @click="updateRates(rate.diploma_id, rate.note)">
+                {{ $t('courses.Save_evaluation') }}
               </b-button>
             </template>
           </b-modal>
 
         </div>
         <div class="box_body">
-          <p>نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة في شتئ المجالات
-            التعليمية والتي من خلالها تستطيع ان تصبح مطوراً في العلوم الحاسوبية والتجارية نقوم بتقديم الدورات عن طريق
-            الحضور الي مقرنا او الحضور عن</p>
+          <p>{{ rate.note }}</p>
         </div>
       </div>
-      <div class="box">
-        <div class="head">
-          <div class="name">
-            <span class="dot"></span>
-            <span>اسم الدورة التي قمت بتقييمها</span>
-          </div>
 
-          <div class="rate">
-            <div class="full">
-              <font-awesome-icon :icon="['fas', 'star']" />
-            </div>
-            <div class="full">
-              <font-awesome-icon :icon="['fas', 'star']" />
-            </div>
-            <div class="full">
-              <font-awesome-icon :icon="['fas', 'star']" />
-            </div>
-            <div class="empty">
-              <font-awesome-icon :icon="['far', 'star']" />
-            </div>
-          </div>
-
-          <div class="edit_rate">
-            <span><font-awesome-icon :icon="['fas', 'pen-to-square']" /></span>
-            <span>تعديل التقييم</span>
-          </div>
-        </div>
-        <div class="box_body">
-          <p>نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة في شتئ المجالات
-            التعليمية والتي من خلالها تستطيع ان تصبح مطوراً في العلوم الحاسوبية والتجارية نقوم بتقديم الدورات عن طريق
-            الحضور الي مقرنا او الحضور عن</p>
-        </div>
+      <div class="flex-center m-5" v-if="!loading">
+        <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
       </div>
+
 
     </div>
 
@@ -121,32 +67,115 @@
 </template>
 
 <script>
+import StarRating from "vue-star-rating";
+
 export default {
 
-
+  components: {
+    StarRating
+  },
   name: "profile_courses-rate",
 
   layout: "second-layout",
 
+  middleware: 'auth-user',
+
 
   data() {
     return {
-      starClicked: false,
-      show: false,
-      rating: 1
+
+      loading: false,
+
+      // rate data
+
+      rates: [],
+      rating: 0,
+
+      // show and hide modal
+
+      modalVisible: {}
     }
   },
 
-
-
   mounted() {
+
+    this.getData();
+
+    window.scrollTo(0, 0);
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
 
   },
 
 
+  // All methods and logic
+
   methods: {
 
-  }
+    // get stars number
+
+    setRating(rating) {
+      this.rating = rating;
+    },
+
+    // get rates
+
+    async getData() {
+      try {
+        return await this.$axios.get(`rates`).then(response => {
+
+          this.loading = true;
+
+          this.rates = response.data.data;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
+
+    // update rates
+
+    async updateRates(rate_id, rate_note) {
+      try {
+        return await this.$axios.post(`rate/update`, { diploma_id: `${rate_id}`, diploma_rate: `${this.rating}`, note: `${rate_note}` }).then(response => {
+
+
+          this.modalVisible[`modal-${rate_id}`] = false;
+
+          this.getData();
+
+          // this.rates = response.data.data;
+
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            text: `${response.data.msg}`,
+            showConfirmButton: false,
+            timer: 2000
+          })
+
+        }).catch(error => {
+          console.log(error)
+
+          this.$swal.fire({
+            type: 'error',
+            text: `${error.response.data.message}`,
+            timer: 2000,
+            // confirmButtonColor: '#ff7400',
+          })
+
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
+  },
 }
 </script>
 

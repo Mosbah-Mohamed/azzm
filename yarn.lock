@@ -1468,6 +1468,16 @@
     "ufo" "^0.8.5"
     "vue-i18n" "^8.27.2"
 
+"@nuxtjs/moment@^1.6.1":
+  "integrity" "sha512-Mo2/3NQB0XryMQuNCTVnAclrDvt9I9sr6dwVm56KhYCoiWTKgQ78tDV9tmrxw7lahw1IBwyPGhw+3pwkM4phAA=="
+  "resolved" "https://registry.npmjs.org/@nuxtjs/moment/-/moment-1.6.1.tgz"
+  "version" "1.6.1"
+  dependencies:
+    "moment" "^2.25.3"
+    "moment-locales-webpack-plugin" "^1.2.0"
+    "moment-timezone" "^0.5.28"
+    "moment-timezone-data-webpack-plugin" "^1.3.0"
+
 "@nuxtjs/proxy@^2.1.0":
   "integrity" "sha512-/qtoeqXgZ4Mg6LRg/gDUZQrFpOlOdHrol/vQYMnKu3aN3bP90UfOUB3QSDghUUK7OISAJ0xp8Ld78aHyCTcKCQ=="
   "resolved" "https://registry.npmjs.org/@nuxtjs/proxy/-/proxy-2.1.0.tgz"
@@ -1901,11 +1911,6 @@
   "integrity" "sha512-0FcBfdcmaumGPQ0qPn7Q5qTgz/ooXgIyp1rf8ik5bGX8mpE2YHjC0P/eyQvxu1GURYQgq9ozf2mteQ5ZD9YiyQ=="
   "resolved" "https://registry.npmjs.org/alphanum-sort/-/alphanum-sort-1.0.2.tgz"
   "version" "1.0.2"
-
-"animejs@^3.2.1":
-  "integrity" "sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A=="
-  "resolved" "https://registry.npmjs.org/animejs/-/animejs-3.2.1.tgz"
-  "version" "3.2.1"
 
 "ansi-align@^3.0.0":
   "integrity" "sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w=="
@@ -3005,7 +3010,7 @@
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-2.6.12.tgz"
   "version" "2.6.12"
 
-"core-js@^3.14.0", "core-js@^3.25.3":
+"core-js@^3.14.0", "core-js@^3.25.3", "core-js@^3.6.5":
   "integrity" "sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w=="
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.27.2.tgz"
   "version" "3.27.2"
@@ -5428,6 +5433,11 @@
   "resolved" "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
   "version" "4.0.8"
 
+"lodash.difference@^4.5.0":
+  "integrity" "sha512-dS2j+W26TQ7taQBGN8Lbbq04ssV3emRw4NY58WErlTO29pIqS0HmoT5aJ9+TUQ1N3G+JOZSji4eugsWwGp9yPA=="
+  "resolved" "https://registry.npmjs.org/lodash.difference/-/lodash.difference-4.5.0.tgz"
+  "version" "4.5.0"
+
 "lodash.get@^4.4.2":
   "integrity" "sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ=="
   "resolved" "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz"
@@ -5532,7 +5542,7 @@
     "pify" "^4.0.1"
     "semver" "^5.6.0"
 
-"make-dir@^3.0.2", "make-dir@^3.1.0":
+"make-dir@^3.0.0", "make-dir@^3.0.2", "make-dir@^3.1.0":
   "integrity" "sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw=="
   "resolved" "https://registry.npmjs.org/make-dir/-/make-dir-3.1.0.tgz"
   "version" "3.1.0"
@@ -5809,6 +5819,33 @@
   "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   "version" "1.0.4"
 
+"moment-locales-webpack-plugin@^1.2.0":
+  "integrity" "sha512-QAi5v0OlPUP7GXviKMtxnpBAo8WmTHrUNN7iciAhNOEAd9evCOvuN0g1N7ThIg3q11GLCkjY1zQ2saRcf/43nQ=="
+  "resolved" "https://registry.npmjs.org/moment-locales-webpack-plugin/-/moment-locales-webpack-plugin-1.2.0.tgz"
+  "version" "1.2.0"
+  dependencies:
+    "lodash.difference" "^4.5.0"
+
+"moment-timezone-data-webpack-plugin@^1.3.0":
+  "integrity" "sha512-1le6a35GgYdWMVYFzrfpE/F6Pk4bj0M3QKD6Iv6ba9LqWGoVqHQRHyCTLvLis5E1J98Sz40ET6yhZzMVakwpjg=="
+  "resolved" "https://registry.npmjs.org/moment-timezone-data-webpack-plugin/-/moment-timezone-data-webpack-plugin-1.5.1.tgz"
+  "version" "1.5.1"
+  dependencies:
+    "find-cache-dir" "^3.0.0"
+    "make-dir" "^3.0.0"
+
+"moment-timezone@^0.5.28", "moment-timezone@>= 0.1.0":
+  "integrity" "sha512-e0jGNZDOHfBXJGz8vR/sIMXvBIGJJcqFjmlg9lmE+5KX1U7/RZNMswfD8nKnNCnQdKTIj50IaRKwl1fvMLyyRg=="
+  "resolved" "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.41.tgz"
+  "version" "0.5.41"
+  dependencies:
+    "moment" "^2.29.4"
+
+"moment@^2.25.3", "moment@^2.29.4", "moment@^2.8.0":
+  "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
+  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
+  "version" "2.29.4"
+
 "move-concurrently@^1.0.1":
   "integrity" "sha512-hdrFxZOycD/g6A6SoI2bB5NA/5NEqD0569+S47WZhPvm46sD50ZHdYaFmnua5lndde9rCHGjmfK7Z8BuCt/PcQ=="
   "resolved" "https://registry.npmjs.org/move-concurrently/-/move-concurrently-1.0.1.tgz"
@@ -6025,13 +6062,6 @@
   "integrity" "sha512-Y1wZESM7VUThYY+4W+X4ySH2maqcA+p7UR+w8VWNWVAd6lwuXXWz/w/Cz43J/dI2I+PS6wD5N+bJUF+gjWvIqg=="
   "resolved" "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz"
   "version" "1.2.2"
-
-"nuxt-animejs@^1.2.4":
-  "integrity" "sha512-1FF+Lp9tbVuf+zLRfxT7GjHj9qa4LHPdsOkF2PcA/5Z3zKswLNa8DpxV5XA+McWURFaZkwl/9Y7ALIYw3O+E4A=="
-  "resolved" "https://registry.npmjs.org/nuxt-animejs/-/nuxt-animejs-1.2.4.tgz"
-  "version" "1.2.4"
-  dependencies:
-    "animejs" "^3.2.1"
 
 "nuxt-lazy-load@^1.2.9":
   "integrity" "sha512-TB9k4s9d/M1k3hLasBQChkHFTSDlkov2AQNcE1d6vFuLuy4cjvVnoVO8VRHaVtIKPETbwmsDyc+mmi87LJZ7pg=="
@@ -8833,6 +8863,11 @@
   "resolved" "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"
   "version" "1.1.2"
 
+"vue-class-component@^7.1.0":
+  "integrity" "sha512-+eaQXVrAm/LldalI272PpDe3+i4mPis0ORiMYxF6Ae4hyuCh15W8Idet7wPUEs4N4YptgFHGys4UrgNQOMyO6w=="
+  "resolved" "https://registry.npmjs.org/vue-class-component/-/vue-class-component-7.2.6.tgz"
+  "version" "7.2.6"
+
 "vue-client-only@^2.0.0":
   "integrity" "sha512-vKl1skEKn8EK9f8P2ZzhRnuaRHLHrlt1sbRmazlvsx6EiC3A8oWF8YCBrMJzoN+W3OnElwIGbVjsx6/xelY1AA=="
   "resolved" "https://registry.npmjs.org/vue-client-only/-/vue-client-only-2.1.0.tgz"
@@ -8893,10 +8928,12 @@
   "resolved" "https://registry.npmjs.org/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz"
   "version" "1.1.1"
 
-"vue-range-slider@^0.6.0":
-  "integrity" "sha512-VH5ZI7ZxZ/2I+4kmHMvRNShB87N+N71wgENFaycMI2NEBCxKyF+gN/NbbralGQP63X9IrCWgggo8uBjm7SdM7g=="
-  "resolved" "https://registry.npmjs.org/vue-range-slider/-/vue-range-slider-0.6.0.tgz"
-  "version" "0.6.0"
+"vue-property-decorator@^8.0.0":
+  "integrity" "sha512-O6OUN2OMsYTGPvgFtXeBU3jPnX5ffQ9V4I1WfxFQ6dqz6cOUbR3Usou7kgFpfiXDvV7dJQSFcJ5yUPgOtPPm1Q=="
+  "resolved" "https://registry.npmjs.org/vue-property-decorator/-/vue-property-decorator-8.5.1.tgz"
+  "version" "8.5.1"
+  dependencies:
+    "vue-class-component" "^7.1.0"
 
 "vue-router@^3.5.1":
   "integrity" "sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ=="
@@ -8930,6 +8967,14 @@
     "lodash.pick" "^4.4.0"
     "resize-observer-polyfill" "1.5.1"
     "vue" "^2.6.10"
+
+"vue-slider-component@^3.2.24":
+  "integrity" "sha512-28hfotAL/CPXPwqHgVFyUwUEV0zweoc2wW0bgraGkoIcRZGlFjk8caYJLE8+Luug5t3b9tJm/NyDXpyIdmcYZg=="
+  "resolved" "https://registry.npmjs.org/vue-slider-component/-/vue-slider-component-3.2.24.tgz"
+  "version" "3.2.24"
+  dependencies:
+    "core-js" "^3.6.5"
+    "vue-property-decorator" "^8.0.0"
 
 "vue-star-rating@^1.6.2":
   "integrity" "sha512-yrC4yqZzOfHLcP52XMuNIxzF12GkuhVZX5uYsSH7AyxQ3sR7+In4EFiQJWYOZEGl0YSd5hE5ckJPIUiRZd+zCw=="
@@ -9058,7 +9103,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@*", "webpack@^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0", "webpack@^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.0.0 || ^5.0.0", "webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.27.0 || ^5.0.0", "webpack@^4.36.0 || ^5.0.0", "webpack@^4.4.0 || ^5.0.0", "webpack@^4.46.0", "webpack@>=2", "webpack@>=4.0.0", "webpack@1 || 2 || 3 || 4":
+"webpack@*", "webpack@^1 || ^2 || ^3 || ^4 || ^5", "webpack@^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0", "webpack@^3.0.0 || ^4.0.0", "webpack@^3.0.0 || ^4.0.0 || ^5.0.0", "webpack@^3.0.0 || ^4.1.0 || ^5.0.0-0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.27.0 || ^5.0.0", "webpack@^4.36.0 || ^5.0.0", "webpack@^4.4.0 || ^5.0.0", "webpack@^4.46.0", "webpack@>=2", "webpack@>=4.0.0", "webpack@1 || 2 || 3 || 4", "webpack@4.x.x || 5.x.x":
   "integrity" "sha512-6jJuJjg8znb/xRItk7bkT0+Q7AHCYjjFnvKIWQPkNIOyRqoCGvkOs0ipeQzrqz4l5FtN5ZI/ukEHroeX/o1/5Q=="
   "resolved" "https://registry.npmjs.org/webpack/-/webpack-4.46.0.tgz"
   "version" "4.46.0"

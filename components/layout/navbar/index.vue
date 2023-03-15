@@ -58,18 +58,19 @@
             </div>
 
             <div class="btns-auth flex-center">
-              <!-- <button v-if="!$store.state.loggedIn" aria-label="account" title="account" class="main--btn"><nuxt-link
+              <button v-if="!$auth.loggedIn" aria-label="account" title="account" class="main--btn"><nuxt-link
                   :to="localePath('/signup')">{{
-                    $t('navbar.signup') }}</nuxt-link></button> -->
+                    $t('navbar.signup') }}</nuxt-link></button>
 
 
-              <!-- <button aria-label="login" title="login" class="second--btn"><nuxt-link :to="localePath('/login')">{{
-                $t('navbar.login') }}</nuxt-link></button> -->
+              <button v-if="!$auth.loggedIn" aria-label="login" title="login" class="second--btn"><nuxt-link
+                  :to="localePath('/login')">{{
+                    $t('navbar.login') }}</nuxt-link></button>
 
               <!-- <button aria-label="logout" title="logout" class="second--btn" @click="handleLogOut">logout</button> -->
 
 
-              <div class="icon_notification" v-if="!$auth.loggedIn">
+              <div class="icon_notification" v-if="$auth.loggedIn">
                 <font-awesome-icon :icon="['far', 'bell']" />
               </div>
 
@@ -83,13 +84,11 @@
                     </div>
                   </template>
 
-                  <nuxt-link :to="localePath('/profile')"><b-dropdown-item> profile</b-dropdown-item></nuxt-link>
-                  <b-dropdown-item @click="handleLogOut"> logout</b-dropdown-item>
+                  <nuxt-link :to="localePath('/profile/guidetrainer')">{{ $t('hero.profile') }}</nuxt-link>
+                  <b-dropdown-item @click="handleLogOut"> {{ $t('hero.logout') }}</b-dropdown-item>
 
                 </b-dropdown>
               </div>
-
-
 
             </div>
 
@@ -133,12 +132,12 @@ export default {
   mounted() {
     this.getData();
 
-    console.log('tokenn ' + this.$auth.strategy)
-
   },
 
 
   methods: {
+
+    // get navbar data
 
     async getData() {
       try {
@@ -153,26 +152,25 @@ export default {
       }
     },
 
+    // handle logout
 
-    async handleLogOut() {
+    handleLogOut() {
 
-      this.$auth.logout()
+      this.$auth.logout();
 
       this.$cookies.remove('auth._token.local')
       // for set user from api
-
-      this.$store.commit('LOGOUT');
       window.localStorage.removeItem('vuex');
+
+      this.$router.push(this.localePath({ path: "/" }));
 
     },
 
     onOver() {
       this.$refs.dropdown.visible = true;
-      this.$refs.dropdownLogin.visible = true;
     },
     onLeave() {
       this.$refs.dropdown.visible = false;
-      this.$refs.dropdownLogin.visible = false;
     },
     onOver2() {
       this.$refs.dropdownLogin.visible = true;

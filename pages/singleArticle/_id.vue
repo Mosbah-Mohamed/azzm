@@ -21,6 +21,10 @@
           <div class="col-lg-8 col-12">
             <div class="content">
 
+              <div class="flex-center m-5" v-if="!loading">
+                <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+              </div>
+
               <div class="image_course" data-aos="fade-up">
                 <img :data-src="image" title="course" v-lazy-load alt="learn image" width="100%" height="100%" />
               </div>
@@ -32,6 +36,8 @@
 
               <h2 data-aos="fade-up">{{ title }}</h2>
               <p data-aos="fade-up" v-html="content"></p>
+
+
 
 
             </div>
@@ -57,6 +63,11 @@ export default {
 
   data() {
     return {
+
+      loading: false,
+
+      // data from api
+
       title: '',
       content: '',
       short_description: '',
@@ -98,6 +109,8 @@ export default {
     async getData() {
       try {
         return await this.$axios.get(`articale/${this.$route.params.id}`).then(response => {
+
+          this.loading = true;
 
           this.title = response.data.data.title;
           this.content = response.data.data.content;

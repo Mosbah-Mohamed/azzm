@@ -2,11 +2,11 @@
   <section class="exam">
 
     <div class="crumb">
-      <h3> الاختبار البعدي</h3>
+      <h3> الاختبار القبلي</h3>
       <ul>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">الرئيسية</a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer"> الاختبار البعدي</a></li>
+        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer"> الاختبار القبلي</a></li>
       </ul>
     </div>
 
@@ -20,19 +20,20 @@
 
               <div class="time">
                 <font-awesome-icon :icon="['fas', 'clock']" />
-                <span>الوقت المُتبقي</span>
+                <span>{{ $t('exam.remain_time') }}</span>
                 <span class="time_clock">45 : 04</span>
               </div>
+
               <div class="current_question">
-                <span>انت الأن حالياً في السؤال</span>
+                <span>{{ $t('exam.current_question') }}</span>
                 <span class="num">13</span>
-                <span>من</span>
+                <span>{{ $t('courses.from') }}</span>
                 <span class="num">20</span>
               </div>
               <div class="question_number">
                 <font-awesome-icon :icon="['fas', 'book']" />
-                <span>عدد الأسئلة</span>
-                <span class="all_num_ques">سؤال 20</span>
+                <span> {{ $t('exam.question_num') }}</span>
+                <span class="all_num_ques"> 20 {{ $t('exam.question') }}</span>
               </div>
 
             </div>
@@ -44,17 +45,19 @@
             <div class="question_result" data-aos="fade-up">
 
               <form>
+
                 <div class="form-group fill_check">
-                  <input type="checkbox" id="q1">
+                  <input type="radio" id="q1" name="answer">
                   <label for="q1">نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة
                     في شتئ المجالات التعليمية</label>
                 </div>
+
                 <div class="form-group fill_check">
-                  <input type="checkbox" id="q2">
+                  <input type="radio" id="q2" name="answer">
                   <label for="q2">نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة
                     في شتئ المجالات التعليمية</label>
                 </div>
-                <div class="form-group fill_check">
+                <!-- <div class="form-group fill_check">
                   <input type="checkbox" id="q3">
                   <label for="q3">نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة
                     في شتئ المجالات التعليمية</label>
@@ -63,22 +66,22 @@
                   <input type="checkbox" id="q4">
                   <label for="q4">نقوم بتقديم الدورات عن طريق الحضور الي مقرنا او الحضور عن بعد نقدم افضل الدورات التدريبة
                     في شتئ المجالات التعليمية</label>
-                </div>
+                </div> -->
               </form>
 
             </div>
 
             <div class="question_btns" data-aos="fade-up">
-              <button class="main--btn finish" aria-label="finish">انهاء الاختبار</button>
-              <button class="main--btn" aria-label="next">التالي</button>
-              <button class="main--btn" aria-label="prev">السابق</button>
+              <button class="main--btn finish" aria-label="finish">{{ $t('exam.finish') }}</button>
+              <button class="main--btn" aria-label="next">{{ $t('exam.next') }}</button>
+              <button class="main--btn" aria-label="prev">{{ $t('exam.previous') }}</button>
             </div>
 
           </div>
           <div class="col-lg-2 col-12">
 
             <div class="side_menu_question" data-aos="fade-right">
-              <h3>عداد الأسئلة</h3>
+              <h3>{{ $t('exam.Question_counter') }}</h3>
               <div class="box">
                 <span>1</span>
                 <span>2</span>
@@ -120,28 +123,6 @@ export default {
     }
   },
 
-  //  fetch data on server side only in pages not component ( fetch ,async data)
-
-  // async asyncData({ $axios }) {
-  //   try {
-  //     // let response = await this.$axios.$get("main_page/main");
-  //     return await $axios.$get(process.env.baseUrl + "main_page/main").then(res => {
-
-  //       return {
-  //         jjj: res.data.content.title
-  //       };
-
-  //     })
-
-  //   } catch (err) {
-
-  //     console.log(err);
-
-  //   }
-  // },
-
-
-
 
   created() {
 
@@ -176,7 +157,7 @@ export default {
   // margin-bottom: 15px;
 }
 
-.form-group input[type="checkbox"] {
+.form-group input[type="radio"] {
   padding: 0;
   height: initial;
   width: initial;
@@ -210,12 +191,12 @@ export default {
   border-radius: 3px;
 }
 
-.fill_check input[type="checkbox"]:checked+label {
+.fill_check input[type="radio"]:checked+label {
   background: #F7C553;
   color: #013FCD;
 }
 
-.fill_check input[type="checkbox"]:checked+label:before {
+.fill_check input[type="radio"]:checked+label:before {
   background: #FFFFFF;
   border-radius: 3px;
 }

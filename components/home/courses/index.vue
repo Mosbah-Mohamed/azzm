@@ -37,7 +37,7 @@
                         <font-awesome-icon :icon="['fas', 'clock']" />
                         <div class="info">
                           <span>{{ course.duration_houres }}</span>
-                          <span>ساعة</span>
+                          <span>{{ $t('courses.hour') }}</span>
                         </div>
                       </div>
                       <div class="calender">

@@ -5,34 +5,36 @@
         <div class="all_info">
 
           <div class="head">
-            <div class="edit_rate">
+            <div class="edit_rate" @click="toggleReadonly">
               <span><font-awesome-icon :icon="['fas', 'pen-to-square']" /></span>
-              <span>تعديل </span>
+              <span>{{ $t('attendance.update') }} </span>
             </div>
           </div>
 
 
-          <form action="">
-            <ValidationObserver ref='observer'>
+          <ValidationObserver v-slot="{ invalid }" ref='observer'>
+            <form action="" @submit.prevent="updatePersonalInfo">
 
-              <ValidationProvider rules="required|englishLettersOnly" name="الاسم" v-slot="{ errors }">
+              <ValidationProvider rules="required" name="name" v-slot="{ errors }">
                 <div class="form-group">
-                  <input type="text" v-model="value" placeholder="الاسم" />
+                  <input type="text" v-model="formData.name" placeholder="الاسم" :readonly="isReadonly" />
                   <span>{{ errors[0] }}</span>
                 </div>
 
               </ValidationProvider>
-              <ValidationProvider rules="max:4" v-slot="{ errors }">
+              <ValidationProvider rules="required|email" v-slot="{ errors }">
                 <div class="form-group">
-                  <input type="email" placeholder="البريد الإلكتروني" />
+                  <input type="email" v-model="formData.email" placeholder="البريد الإلكتروني" :readonly="isReadonly" />
                   <span>{{ errors[0] }}</span>
                 </div>
               </ValidationProvider>
-              <!-- <ValidationProvider rules="required|alpha|englishLettersOnly" v-slot="{ errors }"> -->
+
               <vue-tel-input :placeholder="'Enter phone number'" :dropdownOptions="dropdownOptions"
-                :inputOptions="inputOptions" defaultCountry="sa" required v-model.trim="formData.phone"></vue-tel-input>
-              <!-- </ValidationProvider> -->
-              <ValidationProvider rules="required|alpha|englishLettersOnly" v-slot="{ errors }">
+                :inputOptions="inputOptions" defaultCountry="sa" required v-model.trim="formData.phone"
+                :readonly="isReadonly"></vue-tel-input>
+
+
+              <!-- <ValidationProvider rules="required|alpha|englishLettersOnly" v-slot="{ errors }">
                 <div class="form-group position-relative">
                   <input :type="[showPassword ? 'text' : 'password']" placeholder="********" required
                     v-model="formData.password">
@@ -41,23 +43,37 @@
                   </span>
                   <span>{{ errors[0] }}</span>
                 </div>
-              </ValidationProvider>
-
-
-              <ValidationProvider rules="required|englishLettersOnly" name="الاسم" v-slot="{ errors }">
+              </ValidationProvider> -->
+              <ValidationProvider rules="required" name="address" v-slot="{ errors }">
                 <div class="form-group">
-                  <input type="text" v-model="value" placeholder="ذكر" />
+                  <input type="text" v-model="formData.address" placeholder="العنوان" :readonly="isReadonly" />
                   <span>{{ errors[0] }}</span>
                 </div>
 
               </ValidationProvider>
 
+
+              <ValidationProvider rules="required" name="gender" v-slot="{ errors }">
+
+                <div class="form-group">
+                  <select v-model="formData.gender" :disabled="isReadonly">
+                    <!-- <option value="" selected disabled hidden>Choose here</option> -->
+                    <option v-for="option in options" :value="option.key">{{ option.value }}</option>
+                  </select>
+
+                  <span>{{ errors[0] }}</span>
+                </div>
+              </ValidationProvider>
+              
+              <!-- {{ options.key }} -->
+
               <div class="form-group">
-                <button class="sign_btn main--btn" aria-label="sign" title="save" type="submit">حفظ التعديلات</button>
+                <button class="sign_btn main--btn" aria-label="sign" title="save" type="submit" :disabled="invalid">حفظ
+                  التعديلات</button>
               </div>
 
-            </ValidationObserver>
-          </form>
+            </form>
+          </ValidationObserver>
 
         </div>
       </div>
@@ -85,8 +101,6 @@ export default {
 
   data() {
     return {
-      blogPost: '',
-      blogCategoryPosts: '',
 
       // for icon show password
 
@@ -95,12 +109,23 @@ export default {
       value: '',
       phone: "",
 
+      isReadonly: true,
+
+      // formData
+
       formData: {
         name: "",
         email: "",
-        password: "",
-        phone: ""
+        phone: "",
+        gender: "",
+        address: ""
       },
+
+      options: [
+        { key: 0, value: 'man' },
+        { key: 1, value: 'women' },
+      ],
+      // gender: '',
 
       // vue tel input options
 
@@ -116,28 +141,6 @@ export default {
       }
     }
   },
-
-  //  fetch data on server side only in pages not component ( fetch ,async data)
-
-  // async asyncData({ $axios }) {
-  //   try {
-  //     // let response = await this.$axios.$get("main_page/main");
-  //     return await $axios.$get(process.env.baseUrl + "main_page/main").then(res => {
-
-  //       return {
-  //         jjj: res.data.content.title
-  //       };
-
-  //     })
-
-  //   } catch (err) {
-
-  //     console.log(err);
-
-  //   }
-  // },
-
-
 
 
   created() {
@@ -157,10 +160,14 @@ export default {
   //  when component load
 
   mounted() {
+
+    this.getData();
+
     window.scrollTo(0, 0);
     this.$nextTick(() => {
       window.scrollTo(0, 0);
     });
+
   },
 
 
@@ -168,8 +175,72 @@ export default {
 
   methods: {
 
+    // get personal info
 
-  }
+    async getData() {
+      try {
+        return await this.$axios.get(`profile`).then(response => {
+
+          this.formData.name = response.data.data.name;
+          this.formData.gender = response.data.data.gender;
+          this.formData.email = response.data.data.email;
+          this.formData.phone = response.data.data.phone;
+          this.formData.address = response.data.data.address;
+
+          // console.log(response.data.data)
+
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
+    // update personal info
+
+    async updatePersonalInfo() {
+
+      try {
+        await this.$axios.$post('update/profile', this.formData).then(response => {
+
+
+          this.getData()
+
+
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            text: `${response.data.message}`,
+            showConfirmButton: false,
+            timer: 3000
+          })
+
+
+        }).catch(error => {
+          console.log(error.response.data.message)
+
+          this.$swal.fire({
+            type: 'error',
+            text: `${error.response.data.message}`,
+            timer: 3000,
+          })
+
+        })
+      } catch (error) {
+        console.log('try catch =>', error);
+      }
+
+    },
+
+    // toggleReadonly
+
+    toggleReadonly() {
+      this.isReadonly = false;
+    }
+
+  },
 }
 </script>
 

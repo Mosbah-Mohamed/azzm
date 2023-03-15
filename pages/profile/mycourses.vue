@@ -24,7 +24,8 @@
         <div class="all_course_detail">
           <div class="course_detail" v-for="(single, index) in finished" :key="'b' + index">
             <div class="image">
-              <img :data-src="diploma_logo" title="partner" v-lazy-load alt="partner image" width="100%" height="100%" />
+              <img :data-src="single.diploma_logo" title="partner" v-lazy-load alt="partner image" width="100%"
+                height="100%" />
             </div>
 
             <div class="info">
@@ -32,19 +33,24 @@
               <div class="gress">
                 <!-- show-progress -->
                 <b-progress :value="single.progress" max="100" animated variant="warning"></b-progress>
-                <span>50</span>
+                <span>{{ single.progress }}</span>
               </div>
 
               <div class="course_link">
                 <nuxt-link :to="localePath({ path: `/DiplomaAttendance/${single.id}` })">
                   <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                    <span>الدخول للدورة</span>
+                    <span>{{ $t('courses.enter_course') }}</span>
                     <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
                   </a></nuxt-link>
               </div>
 
             </div>
           </div>
+
+          <div class="flex-center m-5" v-if="!loading">
+            <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+          </div>
+
           <!-- <div class="course_detail">
             <div class="image">
               <img data-src="@/assets/images/learn.png" title="partner" v-lazy-load alt="partner image" width="100%"
@@ -105,6 +111,8 @@ export default {
   data() {
     return {
 
+      loading: false,
+
       // data from api
 
       current: [],
@@ -132,6 +140,7 @@ export default {
       try {
         return await this.$axios.get(`subscriptions`).then(response => {
 
+          this.loading = true;
           this.current = response.data.data.current;
           this.finished = response.data.data.finished;
 

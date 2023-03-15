@@ -20,7 +20,16 @@
           <div class="col-lg-4 col-12">
             <div class="course_content">
 
-              <div class="box_head qr_code" data-aos="fade-up">
+              <div class="box_head" v-if="!is_subscribe">
+                <p>{{ $t('courses.please_test') }}</p>
+
+                <nuxt-link :to="localePath('/exam')">
+                  <button class="main--btn">{{ $t('courses.Test_now') }}</button>
+                </nuxt-link>
+
+              </div>
+
+              <div class="box_head qr_code" data-aos="fade-up" v-else>
 
                 <div class="all_span">
                   <span>{{ $t('attendance.Please_delete') }}</span>
@@ -28,163 +37,116 @@
                   <span>{{ $t('attendance.able_attend') }}</span>
                 </div>
 
-                <img data-src="@/assets/images/icon-partner-1.png" title="qr" v-lazy-load alt="qr image" width="100%"
-                  height="100%" />
+                <div class="" v-html="qr"> </div>
+
+                <!-- <img data-src="@/assets/images/icon-partner-1.png" title="qr" v-lazy-load alt="qr image" width="100%"
+                  height="100%" /> -->
               </div>
 
               <div class="box_content" data-aos="fade-up">
                 <h3> {{ $t('attendance.diploma_content') }}</h3>
                 <div class="accordion" role="tablist">
+
                   <b-card no-body class="mb-1">
                     <!-- @click="showIcon = !showIcon" -->
-                    <b-card-header role="tab">
-                      <b-button block v-b-toggle.accordion-1 variant="info">
-                        <span> التيرم الاول</span>
+                    <b-card-header role="tab" class="card_head" v-for="(semester, index) in semesters" :key="'a' + index">
+                      <b-button block v-b-toggle="'collapse-' + index" variant="info">
+                        <span> {{ semester.name }}</span>
                         <span>
-                          <font-awesome-icon :icon="icon" />
+                          <font-awesome-icon :icon="['fas', 'chevron-down']" />
                         </span>
                       </b-button>
-                    </b-card-header>
 
-                    <!-- visible -->
-                    <b-collapse id="accordion-1" class="accordion_content" accordion="my-accordion" role="tabpanel">
-                      <b-card-header>
-                        <b-button block v-b-toggle.collapse-1-inner class="inner-btn">
-                          <span>اسم المادة</span>
-                          <span>
-                            <font-awesome-icon :icon="icon" />
-                          </span>
-                        </b-button>
-                        <b-collapse id="collapse-1-inner" class="mt-2 inner">
-                          <div class="lessons">
-                            <div class="lesson">
-                              <span><font-awesome-icon :icon="['fas', 'book']" /></span>
-                              <span>مقدمة عن اسس التصميم</span>
+                      <b-collapse :id="'collapse-' + index" class="accordion_content" accordion="my-accordion"
+                        role="tabpanel">
+
+                        <b-card-header class="card_head_inner" v-for="(subject, index) in semester.subjects"
+                          :key="'b' + index">
+
+                          <b-button block v-b-toggle="'collapse-' + index + 'inner'" class="inner-btn">
+                            <span>{{ subject.name }}</span>
+                            <span>
+                              <font-awesome-icon :icon="['fas', 'chevron-down']" />
+                            </span>
+                          </b-button>
+
+                          <b-collapse :id="'collapse-' + index + 'inner'" class="mt-2 inner">
+                            <div class="lessons" v-for="(lesson, index) in subject.lessons" :key="'c' + index">
+                              <div class="lesson">
+                                <span><font-awesome-icon :icon="['fas', 'book']" /></span>
+                                <span>{{ lesson.title }}</span>
+                              </div>
+                              <a :href="lesson.link" target="_blank" rel="noopener noreferrer"
+                                @click="lessonIdClicked(lesson)">
+                                <span class="discover">تصفح</span>
+                              </a>
+                              <!-- <span class="lock">
+          <font-awesome-icon :icon="['fas', 'lock']" />
+        </span> -->
                             </div>
-                            <span class="discover">تصفح</span>
-                            <!-- <span class="lock">
-                          <font-awesome-icon :icon="['fas', 'lock']" />
-                        </span> -->
-                          </div>
-                        </b-collapse>
-                      </b-card-header>
+                          </b-collapse>
 
-                    </b-collapse>
-                  </b-card>
+                        </b-card-header>
 
-                  <b-card no-body class="mb-1">
-                    <b-card-header role="tab">
-                      <b-button block v-b-toggle.accordion-2 variant="info">
-                        <span>المستوى الأول</span>
-                        <span>
-                          <font-awesome-icon :icon="icon" />
-                        </span>
-                      </b-button>
+                      </b-collapse>
+
+
                     </b-card-header>
 
                     <!-- visible -->
-                    <b-collapse id="accordion-2" class="accordion_content" accordion="my-accordion" role="tabpanel">
-                      <div class="lessons">
-                        <div class="lesson">
-                          <span><font-awesome-icon :icon="['fas', 'book']" /></span>
-                          <span>مقدمة عن اسس التصميم</span>
-                        </div>
-                        <span class="discover">تصفح</span>
-                        <!-- <span class="lock">
-                          <font-awesome-icon :icon="['fas', 'lock']" />
-                        </span> -->
-                      </div>
-                    </b-collapse>
-                  </b-card>
-                  <b-card no-body class="mb-1">
-                    <b-card-header role="tab">
-                      <b-button block v-b-toggle.accordion-3 variant="info">
-                        <span>المستوى الأول</span>
-                        <span>
-                          <font-awesome-icon :icon="icon" />
-                        </span>
-                      </b-button>
-                    </b-card-header>
 
-                    <!-- visible -->
-                    <b-collapse id="accordion-3" class="accordion_content" accordion="my-accordion" role="tabpanel">
-                      <div class="lessons">
-                        <div class="lesson">
-                          <span><font-awesome-icon :icon="['fas', 'book']" /></span>
-                          <span>مقدمة عن اسس التصميم</span>
-                        </div>
-                        <span class="discover">تصفح</span>
-                        <!-- <span class="lock">
-                          <font-awesome-icon :icon="['fas', 'lock']" />
-                        </span> -->
-                      </div>
-                    </b-collapse>
                   </b-card>
+
+                  <div class="flex-center m-5" v-if="!loading">
+                    <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+                  </div>
+
+
                 </div>
               </div>
 
-              <div class="box_content_team" data-aos="fade-up">
+              <div class="box_content_team" data-aos="fade-up" v-if="is_subscribe">
                 <h3>{{ $t('attendance.training_team') }}</h3>
 
                 <div class="all_trainers">
 
-                  <div class="trainer_desc">
+                  <div class="trainer_desc" v-for="(teacher, index) in teachers" :key="'p' + index">
 
                     <div class="image">
-                      <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                        width="100%" height="100%" />
+                      <img :data-src="teacher.image" title="partner" v-lazy-load alt="teacher image" width="100%"
+                        height="100%" />
                     </div>
 
                     <div class="trainer_name">
-                      <h4>سعد حسان الغامدي</h4>
-                      <span>مدرب معتمد في علوم الادارة</span>
+                      <h4>{{ teacher.name }}</h4>
+                      <span>{{ teacher.education }}</span>
                     </div>
 
                   </div>
 
-                  <div class="trainer_desc">
-
-                    <div class="image">
-                      <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                        width="100%" height="100%" />
-                    </div>
-
-                    <div class="trainer_name">
-                      <h4>سعد حسان الغامدي</h4>
-                      <span>مدرب معتمد في علوم الادارة</span>
-                    </div>
-
-                  </div>
 
                 </div>
               </div>
 
-              <div class="rate_box" data-aos="fade-up">
+              <!--   -->
+              <div class="rate_box" data-aos="fade-up" v-for="(rate, index) in rates" :key="index" v-if="is_subscribe">
 
                 <div class="all_information">
                   <div class="percentage">
-                    <span class="num">80%</span>
+                    <span class="num">{{ rate.diploma_rate_percentage }}%</span>
                     <span>{{ $t('attendance.total_rating') }}</span>
                   </div>
 
                   <div class="about_rate">
                     <div class="rate">
                       <div class="stars">
-                        <div class="full">
-                          <font-awesome-icon :icon="['fas', 'star']" />
-                        </div>
-                        <div class="full">
-                          <font-awesome-icon :icon="['fas', 'star']" />
-                        </div>
-                        <div class="full">
-                          <font-awesome-icon :icon="['fas', 'star']" />
-                        </div>
-                        <div class="full">
-                          <font-awesome-icon :icon="['fas', 'star']" />
-                        </div>
-                        <div class="empty">
-                          <font-awesome-icon :icon="['far', 'star']" />
-                        </div>
+
+                        <no-ssr>
+                          <star-rating :rating="rate.diploma_rate_num" :star-size="20" :read-only="true"
+                            :show-rating="false"></star-rating>
+                          <!-- {{ rating }} -->
+                        </no-ssr>
+
                       </div>
                       <span>{{ $t('attendance.interest_eval') }}</span>
 
@@ -202,7 +164,7 @@
                       <div class="blur"></div>
 
                       <form action="">
-                        <h6 class="main_head">ضع تقييمك عن الدبلوم</h6>
+                        <h6 class="main_head">{{ $t('attendance.post_assessment') }}</h6>
 
                         <div class="form-row">
                           <p>ما مدى رضاك عن الدبلوم من حيث المحتوي وطريقة سرد المواضيع ومدي تحقيقها للهدف المنشود</p>
@@ -257,7 +219,7 @@
 
                       <template #modal-footer>
                         <b-button class="main--btn" @click="show = false">
-                          ارسال
+                          {{ $t('contact.send') }}
                         </b-button>
                       </template>
                     </b-modal>
@@ -270,9 +232,10 @@
 
               </div>
 
-              <button data-aos="fade-up" class="main--btn d-block w-100">اختبار كامل عن الدورة</button>
+              <button data-aos="fade-up" class="main--btn d-block w-100" v-if="is_subscribe">{{
+                $t('courses.Full_course_test') }}</button>
 
-              <p data-aos="fade-up" class="hint">{{ $t('attendance.active_option') }}</p>
+              <p data-aos="fade-up" class="hint" v-if="is_subscribe">{{ $t('attendance.active_option') }}</p>
 
             </div>
           </div>
@@ -282,19 +245,21 @@
               <img data-src="@/assets/images/learn.png" title="learn" v-lazy-load alt="partner image" width="100%"
                 height="100%" />
 
-              <div class="video">
-                <div class="icon">
-                  <font-awesome-icon :icon="['fas', 'play']" />
+              <a :href="video_link" target="_blank" rel="noopener noreferrer">
+                <div class="video">
+                  <div class="icon">
+                    <font-awesome-icon :icon="['fas', 'play']" />
+                  </div>
                 </div>
-              </div>
+              </a>
 
               <div class="overlay">
-                <span>الدرس الرابع : الأسس والمعايير العامة للتصميم الداخلي والديكورات</span>
+                <span>{{ lesson_name }}</span>
               </div>
 
             </div>
 
-            <div class="attachment" data-aos="fade-up">
+            <div class="attachment" data-aos="fade-up" v-if="is_subscribe">
               <h4 class="main_head">{{ $t('attendance.Lesson_extensions') }}</h4>
               <div class="content">
                 <p>{{ $t('attendance.download_hint') }}</p>
@@ -305,12 +270,12 @@
               </div>
             </div>
 
-            <div class="bar_prog" data-aos="fade-up">
+            <div class="bar_prog" data-aos="fade-up" v-if="is_subscribe">
               <h5 class="main_head">{{ $t('attendance.progress_level') }}</h5>
               <b-progress value="40" max="100" show-progress animated></b-progress>
             </div>
 
-            <div class="comments" data-aos="fade-up">
+            <div class="comments" data-aos="fade-up" v-if="is_subscribe">
 
               <div class="heading_comments">
 
@@ -354,8 +319,8 @@
                 <div class="actions">
 
                   <div class="action_right">
-                    <div v-b-modal="'mymodal-' + index">
-                      {{ index }}
+                    <div v-b-modal="'mymodal-' + comment.id">
+                      <!-- {{ comment.id }} -->
                       <span class="update">{{
                         $t('attendance.update') }}</span>
                     </div>
@@ -365,12 +330,12 @@
 
                   <!-- update comment modal -->
 
-                  <b-modal :id="'mymodal-' + index" size="lg" ok-only ref="my-modal">
+                  <b-modal :id="'mymodal-' + comment.id" size="lg" ok-only v-model="modalVisible['modal-' + comment.id]">
 
                     <div class="blur"></div>
 
                     <form action="">
-                      {{ index }}
+                      <!-- {{ comment.id }} -->
                       <div class="form-group">
                         <textarea v-model="comment.content"></textarea>
                       </div>
@@ -410,8 +375,13 @@
 
 <script>
 
+import StarRating from "vue-star-rating";
 
 export default {
+
+  components: {
+    StarRating
+  },
 
   name: "course_content_before_subscribe",
 
@@ -428,10 +398,13 @@ export default {
 
       show: false,
       show2: false,
-      show4: false,
 
       bb: "fff",
       editable: false,
+
+      // qr image
+
+      qr: '',
 
       // single data
 
@@ -458,11 +431,22 @@ export default {
       rates: [],
       teachers: [],
 
+      // is subscribe
+
+      is_subscribe: '',
+
       // add comments
 
       form: {
         add_comment: '',
       },
+
+      modalVisible: {},
+
+      // lessons name and link
+
+      video_link: '',
+      lesson_name: ''
 
 
     }
@@ -491,7 +475,10 @@ export default {
 
   mounted() {
 
+    this.getQrCode();
+
     this.getData();
+
     this.getComments();
 
     window.scrollTo(0, 0);
@@ -507,6 +494,34 @@ export default {
 
     toggleEditable() {
       this.editable = !this.editable;
+    },
+
+    // lessonIdClicked
+
+    lessonIdClicked(id) {
+
+      console.log(id)
+
+    },
+
+
+    // get qr code image
+
+    async getQrCode() {
+      try {
+        return await this.$axios.get(`qrcode/${this.$route.params.id}`).then(response => {
+
+          this.loading = true;
+
+          this.qr = response.data;
+          // console.log('qr image' + response.data)
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
     },
 
 
@@ -540,7 +555,12 @@ export default {
           this.rates = response.data.data.rates;
           this.teachers = response.data.data.teachers;
 
-          console.log(response.data.data)
+
+          this.is_subscribe = response.data.data.is_subscribe;
+
+
+
+          // console.log(response.data.data)
 
         }).catch(error => {
           console.log(error)
@@ -560,7 +580,7 @@ export default {
 
           this.comments = response.data.data;
 
-          console.log(response.data.data)
+          // console.log(response.data.data)
 
         }).catch(error => {
           console.log(error)
@@ -648,6 +668,11 @@ export default {
 
     },
 
+
+    hideModal(id) {
+      this.modalVisible[`modal-${id}`] = false
+    },
+
     // update comments
 
     async updateComments(comment_id, comment_content) {
@@ -655,14 +680,16 @@ export default {
       try {
         await this.$axios.$put('comments/update', { id: `${comment_id}`, content: `${comment_content}` }).then(response => {
 
-          // this.$refs['my-modal'].hide()
+          // hide modal
+
+          this.modalVisible[`modal-${comment_id}`] = false;
+
 
           this.getComments()
 
           this.$swal.fire({
             position: 'center',
             type: 'success',
-            // title: 'message sent Successfully',
             text: `${response.msg}`,
             showConfirmButton: false,
             timer: 3000
@@ -672,13 +699,12 @@ export default {
         }).catch(error => {
           console.log(error.response.msg)
 
-          // this.$swal.fire({
-          //   icon: 'error',
-          //   title: 'Oops...',
-          //   text: `${error.response.msg}`,
-          //   timer: 3000,
-          //   // confirmButtonColor: '#ff7400',
-          // })
+          this.$swal.fire({
+            type: 'error',
+            text: `${error.response.data.msg}`,
+            timer: 3000,
+            // confirmButtonColor: '#ff7400',
+          })
 
         })
       } catch (error) {

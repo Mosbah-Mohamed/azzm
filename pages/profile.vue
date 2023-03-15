@@ -28,7 +28,7 @@
 
                 <div class="upload">
                   <label for="upload-image"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></label>
-                  <input type="file" id="upload-image" />
+                  <input type="file" id="upload-image" @change="onFileChange" accept="image/*" />
                 </div>
 
                 <h4>{{ name }}</h4>
@@ -85,43 +85,81 @@
 
 <script>
 
-import { mapState } from "vuex"
-
 export default {
+
   name: "profile_side_component",
 
   layout: "second-layout",
 
   created() {
 
-    if (this.loggedIn == false) {
-      this.$router.push({ name: 'index' })
-    }
   },
 
-  // middleware({ store, redirect }) {
-  //   // If the user is not authenticated
-
-  //   console.log(store.state.loggedIn)
-
-  //   if (store.state.loggedIn == false) {
-  //     return redirect('/login')
-  //   }
-  // },
 
   // middleware: ["auth"],
-  // middleware: ["auth-user"],
+  middleware: ["auth-user", "auth"],
 
 
   data() {
     return {
 
+      selectedFile: null,
+
       // data from api
 
       name: '',
-      avatar: ''
+      avatar: '',
 
     }
+  },
+
+
+  watch: {
+
+    // update personal info image
+
+    async selectedFile(newFile) {
+
+      const formData = new FormData();
+      formData.append('avatar', newFile);
+
+      try {
+        await this.$axios.$post('update/avatar', formData).then(response => {
+
+          this.avatar = response.data;
+
+          // console.log(response);
+          // console.log(response.data);
+
+
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            text: `${response.msg}`,
+            showConfirmButton: false,
+            timer: 3000
+          })
+
+
+        }).catch(error => {
+          console.log(error.response.msg)
+
+          this.$swal.fire({
+            type: 'error',
+            text: `${error.response.msg}`,
+            timer: 3000,
+          })
+
+        })
+      } catch (error) {
+        console.log('try catch =>', error);
+      }
+
+
+
+    },
+
+
   },
 
   mounted() {
@@ -155,12 +193,18 @@ export default {
       }
     },
 
+    // get files from input file
+
+    onFileChange(event) {
+      this.selectedFile = event.target.files[0];
+    },
+
+
   },
 
 
   computed: {
 
-    ...mapState['loggedIn'],
     childPageName() {
       return this.$route.path.split('/').pop()
     },

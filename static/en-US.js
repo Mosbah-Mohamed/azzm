@@ -39,6 +39,9 @@ export default {
     trainee: "trainee",
     trainer: "trainer",
     course: "course",
+
+    profile: "profile",
+    logout: "log out",
   },
 
   login: {
@@ -48,7 +51,26 @@ export default {
     google_acc: "Log in with your Google account",
     email: "email",
     password: "password",
+    address: "address",
     return: "Forgot your password ? loopback",
+
+    Password_Recovery: "Password Recovery",
+    email_to_receive: "Enter the email to receive the reference number",
+  },
+
+  signup: {
+    create_account: "create account",
+    already_have_account: "Already have an account?",
+    I_agree: "I agree",
+    term: "Terms and conditions and site policies",
+
+    Enter_reference_number: "Enter reference number",
+    refernce_email: "Enter the reference number that was sent to the e-mail",
+    I_did_not_get_it: "I did not get it ?",
+    Send_the_number: "send number",
+
+    confirm_pass: "confirm password",
+    get_in_pass: "get in password",
   },
 
   courses: {
@@ -57,6 +79,52 @@ export default {
     Scientific_diploma_system: "Scientific diploma system",
     browse_diploma: "Browse Diploma",
     browse_courses: "Browse courses",
+    hour: "hour",
+    price: "price",
+    Course_filtering: "Course filtering",
+    diploma_filtering: "Diploma filtering",
+    from: "from",
+    to: "to",
+    search: "search here",
+    sections: "sections",
+    show_course: "Course view",
+    show_diploma: "diplomas view",
+    ryal: "S.R",
+
+    start_in_diploma: "start in",
+    diploma_days: "diploma days",
+    diploma_hours: "diploma hour",
+    diploma_place: "diploma place",
+
+    start_in: "start in",
+    course_days: "course days",
+    course_hours: "course hours",
+    coach_name: "coach name",
+    course_place: "course place",
+    enter_course: "enter course",
+    Modify_evaluation: "Modify evaluation",
+    Save_evaluation: "Save evaluation",
+
+    current_password: "current password",
+    new_password: "new password",
+    save_updates: "save updates",
+
+    forget_old_pass: "Don't remember your old password?",
+    enter_email: "Enter E-mail",
+    day: "day",
+    google_map_link: "google map link",
+
+    hours: "hours",
+    Study_location: "Study location",
+    Study_pattern: "Study pattern",
+    diploma_name: " diploma name",
+    course_name: " course name",
+    study_duration: "study duration",
+    Full_course_test: "Full course test",
+
+    please_test:
+      "Please enter the pre-test to determine your level and start the course according to the percentage you obtained",
+    Test_now: "Test now to determine the level",
   },
 
   attendance: {
@@ -78,6 +146,7 @@ export default {
     diploma_content: "Diploma content",
     total_rating: "Total rating",
     add_rate: "Add evaluation",
+    post_assessment: "Post your assessment of the diploma",
   },
 
   pages: {
@@ -88,6 +157,25 @@ export default {
     all_articles: "Browse All Articles",
     experience: "year of experience",
     Diploma_attendance: "Diploma attendance",
+
+    Course_guide: "course guide",
+    diploma_guide: "diploma guide",
+    Course_contents: "course content",
+    diploma_contents: "diploma content",
+    About_coach: " about coach",
+    Course_evaluation: "Course evaluation",
+    diploma_evaluation: "diploma evaluation",
+    About_diploma: "About diploma ",
+
+    About_course: "About course",
+    General_objectives_of_diploma: "General objectives of diploma",
+
+    General_objectives_of_course: "General objectives of course",
+    Admission_registration_requirements: "Admission registration requirements",
+    courses_before_enrollment: "courses before enrollment",
+    diploma_before_enrollment: "diploma before enrollment",
+    sign_up_course: "sign up course",
+    sign_up_diploma: "sign up diploma",
   },
 
   buttons: {
@@ -120,6 +208,18 @@ export default {
     current_courses: "current courses",
   },
 
+  exam: {
+    Question_counter: "Question counter",
+    remain_time: "remaining time",
+    current_question: "current question",
+    question_num: "question number",
+
+    next: "next",
+    previous: "previous",
+    finish: " finish exam",
+    question: "question",
+  },
+
   message: {
     home: "Home en",
     contacts: "Contacts",
@@ -134,5 +234,6 @@ export default {
     englishLettersOnly: "{_field_} must contains english letters only",
     email: "The E-mail field must be a valid email",
     min: "mkmjok",
+    confirmed: "The password confirmation does not match",
   },
 };

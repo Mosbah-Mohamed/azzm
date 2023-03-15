@@ -3,8 +3,7 @@
 // like data in component
 
 export const state = () => ({
-  loggedIn: false,
-  user: {},
+  verify_token: "",
 });
 
 //  return data in state of store
@@ -20,19 +19,19 @@ export const getters = {
 // نقوم بتعيير البيانات داخل ال state
 
 export const mutations = {
-  SET_USER(state, user) {
-    state.user = user;
+  SET_token(state, user) {
+    state.verify_token = user;
   },
 
-  LOGIN(state, user) {
-    state.loggedIn = true;
-    state.user = user;
-  },
+  // LOGIN(state, user) {
+  //   state.loggedIn = true;
+  //   state.user = user;
+  // },
 
-  LOGOUT(state) {
-    state.loggedIn = false;
-    state.user = {};
-  },
+  // LOGOUT(state) {
+  //   state.loggedIn = false;
+  //   state.user = {};
+  // },
 };
 
 // like methods  it call  with :  this.$store.dispatch('mutation_method_name',updated value)
@@ -43,5 +42,9 @@ export const actions = {
   },
   updateLogout({ commit }) {
     commit("LOGOUT");
+  },
+
+  update_token({ commit }) {
+    commit("SET_token");
   },
 };

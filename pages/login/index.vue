@@ -6,7 +6,7 @@
           <div class="all_info" data-aos="fade-up">
 
 
-            <h3>{{ loggedIn }}</h3>
+            <!-- <h3>{{ loggedIn }}</h3> -->
 
             <div class="head">
               <h3 class="main_head">{{ $t('login.login_acc') }}</h3>
@@ -14,7 +14,12 @@
 
             <p>
               <span>{{ $t('login.no_account') }}</span>
-              <a href="#" aria-label="login" target="_blank" rel="noopener" class="login">{{ $t('login.create_acc') }}</a>
+
+              <nuxt-link :to="localePath({ path: `/signup` })">
+                <a href="#" aria-label="login" target="_blank" rel="noopener" class="login">{{ $t('login.create_acc')
+                }}</a>
+              </nuxt-link>
+
             </p>
 
             <button class="share_go">
@@ -33,7 +38,7 @@
                   </div>
                 </ValidationProvider>
 
-                <ValidationProvider rules="required|max:8|min:3" name="password" v-slot="{ errors }">
+                <ValidationProvider rules="required|min:3" name="password" v-slot="{ errors }">
                   <div class="form-group position-relative">
                     <input :type="[showPassword ? 'text' : 'password']" placeholder="******" required
                       v-model="form.password">
@@ -45,8 +50,10 @@
                 </ValidationProvider>
 
                 <div class="form-group box_check">
+
                   <a href="#" target="_blank" rel="noopener noreferrer">
-                    {{ $t('login.return') }}
+                    <nuxt-link :to="localePath('/resetPassword')">{{ $t('login.return') }}</nuxt-link>
+
                   </a>
                 </div>
 
@@ -221,14 +228,14 @@ export default {
     },
 
 
+    // login method
+
     async login() {
       try {
         await this.$auth.loginWith('local', { data: { email: this.form.email, password: this.form.password } })
 
         // console.log(response)
         console.log('$auth user' + this.$auth)
-        // localStorage.setItem('client', response.data.data.token)
-        // this.$auth.strategy.token.setToken('local', response.data.data.token)
         this.$router.push('/')
       } catch (error) {
         console.error(error)

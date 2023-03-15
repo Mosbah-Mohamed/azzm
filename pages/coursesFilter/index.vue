@@ -2,11 +2,14 @@
   <section class="course_filter courses_component">
 
     <div class="crumb">
-      <h3>الدورات</h3>
+      <h3>{{ $t('navbar.courses') }}</h3>
       <ul>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">الرئيسية</a></li>
+        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
+          $t('navbar.home') }}</nuxt-link></a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">الدورات</a></li>
+        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link
+              :to="localePath('/coursesFilter')">{{
+                $t('navbar.courses') }}</nuxt-link></a></li>
       </ul>
     </div>
 
@@ -18,65 +21,50 @@
             <div class="filter_box">
               <h3>
                 <font-awesome-icon :icon="['fas', 'sliders']" />
-                <span>فلترة الدورات</span>
+                <span>{{ $t('courses.Course_filtering') }}</span>
               </h3>
 
               <div class="all_check_boxes">
-                <h4>الأقسام</h4>
+                <h4>{{ $t('courses.sections') }}</h4>
 
                 <form>
-                  <div class="form-group fill_check">
-                    <input type="checkbox" id="html">
-                    <label for="html">دروات الموارد البشرية</label>
-                  </div>
-                  <div class="form-group fill_check">
-                    <input type="checkbox" id="css">
-                    <label for="css">تحليل الأعمال</label>
-                  </div>
-                  <div class="form-group fill_check">
-                    <input type="checkbox" id="javascript">
-                    <label for="javascript">المالية</label>
-                  </div>
-                  <div class="form-group fill_check">
-                    <input type="checkbox" id="js">
-                    <label for="js">الشهادات الإحترافية</label>
-                  </div>
-                  <div class="form-group fill_check">
-                    <input type="checkbox" id="jq">
-                    <label for="jq">تحليل الأعمال</label>
-                  </div>
-                  <div class="form-group fill_check">
-                    <input type="checkbox" id="vue">
-                    <label for="vue">المالية</label>
+                  <div class="form-group fill_check" v-for="(item, index) in categories" :key="'k' + index">
+                    <input type="checkbox" :id="'item-' + index" :value="item.id" v-model="selectedOptions"
+                      @change="getData()">
+                    <label :for="'item-' + index">{{ item.name }}</label>
                   </div>
 
                   <div class="form-group">
-                    <h5>السعر</h5>
+                    <h5>{{ $t('courses.price') }}</h5>
                   </div>
 
                   <div class="row range_two">
 
                     <div class="col-md-6 col-12">
                       <div class="form-group">
-                        <label for="vue3">من</label>
-                        <input type="text" placeholder="ريال" id="vue3">
+                        <label for="vue3">{{ $t('courses.from') }}</label>
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue3" v-model="value_2[0]">
                       </div>
                     </div>
                     <div class="col-md-6 col-12">
                       <div class="form-group">
-                        <label for="vue2">إلى</label>
-                        <input type="text" placeholder="ريال" id="vue2">
+                        <label for="vue2">{{ $t('courses.to') }}</label>
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue2" v-model="value_2[1]">
                       </div>
                     </div>
 
                   </div>
 
                   <div class="form-group slide_slide">
-                    <vue-range-slider :min="min" :max="max" v-model="value" direction="rtl"></vue-range-slider>
+                    <vue-slider ref="slider" v-model="value_2" :adsorb="true" :interval="10" :marks="true"
+                      @change="getData" :min="min" :max="max"></vue-slider>
+
+
                   </div>
+                  <!-- {{ value_2[0] }} -->
 
                   <div class="form-group">
-                    <button class="main--btn">عرض الدورة</button>
+                    <button type="button" class="main--btn" @click="getData">{{ $t('courses.show_course') }}</button>
                   </div>
 
                 </form>
@@ -93,15 +81,18 @@
 
               <div class="filter_methods">
                 <div class="select_old_new">
-                  <multiselect v-model="value" :options="options" :searchable="false" :close-on-select="true"
-                    :show-labels="false" placeholder="Pick a value"></multiselect>
+                  <multiselect v-model="order" :options="options" :searchable="false" :close-on-select="true"
+                    :show-labels="false" placeholder="order" @select="getData()"></multiselect>
+
+                  <!-- {{ order }} -->
                 </div>
 
                 <div class="form-group has-search">
-                  <div class="icon_sea">
+                  <div class="icon_sea" @click="getData()">
                     <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
                   </div>
-                  <input type="text" class="form-control" placeholder="Search">
+                  <!-- @keyup="getData()" -->
+                  <input type="text" class="form-control" :placeholder="$t('courses.search')" v-model="searchText">
                 </div>
 
               </div>
@@ -114,104 +105,65 @@
             </div>
 
             <div class="row mt-4 all_cards">
-              <div class="col-md-6 col-12">
+              <div class="col-md-6 col-12" v-for="(item, index) in items" :key="'p' + index">
                 <div class="card_course">
                   <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
+                    <img :data-src="item.logo" title="course" v-lazy-load alt="partner image" width="100%"
+                      height="100%" />
                   </div>
 
                   <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
+                    <h3>{{ item.title }}</h3>
 
                     <div class="appoint">
                       <div class="time">
                         <font-awesome-icon :icon="['fas', 'clock']" />
                         <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
+                          <span>{{ item.duration_houres }}</span>
+                          <span>{{ $t('courses.hour') }}</span>
                         </div>
                       </div>
                       <div class="calender">
                         <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
+                        <span>{{ item.duration_days }}</span>
                       </div>
                     </div>
 
-                    <div class="trainer_desc">
+                    <div class="trainer_desc" v-for="(teacher, index) in item.teachers" :key="'p' + index">
 
                       <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
+                        <img :data-src="teacher.image" title="partner" v-lazy-load alt="partner image" width="100%"
+                          height="100%" />
                       </div>
 
                       <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
+                        <h4>{{ teacher.name }}</h4>
+                        <span>{{ teacher.education }}</span>
                       </div>
 
                     </div>
 
                     <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
+                      <nuxt-link :to="localePath({ path: `/singleCourse/${item.id}` })">
+
+                        <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
+                          <span>{{ $t('pages.course_detail') }}</span>
+                          <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
+                        </a>
+                      </nuxt-link>
                     </div>
 
+
                   </div>
+
+                  <div class="flex-center m-5" v-if="!loading">
+                    <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
+                  </div>
+
 
                 </div>
               </div>
-              <!-- <div class="col-md-6 col-12">
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
 
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="time">
-                        <font-awesome-icon :icon="['fas', 'clock']" />
-                        <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
-                        </div>
-                      </div>
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="trainer_desc">
-
-                      <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
-                      </div>
-
-                      <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
-                      </div>
-
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div> -->
             </div>
 
           </div>
@@ -224,8 +176,9 @@
 </template>
 
 <script>
-import VueRangeSlider from 'vue-range-slider';
-import 'vue-range-slider/dist/vue-range-slider.css'
+
+// import VueSlider from 'vue-slider-component';
+// import 'vue-slider-component/theme/default.css';
 
 export default {
 
@@ -233,9 +186,10 @@ export default {
 
   layout: 'second-layout',
 
-  components: {
-    VueRangeSlider,
-  },
+
+  // components: {
+  //   VueSlider,
+  // },
 
 
   // define all properties
@@ -245,21 +199,34 @@ export default {
 
       min: 0,
       max: 100,
-      value: [20, 80],
 
       status: '',
 
-      values: null,
-      options: ['list', 'of', 'options'],
+      value_2: [0, 70],
 
+      // select order
+
+      options: ['desc', 'asc'],
+      order: '',
+
+
+      // loading
+
+      loading: false,
+
+      // data from api
 
       items: [],
 
-      from_price: '',
+      categories: [],
+
+      selectedOptions: [],
+
       category: '',
-      from_price:'',
-      to_price: '',
-      order:''
+      from_price: '',
+      to_price: this.value_2,
+      order: '',
+      searchText: ''
 
     }
   },
@@ -277,12 +244,18 @@ export default {
 
   mounted() {
 
+
+    // call methods
+
     this.getData();
+
+    this.getCategories();
 
     window.scrollTo(0, 0);
     this.$nextTick(() => {
       window.scrollTo(0, 0);
     });
+
   },
 
 
@@ -291,9 +264,49 @@ export default {
   methods: {
 
 
-    async getData() {
+    // get courses category data from api
+
+    async getCategories() {
       try {
-        return await this.$axios.get(`courses?type=0&order=asc`).then(response => {
+        return await this.$axios.get(`setting/categories`).then(response => {
+
+          this.loading = true;
+
+          console.log(response.data.data.category_course)
+
+          this.categories = response.data.data.category_course;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
+
+
+    // get filter courses data from api
+
+    async getData() {
+
+      console.log(this.selectedOptions);
+      console.log(this.$refs.slider.getValue());
+
+
+      try {
+
+        return await this.$axios.get('courses?type=0', {
+          params: {
+            category: [... this.selectedOptions],
+            order: this.order,
+            title: this.searchText,
+            from_price: this.value_2[0],
+            to_price: this.value_2[1]
+
+          }
+        }).then(response => {
+
+          this.loading = true;
 
           console.log(response.data.data)
 
@@ -306,6 +319,8 @@ export default {
         console.log("catch : " + error)
       }
     },
+
+    // methods to change box layout
 
     addClassToDiv() {
       const divElement = document.getElementById('my-div');
@@ -423,12 +438,12 @@ input[type="text"] {
 }
 
 button {
-  margin-top: 32px;
+  margin-top: 50px;
   width: 100%
 }
 
 .slide_slide {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .range-slider {
