@@ -28,12 +28,15 @@ export default function ({ $axios, redirect, store, app }) {
     const code = parseInt(error.response && error.response.status);
     // code === 400 || this refer when api failed
     // code === 403 when api not found
-    if (code === 400 || code === 404 || code === 401) {
-      redirect("/login");
-    }
+    // code === 500 when param in api is undefined
+    // code === 400 bad request
 
-    if(code === 403){
-      redirect('/')
+    if (code === 401) {
+      redirect("/login");
+    } else if (code === 404) {
+      redirect("/about-us");
+    } else if (code === 403 || code === 500) {
+      // redirect("/");
     }
   });
 }

@@ -26,6 +26,7 @@ export default {
     signup: "إنشاء حساب",
     login: "تسجيل الدخول",
     terms: "الشروط والاحكام",
+    payment: "الدفع",
   },
 
   footer: {
@@ -116,6 +117,7 @@ export default {
     please_test:
       "فضلاً قُم بالدخول للإختبار القبلي لتحديد مستواك والبدء للدروة وفقاً للنسبة التي حصلت عليها",
     Test_now: "اختبر الأن لتحديد المستوى",
+    put_coupon:"يمكنك وضع الكوبون هنا للحصول علي الخصم"
   },
 
   attendance: {
@@ -163,6 +165,8 @@ export default {
     diploma_before_enrollment: "الدبلومه قبل الإشتراك",
     sign_up_course: "اشترك في الدورة",
     sign_up_diploma: "اشترك في الدبلومه",
+    not_found: "الصفحة غير موجودة",
+    back_home:"الرجوع للرئيسية"
   },
 
   buttons: {
@@ -202,7 +206,25 @@ export default {
     next: "التالي",
     previous: "السابق",
     finish: "انهاء الاختبار",
-    question:"سؤال"
+    question: "سؤال",
+
+    Exam_result: "نتيجة الاختبار",
+    general_appreciation: "التقدير العام",
+    percentage: "النسبة المئوية",
+    total_number_of_questions: "اجمالي عدد الأسئلة",
+    number_of_correct_questions: "عدد الأسئلة الصحيحة",
+    number_of_wrong_questions: "عدد الأسئلة الخاطئة",
+    View_test_certificate: "عرض شهادة الاختبار",
+
+    sorry: "عفوا",
+    no_percentage: " لم تحصل علي النسبة المطلوبة يمكنك اعادة الاختبار",
+
+    Congratulations: "تهانياً لك",
+    passed: "لقد حصلت علي النجاح في الاختبار",
+
+    retest: "اعادة الاختبار",
+
+    go_to_course: "الانتقال للدوره",
   },
 
   message: {

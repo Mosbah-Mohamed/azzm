@@ -23,7 +23,8 @@
         <div class="col-lg-6 col-12">
           <div class="all_images">
             <div class="hero_image">
-              <img :data-src="image1" title="hero" v-lazy-load alt="hero image" width="100%" height="100%" />
+              <img :data-src="image1" title="hero" onerror="this.src='@/assets/images/trainer.png'" v-lazy-load
+                alt="hero image" width="100%" height="100%" />
             </div>
 
             <div class="image_back">

@@ -123,7 +123,7 @@ export default {
 
     async getData() {
       try {
-        return await this.$axios.get(`rates`).then(response => {
+        return await this.$axios.get(`user/rates`).then(response => {
 
           this.loading = true;
 

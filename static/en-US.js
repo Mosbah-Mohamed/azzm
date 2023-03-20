@@ -26,6 +26,7 @@ export default {
     signup: "sign up",
     login: "login",
     terms: "terms & conditions",
+    payment: "payment",
   },
 
   footer: {
@@ -125,6 +126,7 @@ export default {
     please_test:
       "Please enter the pre-test to determine your level and start the course according to the percentage you obtained",
     Test_now: "Test now to determine the level",
+    put_coupon: "You can put the coupon here to get the discount",
   },
 
   attendance: {
@@ -176,6 +178,8 @@ export default {
     diploma_before_enrollment: "diploma before enrollment",
     sign_up_course: "sign up course",
     sign_up_diploma: "sign up diploma",
+    not_found: "the page not found",
+    back_home: "Back to Home",
   },
 
   buttons: {
@@ -218,6 +222,25 @@ export default {
     previous: "previous",
     finish: " finish exam",
     question: "question",
+
+    Exam_result: "Exam result",
+    general_appreciation: "general appreciation",
+    percentage: "percentage",
+    total_number_of_questions: " total number of_questions",
+    number_of_correct_questions: " number of correct questions",
+    number_of_wrong_questions: " number of wrong questions",
+    View_test_certificate: "View test certificate ",
+
+    sorry: "sorry",
+    no_percentage:
+      "If you do not get the required percentage, you can retake the test",
+
+    Congratulations: "Congratulations",
+    passed: "you have passed the test",
+
+    retest: "retest",
+
+    go_to_course: "go to course",
   },
 
   message: {

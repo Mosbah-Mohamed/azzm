@@ -24,7 +24,8 @@
             <div class="side_menu_profile">
 
               <div class="image">
-                <img :data-src="avatar" title="partner" v-lazy-load alt="partner image" width="100%" height="100%" />
+                <img :data-src="avatar" title="partner" onerror="this.src='@/assets/images/trainer.png'" v-lazy-load
+                  alt="partner image" width="100%" height="100%" />
 
                 <div class="upload">
                   <label for="upload-image"><font-awesome-icon :icon="['fas', 'pen-to-square']" /></label>

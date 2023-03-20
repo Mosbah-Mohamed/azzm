@@ -49,53 +49,32 @@
 
                   <b-card no-body class="mb-1">
                     <!-- @click="showIcon = !showIcon" -->
-                    <b-card-header role="tab" class="card_head" v-for="(semester, index) in semesters" :key="'a' + index">
+                    <b-card-header role="tab" class="card_head" v-for="(level, index) in levels" :key="'a' + index">
                       <b-button block v-b-toggle="'collapse-' + index" variant="info">
-                        <span> {{ semester.name }}</span>
+                        <span> {{ level.name }}</span>
                         <span>
                           <font-awesome-icon :icon="['fas', 'chevron-down']" />
                         </span>
                       </b-button>
 
-                      <b-collapse :id="'collapse-' + index" class="accordion_content" accordion="my-accordion"
-                        role="tabpanel">
-
-                        <b-card-header class="card_head_inner" v-for="(subject, index) in semester.subjects"
-                          :key="'b' + index">
-
-                          <b-button block v-b-toggle="'collapse-' + index + 'inner'" class="inner-btn">
-                            <span>{{ subject.name }}</span>
-                            <span>
-                              <font-awesome-icon :icon="['fas', 'chevron-down']" />
-                            </span>
-                          </b-button>
-
-                          <b-collapse :id="'collapse-' + index + 'inner'" class="mt-2 inner">
-
-                            <div class="lessons" v-for="(lesson, index) in subject.lessons" :key="'c' + index">
-                              <div class="lesson">
-                                <span><font-awesome-icon :icon="['fas', 'book']" /></span>
-                                <span>{{ lesson.title }}</span>
-                              </div>
-                              <!-- <a :href="lesson.link" target="_blank" rel="noopener noreferrer"
-                                @click="lessonIdClicked(lesson)"> -->
-                              <span class="discover" v-if="is_subscribe" @click="lessonIdClicked(lesson)">تصفح</span>
-                              <!-- </a> -->
-                              <span class="lock" v-else>
-                                <font-awesome-icon :icon="['fas', 'lock']" />
-                              </span>
-                            </div>
-
-                          </b-collapse>
-
-                        </b-card-header>
-
+                      <b-collapse :id="'collapse-' + index" class="mt-2 inner" accordion="my-accordion">
+                        <div class="lessons" v-for="(lesson, index) in level.lessons" :key="'b' + index">
+                          <div class="lesson">
+                            <span><font-awesome-icon :icon="['fas', 'book']" /></span>
+                            <span>{{ lesson.title }}</span>
+                          </div>
+                          <!-- <a :href="lesson.link" target="_blank" rel="noopener noreferrer"> -->
+                          <span v-if="is_subscribe" class="discover" @click="lessonIdClicked(lesson)">تصفح</span>
+                          <!-- </a> -->
+                          <span v-else class="lock">
+                            <font-awesome-icon :icon="['fas', 'lock']" />
+                          </span>
+                        </div>
                       </b-collapse>
-
 
                     </b-card-header>
 
-                    <!-- visible -->
+
 
                   </b-card>
 
@@ -242,7 +221,6 @@
                 <button data-aos="fade-up" class="main--btn d-block w-100" v-if="is_subscribe">{{
                   $t('courses.Full_course_test') }}</button>
               </nuxt-link>
-
 
               <p data-aos="fade-up" class="hint" v-if="is_subscribe">{{ $t('attendance.active_option') }}</p>
 
@@ -437,14 +415,15 @@ export default {
 
 
       semesters: [],
+      levels: [],
       rates: [],
       teachers: [],
 
       // is subscribe
 
       is_subscribe: '',
-      exam_before_subscribe: '',
 
+      exam_before_subscribe: "",
       // add comments
 
       form: {
@@ -574,7 +553,7 @@ export default {
 
     async getData() {
       try {
-        return await this.$axios.get(`diplomas/${this.$route.params.id}`).then(response => {
+        return await this.$axios.get(`courses/${this.$route.params.id}`).then(response => {
 
           this.loading = true;
 
@@ -596,7 +575,8 @@ export default {
 
           this.comments = response.data.data.comments;
 
-          this.semesters = response.data.data.semesters;
+          // this.semesters = response.data.data.semesters;
+          this.levels = response.data.data.levels;
           this.rates = response.data.data.rates;
           this.teachers = response.data.data.teachers;
 
@@ -604,13 +584,10 @@ export default {
 
           this.exam_after = response.data.data.exam_after.id;
 
-          // this.exam_after_id = response.data.data.exam_after.id;
-
 
           this.is_subscribe = response.data.data.is_subscribe;
+
           this.exam_before_subscribe = response.data.data.exam_before_subscribe;
-
-
 
           console.log('response.data.data.exam_before.id' + response.data.data.exam_before.id)
 
@@ -774,7 +751,7 @@ export default {
 
           this.appreciations = response.data.data;
 
-          console.log(response.data.data)
+          // console.log(response.data.data)
 
         }).catch(error => {
           console.log(error)

@@ -92,14 +92,72 @@
 
             </div>
 
-            <div class="sidebar d-none">
+            <div class="sidebar side_bar_content d-none">
               <b-button v-b-toggle.sidebar-backdrop>
                 <font-awesome-icon :icon="['fas', 'list']" />
                 <!-- <font-awesome-icon icon="fa-solid fa-list" /> -->
               </b-button>
 
               <b-sidebar id="sidebar-backdrop" backdrop shadow>
-                <div class="px-3 py-2">
+                <div class="info">
+                  <ul>
+
+                    <li v-if="$auth.loggedIn">
+
+                      <div class="drop_btn">
+                        <img data-src="@/assets/images/learn.png" title="profile" v-lazy-load alt="nav profile"
+                          width="190" height="53" />
+                      </div>
+
+                    </li>
+
+                    <li v-if="$auth.loggedIn">
+                      <nuxt-link :to="localePath('/profile/guidetrainer')">{{ $t('hero.profile') }}</nuxt-link>
+                    </li>
+                    <li v-if="$auth.loggedIn">
+                      <p @click="handleLogOut"> {{ $t('hero.logout') }}</p>
+                    </li>
+
+                    <li><a href="#" aria-label="mainPage" target="_blank" rel="noopener"><nuxt-link
+                          :to="localePath('/')">{{
+                            $t('navbar.home') }}</nuxt-link></a></li>
+                    <li><a href="#" aria-label="about" target="_blank" rel="noopener"><nuxt-link
+                          :to="localePath('/about-us')">{{ $t('navbar.about') }}</nuxt-link></a></li>
+                    <li><a href="#" aria-label="diploma" target="_blank" rel="noopener">{{ $t('navbar.diploma') }}</a>
+                    </li>
+
+                    <!-- <li>
+                      <div @mouseover="onOver" @mouseleave="onLeave">
+                        <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown">
+
+                          <b-dropdown-item>دورات الموارد البشرية</b-dropdown-item>
+                          <b-dropdown-item>تحليل الاعمال</b-dropdown-item>
+                          <b-dropdown-item>دوراالدورات المالية</b-dropdown-item>
+                        </b-dropdown>
+                      </div>
+                    </li> -->
+
+                    <li><a href="#" aria-label="articles" target="_blank" rel="noopener"><nuxt-link
+                          :to="localePath('/articles')">{{ $t('navbar.articles') }}</nuxt-link></a></li>
+
+                    <li><a href="#" aria-label="contactUs" target="_blank" rel="noopener"><nuxt-link
+                          :to="localePath('/contact-us')">{{ $t('navbar.contact') }}</nuxt-link></a></li>
+                  </ul>
+
+                  <!-- btns-auth  -->
+                  <div class="flex-center">
+                    <button v-if="!$auth.loggedIn" aria-label="account" title="account" class="main--btn"><nuxt-link
+                        :to="localePath('/signup')">{{
+                          $t('navbar.signup') }}</nuxt-link></button>
+
+
+                    <button v-if="!$auth.loggedIn" aria-label="login" title="login" class="second--btn"><nuxt-link
+                        :to="localePath('/login')">{{
+                          $t('navbar.login') }}</nuxt-link></button>
+
+
+                  </div>
+
                 </div>
               </b-sidebar>
             </div>

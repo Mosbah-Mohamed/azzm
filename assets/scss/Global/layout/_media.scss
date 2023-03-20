@@ -36,6 +36,13 @@
 }
 
 @media (max-width: 991px) {
+  .payment .all_pay {
+    margin: 50px 0;
+    .row {
+      flex-direction: column-reverse;
+    }
+  }
+
   .about .image_botton {
     margin-bottom: 60px;
     img {
@@ -77,6 +84,14 @@
 }
 
 @media (max-width: 767px) {
+  .payment {
+    .all_pay {
+      .pay_method {
+        padding: 25px;
+      }
+    }
+  }
+
   .courses_component {
     margin: 50px 0;
   }
@@ -134,6 +149,16 @@
 }
 
 @media (max-width: 575px) {
+  .payment {
+    .all_pay {
+      .pay_method {
+        .options {
+          padding: 10px;
+        }
+      }
+    }
+  }
+
   .navbar_page .logo {
     width: auto;
     img {

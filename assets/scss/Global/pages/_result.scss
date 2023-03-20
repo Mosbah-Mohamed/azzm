@@ -16,6 +16,17 @@
 
       p {
         padding-bottom: 32px;
+
+        &.wrong {
+          badge {
+            color: #fff;
+            background: #cd012a;
+          }
+          svg {
+            color: #cd012a;
+          }
+        }
+
         span {
           font-family: "Bahij-Helvetica-Neue-75-Bold";
           font-size: 20px;
@@ -44,6 +55,12 @@
         }
 
         badge {
+          padding: 0 10px;
+          &.wrong {
+            color: #fff;
+            background: #cd012a;
+          }
+
           background: #f7c553;
           font-size: 20px;
           font-family: "Bahij-Helvetica-Neue-75-Bold";

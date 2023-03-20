@@ -273,6 +273,63 @@ textarea:focus {
   }
 }
 
+// sidebar
+.side_bar_content {
+  .b-sidebar-header {
+    margin: 20px 0;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    text-align: center;
+    border-radius: 50px;
+    display: block;
+    margin-bottom: 23px;
+  }
+
+  button {
+    width: auto !important;
+  }
+
+  button.close {
+    background: none;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 0;
+    border: none;
+    font-size: 40px;
+  }
+
+  .info {
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      li {
+        a {
+          color: #000;
+          font-size: 18px;
+          font-family: "Calibri-Regular";
+          transition: 0.5s;
+
+          &:hover {
+            margin-right: 10px;
+            color: $mainColor;
+          }
+        }
+        p {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
 // rotate animation
 
 @keyframes animName {

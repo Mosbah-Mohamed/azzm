@@ -1,0 +1,134 @@
+// ================== start home =============
+.payment {
+  .all_pay {
+    margin: 150px 0;
+    input {
+      background: #e7f0ff;
+      border-radius: 5px;
+      margin-bottom: 16px;
+      border: none;
+      outline: none;
+    }
+
+    .pay_method {
+      border: 1px solid #3f64b8;
+      border-radius: 5px;
+      padding: 45px;
+
+      label {
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        border: 1px solid #bdccec;
+        border-radius: 5px;
+        padding: 7px 22px;
+        input {
+          width: auto;
+        }
+
+        .input_content {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+
+          span {
+            color: #3f64b8;
+          }
+        }
+      }
+
+      .options {
+        border: 1px solid #bdccec;
+        border-radius: 0px 0px 5px 5px;
+        padding: 40px 25px;
+        margin: 20px 0;
+
+        form {
+          input {
+            background: #e7f0ff;
+            border-radius: 5px;
+            margin-bottom: 16px;
+            border: none;
+            outline: none;
+          }
+        }
+      }
+    }
+
+    .pay_info {
+      border: 1px solid #bdccec;
+      border-radius: 5px;
+      padding: 30px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      .price_box {
+        box-shadow: 0px 3px 16px #bdccec94;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+
+        span {
+          color: #7c93c4;
+        }
+
+        .num {
+          color: #f7c553;
+          font-size: 40px;
+          font-family: "Bahij-Helvetica-Neue-75-Bold";
+        }
+      }
+
+      .course_info {
+        display: flex;
+        flex-direction: column;
+
+        .course_hours {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 8px;
+          color: #3b568f;
+        }
+      }
+    }
+
+    .hint {
+      margin-bottom: 25px;
+
+      badge {
+        color: #013fcd;
+        font-size: 20px;
+        padding: 5px;
+        font-family: "Bahij-Helvetica-Neue-75-Bold";
+      }
+    }
+  }
+}
+
+.success-modal {
+  text-align: center;
+  background: #fff;
+  box-shadow: 0px 3px 16px #bdccec94;
+  border-radius: 5px;
+  padding: 30px;
+
+  img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  p {
+    color: #202020;
+    padding: 18px 0;
+  }
+
+  a {
+    color: #3f64b8;
+  }
+}
+
+// ================== end home ===============

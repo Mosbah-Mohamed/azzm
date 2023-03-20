@@ -151,22 +151,19 @@
                               <span>{{ lesson.title }}</span>
                             </div>
                             <!-- <a :href="lesson.link" target="_blank" rel="noopener noreferrer"> -->
-                              <span class="discover" @click="lessonIdClicked(lesson)">تصفح</span>
+                            <!-- <span class="discover" @click="lessonIdClicked(lesson)">تصفح</span> -->
                             <!-- </a> -->
-                            <!-- <span class="lock">
-                          <font-awesome-icon :icon="['fas', 'lock']" />
-                        </span> -->
+                            <span class="lock">
+                              <font-awesome-icon :icon="['fas', 'lock']" />
+                            </span>
                           </div>
                         </b-collapse>
 
                       </b-card-header>
-
-
-
                     </b-card>
 
-                    <p>{{ video_link }}</p>
-                    <p>{{ lesson_name }}</p>
+                    <!-- <p>{{ video_link }}</p>
+                    <p>{{ lesson_name }}</p> -->
 
                   </div>
 
@@ -277,6 +274,7 @@
                 <span class="ryal">{{ $t('courses.ryal') }}</span>
               </div>
 
+              <!--  @click="subscribe" -->
               <button class="main--btn" aria-label="subscribe" title="subscribe" @click="subscribe">{{
                 $t('pages.sign_up_course') }}</button>
 
@@ -430,6 +428,7 @@ export default {
       console.log(lesson)
 
     },
+
     // subscribe course
 
     async subscribe() {
@@ -438,6 +437,15 @@ export default {
         await this.$axios.$post('enrollment', { diploma_id: this.$route.params.id }).then(response => {
 
           this.$router.push(this.localePath({ path: `/payment/${this.$route.params.id}` }));
+
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            // title: 'message sent Successfully',
+            text: `${response.msg}`,
+            showConfirmButton: false,
+            timer: 3000
+          });
 
 
         }).catch(error => {

@@ -236,7 +236,7 @@ export default {
 
         // console.log(response)
         console.log('$auth user' + this.$auth)
-        this.$router.push('/')
+        this.$router.push(this.localePath({ path: "/" }));
       } catch (error) {
         console.error(error)
       }

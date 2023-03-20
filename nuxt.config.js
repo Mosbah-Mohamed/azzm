@@ -3,7 +3,7 @@
 export default {
   // for build
 
-  // target: "server",
+  target: "server",
 
   head() {
     const i18nHead = this.$nuxtI18nHead({
@@ -79,6 +79,12 @@ export default {
         {
           rel: "stylesheet",
           href: "",
+        },
+        {
+          hid: "icon",
+          rel: "icon",
+          type: "image/x-icon",
+          href: "Favicon.png",
         },
         ...i18nHead.link,
       ],
@@ -288,7 +294,7 @@ export default {
   },
 
   router: {
-    // base: "/Dzit/", for build path
+    base: "/azzm/", //for build path
     // middleware: "log",
     // middleware: ["auth"],
   },

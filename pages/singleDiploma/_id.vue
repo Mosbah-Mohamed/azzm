@@ -5,10 +5,10 @@
       <h3> {{ $t('pages.diploma_before_enrollment') }} </h3>
       <ul>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
-          $t('navbar.home') }}</nuxt-link></a></li>
+                      $t('navbar.home') }}</nuxt-link></a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer"> {{
-          $t('pages.diploma_before_enrollment') }} </a></li>
+                    $t('pages.diploma_before_enrollment') }} </a></li>
         <!-- <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li> -->
       </ul>
     </div>
@@ -128,12 +128,12 @@
                                   <span><font-awesome-icon :icon="['fas', 'book']" /></span>
                                   <span>{{ lesson.title }}</span>
                                 </div>
-                                <a :href="lesson.link" target="_blank" rel="noopener noreferrer">
+                                <!-- <a :href="lesson.link" target="_blank" rel="noopener noreferrer">
                                   <span class="discover">تصفح</span>
-                                </a>
-                                <!-- <span class="lock">
-          <font-awesome-icon :icon="['fas', 'lock']" />
-        </span> -->
+                                </a> -->
+                                <span class="lock">
+                                  <font-awesome-icon :icon="['fas', 'lock']" />
+                                </span>
                               </div>
                             </b-collapse>
 
@@ -258,8 +258,9 @@
                 <span class="ryal">{{ $t('courses.ryal') }}</span>
               </div>
 
+              <!-- @click="subscribe" -->
               <button class="main--btn" aria-label="subscribe" title="subscribe" @click="subscribe"> {{
-                $t('pages.sign_up_diploma') }}
+                              $t('pages.sign_up_diploma') }}
               </button>
 
               <ul>
@@ -304,7 +305,7 @@
                     <span>{{ $t('courses.diploma_place') }}</span>
                   </div>
                   <a :href="place" aria-label="Twitter" target="_blank" rel="noopener" class="result">{{
-                    $t('courses.google_map_link') }}</a>
+                                      $t('courses.google_map_link') }}</a>
                 </li>
               </ul>
 
@@ -404,6 +405,15 @@ export default {
 
           this.$router.push(this.localePath({ path: `/payment/${this.$route.params.id}` }));
 
+
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            // title: 'message sent Successfully',
+            text: `${response.msg}`,
+            showConfirmButton: false,
+            timer: 3000
+          });
 
         }).catch(error => {
           console.log(error.response.msg)
