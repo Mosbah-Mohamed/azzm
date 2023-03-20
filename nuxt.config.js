@@ -26,6 +26,7 @@ export default {
       tittle: "Azzm Star",
 
       meta: [
+        { charset: "utf-8" },
         {
           hid: "description",
           name: "description",
@@ -290,7 +291,7 @@ export default {
 
     // for build folder path in cpanel
 
-    publicPath: "http://trainees.azq1.com/azm",
+    publicPath: "https://trainees.azq1.com/azm",
   },
 
   router: {
