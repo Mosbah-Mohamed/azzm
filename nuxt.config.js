@@ -228,7 +228,7 @@ export default {
   },
 
   axios: {
-    baseURL: "https://trainees.azq1.com/azmstar/api/",
+    baseURL: "https://trainees.azq1.com/azm/Dashboard/api/",
     retry: { retries: 3 },
     headers: {
       common: {
@@ -290,16 +290,17 @@ export default {
 
     // for build folder path in cpanel
 
-    // publicPath: "https://a-azzam.azq1.com/Dzit",
+    publicPath: "http://trainees.azq1.com/azm",
   },
 
   router: {
-    base: "/azzm/", //for build path
+    base: "/azm/", //for build path
     // middleware: "log",
     // middleware: ["auth"],
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || "https://trainees.azq1.com/azmstar/api/",
+    baseUrl:
+      process.env.BASE_URL || "https://trainees.azq1.com/azm/Dashboard/api/",
   },
 };
