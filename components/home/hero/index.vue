@@ -23,7 +23,7 @@
         <div class="col-lg-6 col-12">
           <div class="all_images">
             <div class="hero_image">
-              <img :data-src="image1" title="hero" onerror="this.src='@/assets/images/trainer.png'" v-lazy-load
+              <img :data-src="image" title="hero" onerror="this.src='@/assets/images/trainer.png'" v-lazy-load
                 alt="hero image" width="100%" height="100%" />
             </div>
 
@@ -99,12 +99,12 @@ export default {
 
       loading: false,
 
-      // data from api
+      // data from api 
 
       name: '',
       title1: '',
       description: '',
-      image1: '',
+      image: '',
       trainersCount: '',
       traineesCount: '',
       courseCount: '',
@@ -130,7 +130,7 @@ export default {
           this.name = response.data.data.name;
           this.title1 = response.data.data.title1;
           this.description = response.data.data.description;
-          this.image1 = response.data.data.image1;
+          this.image = response.data.data.image;
           this.trainersCount = response.data.data.trainersCount;
           this.traineesCount = response.data.data.traineesCount;
           this.courseCount = response.data.data.courseCount;

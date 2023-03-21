@@ -17,20 +17,27 @@
             <ul>
               <li><a href="#" aria-label="mainPage" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
                 $t('navbar.home') }}</nuxt-link></a></li>
+
               <li><a href="#" aria-label="about" target="_blank" rel="noopener"><nuxt-link
                     :to="localePath('/about-us')">{{ $t('navbar.about') }}</nuxt-link></a></li>
-              <li><a href="#" aria-label="diploma" target="_blank" rel="noopener">{{ $t('navbar.diploma') }}</a></li>
 
-              <li>
+              <li><a href="#" aria-label="diploma" target="_blank" rel="noopener"><nuxt-link
+                    :to="localePath('/diplomaFilter')">{{ $t('navbar.diploma') }}</nuxt-link></a></li>
+
+              <li><a href="#" aria-label="course" target="_blank" rel="noopener"><nuxt-link
+                    :to="localePath('/coursesFilter')">{{ $t('navbar.courses') }}</nuxt-link></a></li>
+
+              <!-- <li>
                 <div @mouseover="onOver" @mouseleave="onLeave">
-                  <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown">
+                  <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown"
+                    v-for="(item, index) in categories" :key="'k' + index">
 
-                    <b-dropdown-item>دورات الموارد البشرية</b-dropdown-item>
-                    <b-dropdown-item>تحليل الاعمال</b-dropdown-item>
-                    <b-dropdown-item>دوراالدورات المالية</b-dropdown-item>
+                    <nuxt-link :to="{ path: '/coursesFilter', query: { id: `${item.id}` } }">
+                      <b-drop-item>{{ item.name }}</b-drop-item>
+                    </nuxt-link>
                   </b-dropdown>
                 </div>
-              </li>
+              </li> -->
 
               <li><a href="#" aria-label="articles" target="_blank" rel="noopener"><nuxt-link
                     :to="localePath('/articles')">{{ $t('navbar.articles') }}</nuxt-link></a></li>
@@ -123,14 +130,17 @@
                             $t('navbar.home') }}</nuxt-link></a></li>
                     <li><a href="#" aria-label="about" target="_blank" rel="noopener"><nuxt-link
                           :to="localePath('/about-us')">{{ $t('navbar.about') }}</nuxt-link></a></li>
-                    <li><a href="#" aria-label="diploma" target="_blank" rel="noopener">{{ $t('navbar.diploma') }}</a>
-                    </li>
+                    <li><a href="#" aria-label="diploma" target="_blank" rel="noopener"><nuxt-link
+                          :to="localePath('/diplomaFilter')">{{ $t('navbar.diploma') }}</nuxt-link></a></li>
 
+                    <li><a href="#" aria-label="course" target="_blank" rel="noopener"><nuxt-link
+                          :to="localePath('/coursesFilter')">{{ $t('navbar.courses') }}</nuxt-link></a></li>
                     <!-- <li>
                       <div @mouseover="onOver" @mouseleave="onLeave">
-                        <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown">
+                        <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown"
+                          v-for="(item, index) in categories" :key="'k' + index">
 
-                          <b-dropdown-item>دورات الموارد البشرية</b-dropdown-item>
+                          <b-dropdown-item>{{ item.name }}</b-dropdown-item>
                           <b-dropdown-item>تحليل الاعمال</b-dropdown-item>
                           <b-dropdown-item>دوراالدورات المالية</b-dropdown-item>
                         </b-dropdown>
@@ -180,6 +190,7 @@ export default {
   data() {
     return {
       logoImage: '',
+      categories: [],
     }
   },
 
@@ -189,11 +200,32 @@ export default {
 
   mounted() {
     this.getData();
+    this.getCategories();
 
   },
 
 
   methods: {
+
+    // get courses category data from api
+
+    async getCategories() {
+      try {
+        return await this.$axios.get(`setting/categories`).then(response => {
+
+          this.loading = true;
+
+          console.log(response.data.data.category_course)
+
+          this.categories = response.data.data.category_course;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
 
     // get navbar data
 

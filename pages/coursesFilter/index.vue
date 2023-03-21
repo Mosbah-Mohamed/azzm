@@ -28,8 +28,19 @@
                 <h4>{{ $t('courses.sections') }}</h4>
 
                 <form>
+
+
+                  <!-- <div class="form-group fill_check">
+                    <input type="checkbox" name="" id="item" :checked="$route.query.id == 13">
+                    <label for="item">course name</label>
+                  </div> -->
+
+                  <!-- <div>{{ $route.query.id }}</div> -->
                   <div class="form-group fill_check" v-for="(item, index) in categories" :key="'k' + index">
+                    <!-- {{ item.id }}
+                    {{ item.id == $route.query.id }} -->
                     <input type="checkbox" :id="'item-' + index" :value="item.id" v-model="selectedOptions"
+                      :class="{ 'active': item.id == $route.query.id }" :checked="item.id == $route.query.id"
                       @change="getData()">
                     <label :for="'item-' + index">{{ item.name }}</label>
                   </div>
@@ -238,6 +249,11 @@ export default {
 
 
   computed: {
+
+    isChecked() {
+      return this.selectedOptions = this.$route.query.id;
+    }
+
   },
 
   //  when component load

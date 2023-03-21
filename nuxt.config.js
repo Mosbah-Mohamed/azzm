@@ -252,7 +252,7 @@ export default {
           logout: {
             url: "logout",
             method: "post",
-            propertyName: "token",
+            // propertyName: "token",
           },
           // register: {
           //   url: "register",

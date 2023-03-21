@@ -9,11 +9,11 @@ export default function ({ $axios, redirect, store, app }) {
 
     // ? add token to each request
 
-    console.log(store.state.user.token);
+    // console.log(store.state.user.token);
 
-    if (store.state.user.token) {
-      config.headers.common.Authorization = `Bearer ${store.state.user.token}`;
-    }
+    // if (store.state.user.token) {
+    //   config.headers.common.Authorization = `Bearer ${store.state.user.token}`;
+    // }
 
     // ? add basic auth to protect apis
 
