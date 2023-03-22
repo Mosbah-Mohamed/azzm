@@ -5,10 +5,10 @@
       <h3> {{ $t('pages.diploma_before_enrollment') }} </h3>
       <ul>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
-                      $t('navbar.home') }}</nuxt-link></a></li>
+          $t('navbar.home') }}</nuxt-link></a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer"> {{
-                    $t('pages.diploma_before_enrollment') }} </a></li>
+          $t('pages.diploma_before_enrollment') }} </a></li>
         <!-- <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li> -->
       </ul>
     </div>
@@ -260,7 +260,7 @@
 
               <!-- @click="subscribe" -->
               <button class="main--btn" aria-label="subscribe" title="subscribe" @click="subscribe"> {{
-                              $t('pages.sign_up_diploma') }}
+                $t('pages.sign_up_diploma') }}
               </button>
 
               <ul>
@@ -305,7 +305,7 @@
                     <span>{{ $t('courses.diploma_place') }}</span>
                   </div>
                   <a :href="place" aria-label="Twitter" target="_blank" rel="noopener" class="result">{{
-                                      $t('courses.google_map_link') }}</a>
+                    $t('courses.google_map_link') }}</a>
                 </li>
               </ul>
 
@@ -403,7 +403,9 @@ export default {
       try {
         await this.$axios.$post('enrollment', { diploma_id: this.$route.params.id }).then(response => {
 
-          this.$router.push(this.localePath({ path: `/payment/${this.$route.params.id}` }));
+          console.log(response)
+
+          this.$router.push(this.localePath({ path: `/payment/${response.data.id}` }));
 
 
           this.$swal.fire({

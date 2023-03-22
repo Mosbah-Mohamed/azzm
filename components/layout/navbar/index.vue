@@ -52,7 +52,10 @@
 
           <div class="nav_auth flex-center">
             <div class="icon_search">
-              <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
+              <nuxt-link :to="localePath('/coursesFilter')">
+                <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
+              </nuxt-link>
+
             </div>
 
             <div class="language">

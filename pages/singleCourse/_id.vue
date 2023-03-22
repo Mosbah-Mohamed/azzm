@@ -269,14 +269,15 @@
 
               </div>
 
-              <div class="price">
+              <div class="price" v-if="is_subscribe == false">
                 <span class="num">{{ price }}</span>
                 <span class="ryal">{{ $t('courses.ryal') }}</span>
               </div>
 
               <!--  @click="subscribe" -->
-              <button class="main--btn" aria-label="subscribe" title="subscribe" @click="subscribe">{{
-                $t('pages.sign_up_course') }}</button>
+              <button v-if="is_subscribe == false" class="main--btn" aria-label="subscribe" title="subscribe"
+                @click="subscribe">{{
+                  $t('pages.sign_up_course') }}</button>
 
               <ul>
                 <li>
@@ -383,7 +384,11 @@ export default {
       // lessons name and link
 
       video_link: '',
-      lesson_name: ''
+      lesson_name: '',
+
+      // is subscribe
+
+      is_subscribe: '',
 
 
     }
@@ -436,7 +441,9 @@ export default {
       try {
         await this.$axios.$post('enrollment', { diploma_id: this.$route.params.id }).then(response => {
 
-          this.$router.push(this.localePath({ path: `/payment/${this.$route.params.id}` }));
+          this.$router.push(this.localePath({ path: `/payment/${response.data.id}` }));
+
+          // console.log(response.data.id)
 
           this.$swal.fire({
             position: 'center',
@@ -449,11 +456,11 @@ export default {
 
 
         }).catch(error => {
-          console.log(error.response.msg)
+          console.log(error.response.data.msg)
 
           this.$swal.fire({
             type: 'error',
-            text: `${error.response.msg}`,
+            text: `${error.response.data.msg}`,
             timer: 3000,
             // confirmButtonColor: '#ff7400',
           })
@@ -483,6 +490,7 @@ export default {
           this.start_at = response.data.data.start_at;
           this.place = response.data.data.place;
           this.price = response.data.data.price;
+          this.is_subscribe = response.data.data.is_subscribe;
           this.site_rate = response.data.data.site_rate;
 
 
@@ -497,7 +505,7 @@ export default {
 
           this.teachers = response.data.data.teachers;
 
-          // console.log('site_rate' + response.data.data.site_rate)
+          console.log('subscribe' + response.data.data.is_subscribe)
 
           // console.log(response.data.data)
 

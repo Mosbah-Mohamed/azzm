@@ -839,6 +839,9 @@ html[lang=en-US] body .has-search .icon_sea {
   background-color: #013fcd !important;
   color: #0c0c0c;
 }
+.navbar_page .nav_auth .icon_search a {
+  color: #000;
+}
 .navbar_page .nav_auth .language {
   -webkit-margin-start: 20px;
           margin-inline-start: 20px;

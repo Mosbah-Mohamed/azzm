@@ -194,7 +194,11 @@
 
             <p>{{ $t('courses.put_coupon') }}</p>
 
-            <nuxt-link :to="localePath({ path: `/DiplomaAttendance/${$route.params.id}` })">
+
+            <nuxt-link v-if="type == 1" :to="localePath({ path: `/DiplomaAttendance/${diploma_or_course_id}` })">
+              الدخول للدبلومه
+            </nuxt-link>
+            <nuxt-link v-else :to="localePath({ path: `/courseattendance/${diploma_or_course_id}` })">
               الدخول للدورة
             </nuxt-link>
 
@@ -238,7 +242,11 @@ export default {
       title: '',
       duration_houres: '',
       duration_days: '',
-      price: ''
+      price: '',
+
+
+      type: '',
+      diploma_or_course_id: ''
 
 
     }
@@ -282,6 +290,13 @@ export default {
 
       try {
         await this.$axios.$post('payment', { enrollment_id: `${this.$route.params.id}`, cobone_code: this.cobone_code, marketer_code: this.marketer_code }).then(response => {
+
+
+          this.diploma_or_course_id = response.data.diploma_or_course_id;
+          this.type = response.data.type;
+
+
+          // this.$router.push(this.localePath({ path: `/DiplomaAttendance/${response.data.id}` }));
 
           this.cobone_code = '';
 
