@@ -58,12 +58,10 @@
 
               <form>
 
-                <p v-if="user_answers !== null">{{ user_answers[0] }}</p>
-
                 <div v-if="exam_type == 'MCQ'" class="form-group fill_check" v-for="(answer, index) in answers"
                   :key="'m' + index">
                   <input type="radio" :id="answer.id" :name="'answer' + question_id" :value="answer.id"
-                    v-model="answer_id" :checked="user_answers !== null">
+                    v-model="answer_id">
                   <label :for="answer.id">
 
                     {{ answer.answer }}
@@ -73,15 +71,16 @@
 
 
 
-                <div v-else class="form-group fill_check" v-for="(answer, index) in answers" :key="'o' + index">
+
+                <div class="form-group fill_check" v-for="(answer, index) in answers" :key="'o' + index">
                   <input type="radio" :id="answer.id" :name="'answertruefalse' + question_id" :value="answer.id"
-                    v-model="answer_id"
-                    :checked="user_answers !== null && answer.id == user_answers[0].true_false_answer">
+                    v-model="answer_id">
                   <!--  -->
                   <label :for="answer.id">
                     {{ answer.answer }}
                   </label>
                 </div>
+
 
               </form>
 
@@ -202,6 +201,8 @@ export default {
     timeLeft: function (val) {
       const timeZero = moment("1900-01-01 00:00:00");
       this.timeLeftString = timeZero.add(val, 'seconds').format("HH:mm:ss")
+      // this.timeLeftString = moment.duration(timeZero.add(val, 'minutes').format("HH:mm:ss")).asMinutes()
+      console.log(this.timeLeftString)
     },
   },
 
@@ -326,6 +327,7 @@ export default {
             exam_id: `${this.$route.params.id}`,
             question_id: `${this.question_id}`,
             answer_id: `${this.answer_id}`
+
           }
         ).then(response => {
 

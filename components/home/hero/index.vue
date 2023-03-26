@@ -4,12 +4,18 @@
       <div class="row align-items-center">
         <div class="col-lg-6 col-12">
 
-          <!-- <vue-countup :delay="delay" :endVal="endVal" :options="options" /> -->
+          <!-- <div v-for="checkbox in checkboxes" :key="checkbox.id">
+            <label>
+              <input type="checkbox" :id="checkbox.id" :value="checkbox.id" v-model="checkbox.value"
+                :checked="checkbox.value == checkbox.user_answer" @input="checkboxVal = $event.target.value">
+              {{ checkbox.label }}
+            </label>
+          </div> -->
 
           <div class="hero_content">
             <span class="name">{{ name }}</span>
             <h1 class="main_head">{{ title1 }}</h1>
-            <p>{{ description }}</p>
+            <p v-html="description"></p>
 
             <nuxt-link :to="localePath('/about-us')">
               <button aria-label="join" title="join" class="main--btn">
@@ -99,7 +105,7 @@ export default {
 
       loading: false,
 
-      // data from api 
+      // data from api
 
       name: '',
       title1: '',
@@ -108,6 +114,16 @@ export default {
       trainersCount: '',
       traineesCount: '',
       courseCount: '',
+
+      // test
+
+      // checkboxes: [
+      //   { id: 1, label: 'Option 1', user_answer: 1, value: 1 },
+      //   { id: 2, label: 'Option 2', user_answer: 0, value: 0 },
+      //   { id: 3, label: 'Option 3', user_answer: 1, value: 1 }
+      // ],
+
+      // checkboxVal: ''
 
     }
   },
@@ -118,7 +134,6 @@ export default {
     this.getData()
   },
 
-
   methods: {
 
     // get description data in hero section
@@ -128,8 +143,8 @@ export default {
         return await this.$axios.get(`setting/description`).then(response => {
           this.loading = true;
           this.name = response.data.data.name;
-          this.title1 = response.data.data.title1;
-          this.description = response.data.data.description;
+          this.title1 = response.data.data.title;
+          this.description = response.data.data.short_description;
           this.image = response.data.data.image;
           this.trainersCount = response.data.data.trainersCount;
           this.traineesCount = response.data.data.traineesCount;
@@ -142,6 +157,7 @@ export default {
         console.log("catch : " + error)
       }
     },
+
 
   }
 }

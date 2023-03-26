@@ -253,14 +253,15 @@
 
               </div>
 
-              <div class="price">
+              <div class="price" v-if="is_subscribe == false">
                 <span class="num">{{ price }}</span>
                 <span class="ryal">{{ $t('courses.ryal') }}</span>
               </div>
 
               <!-- @click="subscribe" -->
-              <button class="main--btn" aria-label="subscribe" title="subscribe" @click="subscribe"> {{
-                $t('pages.sign_up_diploma') }}
+              <button v-if="is_subscribe == false" class="main--btn" aria-label="subscribe" title="subscribe"
+                @click="subscribe"> {{
+                  $t('pages.sign_up_diploma') }}
               </button>
 
               <ul>
@@ -362,6 +363,10 @@ export default {
       rates: [],
       teachers: [],
 
+      // is subscribe
+
+      is_subscribe: '',
+
 
     }
   },
@@ -418,11 +423,11 @@ export default {
           });
 
         }).catch(error => {
-          console.log(error.response.msg)
+          console.log(error.response.data.msg)
 
           this.$swal.fire({
             type: 'error',
-            text: `${error.response.msg}`,
+            text: `${error.response.data.msg}`,
             timer: 3000,
             // confirmButtonColor: '#ff7400',
           })
@@ -457,6 +462,9 @@ export default {
           this.public_goals = response.data.data.public_goals;
           this.terms = response.data.data.terms;
           this.area = response.data.data.area;
+
+          this.is_subscribe = response.data.data.is_subscribe;
+
           this.site_rate = response.data.data.site_rate;
 
           this.semesters = response.data.data.semesters;

@@ -155,14 +155,16 @@
 
                   </div>
 
-                  <div class="flex-center m-5" v-if="!loading">
-                    <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
-                  </div>
+
 
 
                 </div>
               </div>
 
+            </div>
+
+            <div class="flex-center m-5" v-if="!loading">
+              <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
             </div>
 
           </div>

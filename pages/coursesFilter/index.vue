@@ -29,19 +29,12 @@
 
                 <form>
 
-
-                  <!-- <div class="form-group fill_check">
-                    <input type="checkbox" name="" id="item" :checked="$route.query.id == 13">
-                    <label for="item">course name</label>
-                  </div> -->
-
-                  <!-- <div>{{ $route.query.id }}</div> -->
                   <div class="form-group fill_check" v-for="(item, index) in categories" :key="'k' + index">
-                    <!-- {{ item.id }}
-                    {{ item.id == $route.query.id }} -->
-                    <input type="checkbox" :id="'item-' + index" :value="item.id" v-model="selectedOptions"
-                      :class="{ 'active': item.id == $route.query.id }" :checked="item.id == $route.query.id"
-                      @change="getData()">
+
+                    <input type="checkbox" :id="'item-' + index" :value="item.id"
+                      @input="checkboxVal.push($event.target.value), checkboxValWithoutId.push($event.target.value)"
+                      :checked="item.id == $route.query.id" @change="getData()">
+
                     <label :for="'item-' + index">{{ item.name }}</label>
                   </div>
 
@@ -167,12 +160,14 @@
 
                   </div>
 
-                  <div class="flex-center m-5" v-if="!loading">
-                    <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
-                  </div>
+
 
 
                 </div>
+              </div>
+
+              <div class="flex-center m-5" v-if="!loading">
+                <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
               </div>
 
             </div>
@@ -237,7 +232,10 @@ export default {
       from_price: '',
       to_price: this.value_2,
       order: '',
-      searchText: ''
+      searchText: '',
+
+      checkboxVal: [this.$route.query.id],
+      checkboxValWithoutId: []
 
     }
   },
@@ -249,11 +247,6 @@ export default {
 
 
   computed: {
-
-    isChecked() {
-      return this.selectedOptions = this.$route.query.id;
-    }
-
   },
 
   //  when component load
@@ -305,15 +298,15 @@ export default {
 
     async getData() {
 
-      console.log(this.selectedOptions);
-      console.log(this.$refs.slider.getValue());
+      // console.log(this.selectedOptions);
+      // console.log(this.$refs.slider.getValue());
 
 
       try {
 
         return await this.$axios.get('courses?type=0', {
           params: {
-            category: [... this.selectedOptions],
+            category: this.$route.query.id ? [...this.checkboxVal] : [...this.checkboxValWithoutId],
             order: this.order,
             title: this.searchText,
             from_price: this.value_2[0],

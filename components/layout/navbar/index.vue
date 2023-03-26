@@ -24,20 +24,22 @@
               <li><a href="#" aria-label="diploma" target="_blank" rel="noopener"><nuxt-link
                     :to="localePath('/diplomaFilter')">{{ $t('navbar.diploma') }}</nuxt-link></a></li>
 
-              <li><a href="#" aria-label="course" target="_blank" rel="noopener"><nuxt-link
-                    :to="localePath('/coursesFilter')">{{ $t('navbar.courses') }}</nuxt-link></a></li>
+              <!-- <li><a href="#" aria-label="course" target="_blank" rel="noopener"><nuxt-link
+                    :to="localePath('/coursesFilter')">{{ $t('navbar.courses') }}</nuxt-link></a></li> -->
 
-              <!-- <li>
+              <li>
                 <div @mouseover="onOver" @mouseleave="onLeave">
-                  <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown"
-                    v-for="(item, index) in categories" :key="'k' + index">
+                  <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown">
 
-                    <nuxt-link :to="{ path: '/coursesFilter', query: { id: `${item.id}` } }">
-                      <b-drop-item>{{ item.name }}</b-drop-item>
-                    </nuxt-link>
+                    <b-drop-item class="d-block text-end p-1" v-for="(item, index) in categories" :key="'k' + index">
+                      <nuxt-link :to="{ path: '/coursesFilter', query: { id: `${item.id}` } }">
+                        {{ item.name }}
+                      </nuxt-link>
+                    </b-drop-item>
+
                   </b-dropdown>
                 </div>
-              </li> -->
+              </li>
 
               <li><a href="#" aria-label="articles" target="_blank" rel="noopener"><nuxt-link
                     :to="localePath('/articles')">{{ $t('navbar.articles') }}</nuxt-link></a></li>
@@ -280,10 +282,4 @@ export default {
 .dropdown-menu {
   transition: 0.5s;
 }
-
-// .btn.dropdown-toggle.btn-secondary:hover ul.dropdown-menu {
-//   visibility: visible;
-//   display: block;
-//   opacity: 1;
-// }
 </style>
