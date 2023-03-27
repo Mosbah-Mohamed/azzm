@@ -180,6 +180,9 @@ export default {
     sign_up_diploma: "sign up diploma",
     not_found: "the page not found",
     back_home: "Back to Home",
+
+    Enter_course: "Enter Course",
+    Enter_diploma: "Enter Diploma",
   },
 
   buttons: {

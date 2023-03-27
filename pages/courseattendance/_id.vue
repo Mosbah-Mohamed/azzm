@@ -261,7 +261,7 @@
 
             <div class="bar_prog" data-aos="fade-up" v-if="is_subscribe">
               <h5 class="main_head">{{ $t('attendance.progress_level') }}</h5>
-              <b-progress value="40" max="100" show-progress animated></b-progress>
+              <b-progress :value="progress" max="100" show-progress animated></b-progress>
             </div>
 
             <div class="comments" data-aos="fade-up" v-if="is_subscribe">
@@ -418,6 +418,8 @@ export default {
       levels: [],
       rates: [],
       teachers: [],
+
+      progress: 0,
 
       // is subscribe
 
@@ -586,6 +588,8 @@ export default {
 
 
           this.is_subscribe = response.data.data.is_subscribe;
+
+          this.progress = response.data.data.progress;
 
           this.exam_before_subscribe = response.data.data.exam_before_subscribe;
 

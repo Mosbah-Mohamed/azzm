@@ -279,6 +279,14 @@
                 @click="subscribe">{{
                   $t('pages.sign_up_course') }}</button>
 
+              <nuxt-link :to="localePath({ path: `/courseattendance/${$route.params.id}` })">
+
+                <button v-if="is_subscribe == true" class="main--btn mt-4 mb-4" aria-label="course" title="go course">
+                  {{ $t('pages.Enter_course') }}
+                </button>
+
+              </nuxt-link>
+
               <ul>
                 <li>
                   <div class="detail">

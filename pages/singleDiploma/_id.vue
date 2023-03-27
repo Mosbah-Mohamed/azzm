@@ -264,6 +264,15 @@
                   $t('pages.sign_up_diploma') }}
               </button>
 
+              <nuxt-link :to="localePath({ path: `/DiplomaAttendance/${$route.params.id}` })">
+
+                <button v-if="is_subscribe == true" class="main--btn mt-4 mb-4" aria-label="diploma" title="go diploma">
+                  {{ $t('pages.Enter_diploma') }}
+                </button>
+
+              </nuxt-link>
+
+
               <ul>
                 <li>
                   <div class="detail">
@@ -362,6 +371,8 @@ export default {
       semesters: [],
       rates: [],
       teachers: [],
+
+      progress:0,
 
       // is subscribe
 
@@ -462,6 +473,9 @@ export default {
           this.public_goals = response.data.data.public_goals;
           this.terms = response.data.data.terms;
           this.area = response.data.data.area;
+
+
+          this.progress = response.data.data.progress;
 
           this.is_subscribe = response.data.data.is_subscribe;
 

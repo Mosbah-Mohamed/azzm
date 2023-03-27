@@ -2536,6 +2536,7 @@ header .staticis .trainee .info span:last-child {
   border: 1px solid #bdccec;
   border-radius: 5px;
   margin-top: 32px;
+  margin-bottom: 30px;
 }
 .courses_content_before_subscribe.diploma_attend .all_info .box_content_team h3 {
   background: #d3dff8;
