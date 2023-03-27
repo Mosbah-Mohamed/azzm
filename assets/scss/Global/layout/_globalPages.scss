@@ -190,6 +190,11 @@ label {
   font-size: 10px !important;
 }
 
+.swal2-popup .swal2-styled.swal2-confirm {
+  min-width: 100px;
+  height: 40px;
+}
+
 // multiselect
 
 .multiselect__tags {

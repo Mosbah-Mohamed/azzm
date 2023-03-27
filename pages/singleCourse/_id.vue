@@ -466,12 +466,21 @@ export default {
         }).catch(error => {
           console.log(error.response.data.msg)
 
-          this.$swal.fire({
-            type: 'error',
-            text: `${error.response.data.msg}`,
-            timer: 3000,
-            // confirmButtonColor: '#ff7400',
-          })
+          if (error.response.data.data.is_pay == 0) {
+            this.$swal.fire({
+              type: 'error',
+              text: `${error.response.data.data.payed}`,
+              showConfirmButton: true,
+              confirmButtonText: this.$t('pages.pay_now'),
+              // timer: 3000,
+              preConfirm: () => {
+                this.$router.push(this.localePath({ path: `/payment/${error.response.data.data.id}` }));
+              },
+              // confirmButtonColor: '#ff7400',
+            })
+          } else {
+            console.log('payed')
+          }
 
         })
       } catch (error) {

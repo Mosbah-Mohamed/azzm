@@ -37,7 +37,7 @@
               </div>
 
               <div class="course_link">
-                <nuxt-link :to="localePath({ path: `/DiplomaAttendance/${single.id}` })">
+                <nuxt-link :to="localePath({ path: `/courseattendance/${single.id}` })">
                   <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
                     <span>{{ $t('courses.enter_course') }}</span>
                     <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>

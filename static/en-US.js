@@ -183,6 +183,8 @@ export default {
 
     Enter_course: "Enter Course",
     Enter_diploma: "Enter Diploma",
+
+    pay_now:"pay now"
   },
 
   buttons: {

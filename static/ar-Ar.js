@@ -169,6 +169,7 @@ export default {
     back_home: "الرجوع للرئيسية",
     Enter_course: "الدخول للدوره",
     Enter_diploma: "الدخول للدبلومه",
+    pay_now:"ادفع الان"
   },
 
   buttons: {

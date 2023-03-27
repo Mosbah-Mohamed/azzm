@@ -36,7 +36,8 @@ export default function ({ $axios, redirect, store, app }) {
     } else if (code === 404) {
       redirect("/about-us");
     } else if (code === 403 || code === 500) {
-      // redirect("/");
+      redirect("/");
     }
+    
   });
 }
