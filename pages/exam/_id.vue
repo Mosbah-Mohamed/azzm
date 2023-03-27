@@ -275,7 +275,7 @@ export default {
 
           this.exam_type = response.data.data.question.type;
 
-          this.timeLeft = response.data.data.question.exam.time;
+          this.timeLeft = response.data.data.question.exam.time * 60;
 
           this.question = response.data.data.question.question;
 
