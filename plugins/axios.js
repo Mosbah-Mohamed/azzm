@@ -4,7 +4,7 @@ export default function ({ $axios, redirect, store, app }) {
   $axios.onRequest((config) => {
     // ? add accepted language
 
-    console.log(app.i18n.locale);
+    // console.log(app.i18n.locale);
     config.headers.common["localization"] = app.i18n.locale;
 
     // ? add token to each request
@@ -21,7 +21,7 @@ export default function ({ $axios, redirect, store, app }) {
     // const password = "elryad223@";
     // config.auth = { username, password };
 
-    console.log("Making request to " + config.url);
+    // console.log("Making request to " + config.url);
   });
 
   $axios.onError((error) => {
@@ -38,6 +38,5 @@ export default function ({ $axios, redirect, store, app }) {
     } else if (code === 403 || code === 500) {
       redirect("/");
     }
-    
   });
 }

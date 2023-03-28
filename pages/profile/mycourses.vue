@@ -29,7 +29,7 @@
             </div>
 
             <div class="info">
-              <h6>{{ single.diploma_title }}</h6>
+              <h6>{{ single.diploma }}</h6>
               <div class="gress">
                 <!-- show-progress -->
                 <b-progress :value="single.progress" max="100" animated variant="warning"></b-progress>
@@ -37,7 +37,7 @@
               </div>
 
               <div class="course_link">
-                <nuxt-link :to="localePath({ path: `/courseattendance/${single.id}` })">
+                <nuxt-link :to="localePath({ path: `/courseattendance/${single.diploma_id}` })">
                   <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
                     <span>{{ $t('courses.enter_course') }}</span>
                     <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>

@@ -2,11 +2,11 @@
   <section class="exam">
 
     <div class="crumb">
-      <h3> الاختبار القبلي</h3>
+      <h3> الاختبار </h3>
       <ul>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">الرئيسية</a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer"> الاختبار القبلي</a></li>
+        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer"> الاختبار </a></li>
       </ul>
     </div>
 
@@ -56,13 +56,16 @@
                 <b-spinner variant="primary" type="grow" label="Spinning"></b-spinner>
               </div>
 
-              <form>
 
-                <div v-if="exam_type == 'MCQ'" class="form-group fill_check" v-for="(answer, index) in answers"
-                  :key="'m' + index">
-                  <input type="radio" :id="answer.id" :name="'answer' + question_id" :value="answer.id"
-                    v-model="answer_id">
-                  <label :for="answer.id">
+              <form ref="anyName">
+
+                <!-- :active="user_answer_id !== null && user_answer_id == answer.id" -->
+
+                <div class="form-group fill_check" v-for="(answer, index) in answers" :key="'m' + index">
+                  <input type="radio" :id="answer.id + question_id" :name="'answer' + question_id" :value="answer.id"
+                    :checked="user_answer_id !== null && user_answer_id == answer.id" @input="answer_id = answer.id">
+
+                  <label :for="answer.id + question_id">
 
                     {{ answer.answer }}
 
@@ -70,16 +73,13 @@
                 </div>
 
 
+                <!-- <div class="form-group fill_check" v-for="(answer, index) in answers" :key="'o' + index">
+                  <input type="radio" :id="answer.id" :name="answer.id + 'kk'" :value="answer.id" v-model="answer_id">
 
-
-                <div class="form-group fill_check" v-for="(answer, index) in answers" :key="'o' + index">
-                  <input type="radio" :id="answer.id" :name="'answertruefalse' + question_id" :value="answer.id"
-                    v-model="answer_id">
-                  <!--  -->
                   <label :for="answer.id">
                     {{ answer.answer }}
                   </label>
-                </div>
+                </div> -->
 
 
               </form>
@@ -88,10 +88,6 @@
 
             <div class="question_btns" data-aos="fade-up">
 
-              <button class="main--btn finish" aria-label="finish" @click="endExam" v-if="last_question == 'true'">{{
-                $t('exam.finish')
-              }}</button>
-
               <button class="main--btn" aria-label="next" @click="goNext"
                 v-if="first_question == 'true' || last_question == 'false'">{{
                   $t('exam.next')
@@ -99,6 +95,12 @@
 
               <button class="main--btn" aria-label="prev" v-if="first_question == 'false'" @click="goPrevious">{{
                 $t('exam.previous') }}</button>
+
+              <button class="main--btn finish" aria-label="finish" @click="endExam" v-if="last_question == 'true'">{{
+                $t('exam.finish')
+              }}</button>
+
+
             </div>
 
           </div>
@@ -170,7 +172,7 @@ export default {
 
       answers: [],
 
-      user_answers: [],
+      user_answers: '',
 
 
       // check next and previous buttons visibility
@@ -184,7 +186,11 @@ export default {
       timeLeftString: '',
       timer: null,
 
-      is_finished: ''
+      is_finished: '',
+
+      // add checked
+
+      user_answer_id: ''
 
 
 
@@ -202,7 +208,7 @@ export default {
       const timeZero = moment("1900-01-01 00:00:00");
       this.timeLeftString = timeZero.add(val, 'seconds').format("HH:mm:ss")
       // this.timeLeftString = moment.duration(timeZero.add(val, 'minutes').format("HH:mm:ss")).asMinutes()
-      console.log(this.timeLeftString)
+      // console.log(this.timeLeftString)
     },
   },
 
@@ -287,6 +293,8 @@ export default {
 
           this.question_order = response.data.data.question.question_order;
 
+          this.user_answer_id = response.data.data.question.user_answer_id;
+
 
           this.last_question = response.data.data.question.last_question;
 
@@ -349,6 +357,12 @@ export default {
 
           this.user_answers = response.data.data.user_answers;
 
+          this.answer_id = '';
+
+          this.user_answer_id = response.data.data.question.user_answer_id;
+
+          this.$refs.anyName.reset();
+
 
           this.last_question = response.data.data.question.last_question;
 
@@ -397,6 +411,11 @@ export default {
 
           this.user_answers = response.data.data.user_answers;
 
+          this.answer_id = '';
+
+          this.$refs.anyName.reset();
+
+          this.user_answer_id = response.data.data.question.user_answer_id;
 
           this.last_question = response.data.data.question.last_question;
 
