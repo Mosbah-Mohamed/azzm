@@ -396,7 +396,7 @@ export default {
 
       // is subscribe
 
-      is_subscribe: '',
+      is_subscribe: false,
 
 
     }

@@ -186,7 +186,7 @@ export default {
       timeLeftString: '',
       timer: null,
 
-      is_finished: '',
+      is_finished: true,
 
       // add checked
 
@@ -241,17 +241,16 @@ export default {
       try {
 
         await this.$axios.get(`exam/time/${this.$route.params.id}`).then(response => {
-          this.is_finished = response.data.data.is_ended;
+          this.is_finished = response.data.data.is_finished;
+
+          // console.log('pop' + response.data.data.is_finished)
 
           if (this.is_finished == "true") {
-            console.log(this.is_finished)
-            console.log("goToQuestion")
-            // this.goToQuestion(this.$route.params.question_id)
-
+            // console.log("goToQuestion")
+            this.$router.push(this.localePath({ path: `/examResult/${this.$route.params.id}` }));
 
           } else {
-            console.log("get data")
-            console.log(this.is_finished)
+            // console.log("get data")
             this.getData();
           }
 

@@ -52,21 +52,23 @@
                 <span class="wrong">{{ num_of_wrong_answers }}</span>
               </div>
 
-              <!-- <button class="main--btn"></button> -->
+              <!-- buttons -->
 
-              <!-- <nuxt-link v-if="score_percent > 75"
-                :to="localePath({ path: `/DiplomaAttendance/${diploma_or_course_id}` })"> -->
-              <button v-if="score_percent > 75" class="main--btn">{{ $t('exam.View_test_certificate') }}</button>
-              <!-- </nuxt-link> -->
+              <div class="all_links flex-center gap-3">
+                <nuxt-link v-if="score_percent > 75" :to="localePath({ path: `/profile/certificates` })">
+                  <button class="main--btn">{{ $t('exam.View_test_certificate') }}</button>
+                </nuxt-link>
 
-              <nuxt-link v-if="score_percent > 50"
-                :to="localePath({ path: `/DiplomaAttendance/${diploma_or_course_id}` })">
-                <button class="main--btn">{{ $t('exam.go_to_course') }}</button>
-              </nuxt-link>
+                <nuxt-link v-if="score_percent > 50"
+                  :to="localePath({ path: `/DiplomaAttendance/${diploma_or_course_id}` })">
+                  <button class="main--btn">{{ $t('exam.go_to_course') }}</button>
+                </nuxt-link>
 
-              <nuxt-link v-if="score_percent < 50" :to="localePath({ path: `/exam/${exam_id}` })">
-                <button class="main--btn">{{ $t('exam.retest') }}</button>
-              </nuxt-link>
+                <nuxt-link v-if="score_percent < 50" :to="localePath({ path: `/exam/${exam_id}` })">
+                  <button class="main--btn">{{ $t('exam.retest') }}</button>
+                </nuxt-link>
+              </div>
+
 
             </div>
           </div>

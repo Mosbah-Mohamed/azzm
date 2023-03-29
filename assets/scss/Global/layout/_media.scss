@@ -149,6 +149,13 @@
 }
 
 @media (max-width: 575px) {
+  .result_exam .all_links {
+    flex-direction: column;
+    button {
+      margin-top: 20px;
+    }
+  }
+
   .payment {
     .all_pay {
       .pay_method {
