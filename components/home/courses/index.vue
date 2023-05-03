@@ -471,7 +471,7 @@ export default {
         arrows: true,
         margin: 30,
         // "autoplay": true,
-        "speed": 4000,
+        "speed": 100,
         "infinite": true,
         "autoplaySpeed": 4000,
         "cssEase": "linear",

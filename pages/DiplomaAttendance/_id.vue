@@ -270,7 +270,7 @@
 
             </div>
 
-            <div class="attachment" data-aos="fade-up" v-if="is_subscribe">
+            <div class="attachment" data-aos="fade-up" v-if="is_subscribe && file">
               <h4 class="main_head">{{ $t('attendance.Lesson_extensions') }}</h4>
               <div class="content">
                 <p>{{ $t('attendance.download_hint') }}</p>

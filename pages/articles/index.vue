@@ -2,7 +2,7 @@
   <section class="courses_component articles articles_page">
 
     <div class="crumb">
-      <h3>{{ $t('navbar.articles') }}</h3> 
+      <h3>{{ $t('navbar.articles') }}</h3>
       <ul>
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
           $t('navbar.home') }}</nuxt-link></a></li>
@@ -23,7 +23,7 @@
               </div>
 
               <div class="card_content">
-                <h3>{{ item.title }}</h3>
+                <h3 class="text-ellipsis-1">{{ item.title }}</h3>
 
                 <div class="appoint">
                   <div class="calender">
@@ -34,7 +34,7 @@
 
                 <div class="course_link">
 
-                  <nuxt-link :to="localePath({ path: `/singleArticle/${item.id}` })">
+                  <nuxt-link :to="localePath({ path: `/articles/${item.id}` })">
 
                     <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
                       <span>{{ $t('pages.course_detail') }}</span>
@@ -88,6 +88,12 @@ export default {
   name: "termsPage",
 
   layout: 'second-layout',
+
+  head() {
+    return {
+      title: "Articles",
+    }
+  },
 
 
   // define all properties

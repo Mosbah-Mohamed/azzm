@@ -140,7 +140,8 @@ body::-webkit-scrollbar,
 }
 
 .table-responsive::-webkit-scrollbar,
-.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar {
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar,
+.courses_component .card-header::-webkit-scrollbar {
   height: 7px;
 }
 
@@ -148,7 +149,8 @@ body::-webkit-scrollbar-track,
 .profile .tabs .tab-content .table-responsive::-webkit-scrollbar-track,
 .table-responsive::-webkit-scrollbar-track,
 .all_ranges::-webkit-scrollbar-track,
-.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-track {
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-track,
+.courses_component .card-header::-webkit-scrollbar-track {
   border-radius: 1rem;
   box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
 }
@@ -157,7 +159,8 @@ body::-webkit-scrollbar-thumb,
 .profile .tabs .tab-content .table-responsive::-webkit-scrollbar-thumb,
 .table-responsive::-webkit-scrollbar-thumb,
 .all_ranges::-webkit-scrollbar-thumb,
-.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-thumb {
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-thumb,
+.courses_component .card-header::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background-color: #013fcd;
 }
@@ -313,6 +316,10 @@ p {
   margin-bottom: 0 !important;
 }
 
+.eye svg {
+  font-size: 16px;
+}
+
 button,
 input,
 textarea {
@@ -423,6 +430,9 @@ textarea:focus {
 }
 .side_bar_content .info ul li p {
   cursor: pointer;
+  color: #000;
+  font-size: 18px;
+  font-family: "Calibri-Regular";
 }
 
 @keyframes animName {
@@ -794,6 +804,9 @@ html[lang=en-US] body .profile_side_component .profile_content .my-courses .boxe
 html[lang=en-US] body .has-search .icon_sea {
   left: auto;
   right: 20px;
+}
+html[lang=en-US] body .courses_component .card_content .trainer_desc {
+  flex-direction: row-reverse;
 }
 
 .navbar_page {
@@ -1763,6 +1776,7 @@ header .staticis .trainee .info span:last-child {
 }
 .courses_component.articles_page .all_content .card_course {
   margin-bottom: 30px;
+  min-height: 410px;
 }
 .courses_component .card_course {
   border: 1px solid #cfd8ec;
@@ -1815,6 +1829,10 @@ header .staticis .trainee .info span:last-child {
   align-items: center;
   gap: 6px;
 }
+.courses_component .card_content .appoint .time svg {
+  font-size: 22px;
+  color: #6e6e6e;
+}
 .courses_component .card_content .appoint .calender {
   display: flex;
   gap: 10px;
@@ -1839,11 +1857,14 @@ header .staticis .trainee .info span:last-child {
   padding-top: 15px;
   border-top: 1px solid #e9f0ff;
 }
-.courses_component .card_content .trainer_desc .image img {
+.courses_component .card_content .trainer_desc .image {
   width: 56px;
   height: 56px;
-  border-radius: 50px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.0784313725);
+  border-radius: 50px;
+}
+.courses_component .card_content .trainer_desc .image img {
+  border-radius: 50px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -1931,11 +1952,14 @@ header .staticis .trainee .info span:last-child {
   padding-top: 15px;
   border-top: 1px solid #e9f0ff;
 }
-.courses_component .tabs .tab-content .card_content .trainer_desc .image img {
+.courses_component .tabs .tab-content .card_content .trainer_desc .image {
   width: 56px;
   height: 56px;
-  border-radius: 50px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.0784313725);
+  border-radius: 50px;
+}
+.courses_component .tabs .tab-content .card_content .trainer_desc .image img {
+  border-radius: 50px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -2040,12 +2064,21 @@ header .staticis .trainee .info span:last-child {
   right: auto;
 }
 
+[dir=ltr] .slick-prev {
+  left: -75px;
+}
+
+[dir=ltr] .slick-next {
+  right: -60px !important;
+  left: auto !important;
+}
+
 [dir=rtl] .slick-next {
   right: auto !important;
   left: -60px !important;
 }
 
-[dir=rtl] .slick-next:before {
+.slick-next:before {
   content: "←";
   width: 54px;
   height: 54px;
@@ -2058,7 +2091,7 @@ header .staticis .trainee .info span:last-child {
   align-items: center;
 }
 
-[dir=rtl] .slick-prev:before {
+.slick-prev:before {
   content: ">";
   width: 54px;
   height: 54px;
@@ -2080,6 +2113,20 @@ header .staticis .trainee .info span:last-child {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+.video_personal iframe {
+  width: 100% !important;
+  height: 220px !important;
+}
+
+.courses_component .card-header {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.courses_component .card-header > .card-header-tabs {
+  min-width: 500px;
+  margin-bottom: 15px;
 }
 
 .exam .all_questions {
@@ -3001,9 +3048,14 @@ header .staticis .trainee .info span:last-child {
   width: 100px !important;
   height: 100px !important;
 }
+.success-modal h2 {
+  font-size: 18px;
+  margin-top: 8px;
+  font-family: "Bahij-Helvetica-Neue-75-Bold";
+}
 .success-modal p {
   color: #202020;
-  padding: 18px 0;
+  padding: 6px 0;
 }
 .success-modal a {
   color: #3f64b8;
@@ -3191,9 +3243,11 @@ header .staticis .trainee .info span:last-child {
   min-width: 54px;
   height: 54px;
   border: 1px solid #ecf2ff;
+  border-radius: 50%;
 }
 .courses_before_subscribe .all_content .tabs .tab-content .rate_dipolma .rate_one .image img {
   border-radius: 50%;
+  height: 100%;
 }
 .courses_before_subscribe .all_content .tabs .tab-content .rate_dipolma .rate_one .rate_body {
   width: 100%;
@@ -3469,6 +3523,17 @@ header .staticis .trainee .info span:last-child {
             margin-inline-start: 70px;
   }
 }
+@media (max-width: 1240px) {
+  [dir=rtl] .slick-prev {
+    right: 14px !important;
+    left: auto !important;
+    z-index: 999;
+  }
+  [dir=rtl] .slick-next {
+    right: auto !important;
+    left: -16px !important;
+  }
+}
 @media (max-width: 1200px) {
   .box_current {
     flex-wrap: wrap;
@@ -3578,6 +3643,17 @@ header .staticis .trainee .info span:last-child {
   }
 }
 @media (max-width: 575px) {
+  .about .image_top img {
+    width: 350px;
+    height: 350px;
+  }
+  .about .image_botton img {
+    width: 400px;
+    margin: auto;
+    left: 47px;
+    top: -96px;
+    right: auto;
+  }
   .result_exam .all_links {
     flex-direction: column;
   }
@@ -3814,6 +3890,16 @@ header .staticis .trainee .info span:last-child {
   .signup .all_info button.share_go span,
   .signup .all_info form .box_check {
     font-size: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .about .image_botton img {
+    left: auto;
+  }
+}
+@media screen and (orientation: landscape) {
+  .b-sidebar > .b-sidebar-body .info {
+    min-height: 370px;
   }
 }
 /*============== start up button component============*/

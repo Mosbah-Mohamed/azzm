@@ -32,7 +32,7 @@
                   <b-dropdown id="dropdown-1" :text="$t('navbar.courses')" ref="dropdown">
 
                     <b-drop-item class="d-block text-end p-1" v-for="(item, index) in categories" :key="'k' + index">
-                      <nuxt-link :to="{ path: '/coursesFilter', query: { id: `${item.id}` } }">
+                      <nuxt-link :to="{ path: `/${$i18n.locale}/coursesFilter`, query: { id: `${item.id}` } }">
                         {{ item.name }}
                       </nuxt-link>
                     </b-drop-item>
@@ -82,7 +82,7 @@
               <!-- <button aria-label="logout" title="logout" class="second--btn" @click="handleLogOut">logout</button> -->
 
 
-              <div class="icon_notification" v-if="$auth.loggedIn">
+              <div class="icon_notification" v-if="$auth.loggedIn" @click="whenUpload">
                 <font-awesome-icon :icon="['far', 'bell']" />
               </div>
 
@@ -91,8 +91,7 @@
 
                   <template #button-content>
                     <div class="drop_btn">
-                      <img data-src="@/assets/images/learn.png" title="profile" v-lazy-load alt="nav profile" width="190"
-                        height="53" />
+                      <img :data-src="avatar" title="profile" v-lazy-load alt="nav profile" width="190" height="53" />
                     </div>
                   </template>
 
@@ -196,6 +195,7 @@ export default {
     return {
       logoImage: '',
       categories: [],
+      avatar: ''
     }
   },
 
@@ -204,6 +204,7 @@ export default {
   },
 
   mounted() {
+    this.getUser();
     this.getData();
     this.getCategories();
 
@@ -211,6 +212,21 @@ export default {
 
 
   methods: {
+
+    // get user data from api
+
+    async getUser() {
+      try {
+        return await this.$axios.get(`profile`).then(response => {
+          this.avatar = response.data.data.avatar;
+
+        }).catch(error => {
+          console.log(error)
+        })
+      } catch (error) {
+        console.log("catch : " + error)
+      }
+    },
 
     // get courses category data from api
 
@@ -220,7 +236,7 @@ export default {
 
           this.loading = true;
 
-          console.log(response.data.data.category_course)
+          // console.log(response.data.data.category_course)
 
           this.categories = response.data.data.category_course;
 
@@ -272,6 +288,16 @@ export default {
     },
     onLeave2() {
       this.$refs.dropdownLogin.visible = false;
+    },
+
+    whenUpload() {
+      this.$swal.fire({
+        position: 'center',
+        type: 'warning',
+        title: 'بيتم تنفيذها علي الدومين الرسمي',
+        showConfirmButton: false,
+        timer: 3000
+      });
     }
 
   }

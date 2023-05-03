@@ -43,20 +43,22 @@
                     <div class="col-md-6 col-12">
                       <div class="form-group">
                         <label for="vue3">{{ $t('courses.from') }}</label>
-                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue3" v-model="value_2[0]">
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue3" max="100" readonly
+                          v-model="value_2[0]">
                       </div>
                     </div>
                     <div class="col-md-6 col-12">
                       <div class="form-group">
                         <label for="vue2">{{ $t('courses.to') }}</label>
-                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue2" v-model="value_2[1]">
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue2" max="100" readonly
+                          v-model="value_2[1]">
                       </div>
                     </div>
 
                   </div>
 
                   <div class="form-group slide_slide">
-                    <vue-slider ref="slider" v-model="value_2" :adsorb="true" :interval="10" :marks="true"
+                    <vue-slider ref="slider" v-model="value_2" :adsorb="true" :interval="200" :marks="true"
                       @change="getData" :min="min" :max="max"></vue-slider>
                   </div>
 
@@ -91,7 +93,8 @@
                     <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
                   </div>
                   <!-- @keyup="getData()" -->
-                  <input type="text" class="form-control" :placeholder="$t('courses.search')" v-model="searchText">
+                  <input type="text" class="form-control" :placeholder="$t('courses.search')" v-model="searchText"
+                    @keyup="getData()">
                 </div>
 
               </div>
@@ -199,7 +202,7 @@ export default {
     return {
 
       min: 0,
-      max: 100,
+      max: 1000,
 
       status: '',
 
@@ -273,7 +276,7 @@ export default {
 
           this.loading = true;
 
-          console.log(response.data.data.category_diploma)
+          // console.log(response.data.data.category_diploma)
 
           this.categories = response.data.data.category_diploma;
 
@@ -308,7 +311,7 @@ export default {
 
           this.loading = true;
 
-          console.log(response.data.data)
+          // console.log(response.data.data)
 
           this.items = response.data.data;
 
@@ -478,6 +481,13 @@ button {
         flex: 70%;
       }
     }
+  }
+}
+
+html[lang="en-US"] {
+  .fill_check input:checked+label:after {
+    right: auto;
+    left: 26px;
   }
 }
 </style>

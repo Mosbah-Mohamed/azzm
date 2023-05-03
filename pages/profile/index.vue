@@ -19,6 +19,12 @@ export default {
 
   layout: "second-layout",
 
+  head() {
+    return {
+      title: "Profile",
+    }
+  },
+
   data() {
     return {
       student_guide: ''

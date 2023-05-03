@@ -55,6 +55,11 @@
 
               <ValidationProvider rules="required" name="gender" v-slot="{ errors }">
 
+                <!-- <select :disabled="isReadonly" @change="formData.gender = $event.target.value">
+                      <option value="" selected disabled hidden>Choose here</option>
+                      <option v-for="option in options" :value="option.key">{{ option.value }}</option>
+                    </select> -->
+
                 <div class="form-group">
                   <select v-model="formData.gender" :disabled="isReadonly">
                     <!-- <option value="" selected disabled hidden>Choose here</option> -->
@@ -64,12 +69,13 @@
                   <span>{{ errors[0] }}</span>
                 </div>
               </ValidationProvider>
-              
+
               <!-- {{ options.key }} -->
 
               <div class="form-group">
-                <button class="sign_btn main--btn" aria-label="sign" title="save" type="submit" :disabled="invalid">حفظ
-                  التعديلات</button>
+                <button class="sign_btn main--btn" aria-label="sign" title="save" type="submit" :disabled="invalid">{{
+                  $t('courses.save_updates') }}
+                </button>
               </div>
 
             </form>
@@ -182,7 +188,7 @@ export default {
         return await this.$axios.get(`profile`).then(response => {
 
           this.formData.name = response.data.data.name;
-          this.formData.gender = response.data.data.gender;
+          // this.formData.gender = response.data.data.gender;
           this.formData.email = response.data.data.email;
           this.formData.phone = response.data.data.phone;
           this.formData.address = response.data.data.address;
@@ -212,7 +218,7 @@ export default {
           this.$swal.fire({
             position: 'center',
             type: 'success',
-            text: `${response.data.message}`,
+            text: `${response.msg}`,
             showConfirmButton: false,
             timer: 3000
           })

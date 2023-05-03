@@ -63,6 +63,12 @@ export default {
 
   layout: 'auth-layout',
 
+  head() {
+    return {
+      title: "Change password",
+    }
+  },
+
   middleware: 'guest-user',
 
   components: {

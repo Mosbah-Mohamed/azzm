@@ -101,6 +101,8 @@ export default {
     "vue-slick-carousel/dist/vue-slick-carousel.css",
     "vue-slick-carousel/dist/vue-slick-carousel-theme.css",
     "@fortawesome/fontawesome-svg-core/styles.css",
+    "bootstrap/dist/css/bootstrap.css",
+    "bootstrap-vue/dist/bootstrap-vue.css",
   ],
 
   // customize progress bar color for router move
@@ -151,8 +153,9 @@ export default {
     { src: "@/plugins/vuex-persist", ssr: false },
     { src: "@/plugins/aos", mode: "client" },
     { src: "@/plugins/vue-slick-carousel.js" },
-    { src: "@/plugins/vue-html2pdf.js", mode: "client" },
+    { src: "@/plugins/vue-html2pdf.js", mode: "client", ssr: false },
     { src: "@/plugins/vue-slider-component.js", ssr: false },
+    { src: "~/plugins/bootstrap-vue.js", ssr: false },
     // { src: "@/plugins/vue-countup", ssr: false },
   ],
 
@@ -296,8 +299,6 @@ export default {
 
   router: {
     base: "/azm/", //for build path
-    // middleware: "log",
-    // middleware: ["auth"],
   },
 
   env: {

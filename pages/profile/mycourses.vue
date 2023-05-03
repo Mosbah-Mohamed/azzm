@@ -2,6 +2,7 @@
   <div class="my-courses">
 
     <div class="boxes">
+
       <div class="box">
 
         <div class="head">
@@ -9,12 +10,13 @@
         </div>
 
         <ul>
-          <li v-for="(diploma, index) in current" :key="index">
+          <li v-for="(diploma, index) in finished" :key="index">
             <span class="dot"></span>
             <span>{{ diploma.diploma }}</span>
           </li>
         </ul>
       </div>
+
       <div class="box box_current">
 
         <div class="head current">
@@ -22,7 +24,7 @@
         </div>
 
         <div class="all_course_detail">
-          <div class="course_detail" v-for="(single, index) in finished" :key="'b' + index">
+          <div class="course_detail" v-for="(single, index) in current" :key="'b' + index">
             <div class="image">
               <img :data-src="single.diploma_logo" title="partner" v-lazy-load alt="partner image" width="100%"
                 height="100%" />
@@ -36,10 +38,18 @@
                 <span>{{ single.progress }}</span>
               </div>
 
-              <div class="course_link">
+              <div class="course_link" v-if="single.diploma_type == 0">
                 <nuxt-link :to="localePath({ path: `/courseattendance/${single.diploma_id}` })">
                   <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
                     <span>{{ $t('courses.enter_course') }}</span>
+                    <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
+                  </a></nuxt-link>
+              </div>
+
+              <div class="course_link" v-else>
+                <nuxt-link :to="localePath({ path: `/DiplomaAttendance/${single.diploma_id}` })">
+                  <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
+                    <span>{{ $t('pages.Enter_diploma') }}</span>
                     <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
                   </a></nuxt-link>
               </div>
@@ -95,7 +105,6 @@
           </li>
         </ul>
       </div> -->
-
 
     </div>
 

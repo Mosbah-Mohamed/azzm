@@ -47,20 +47,22 @@
                     <div class="col-md-6 col-12">
                       <div class="form-group">
                         <label for="vue3">{{ $t('courses.from') }}</label>
-                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue3" v-model="value_2[0]">
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue3" v-model="value_2[0]"
+                          max="100" readonly>
                       </div>
                     </div>
                     <div class="col-md-6 col-12">
                       <div class="form-group">
                         <label for="vue2">{{ $t('courses.to') }}</label>
-                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue2" v-model="value_2[1]">
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue2" v-model="value_2[1]"
+                          max="100" readonly>
                       </div>
                     </div>
 
                   </div>
 
                   <div class="form-group slide_slide">
-                    <vue-slider ref="slider" v-model="value_2" :adsorb="true" :interval="10" :marks="true"
+                    <vue-slider ref="slider" v-model="value_2" :adsorb="true" :interval="200" :marks="true"
                       @change="getData" :min="min" :max="max"></vue-slider>
 
 
@@ -96,7 +98,15 @@
                     <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
                   </div>
                   <!-- @keyup="getData()" -->
-                  <input type="text" class="form-control" :placeholder="$t('courses.search')" v-model="searchText">
+                  <!-- {{ searchText.title }} -->
+                  <!-- <multiselect v-model="searchText" :option-label="'title'" label="title" :clear-on-select="true"
+                    :allow-empty="true" :options="items" :searchable="true" :close-on-select="true" :show-labels="false"
+                    placeholder="search" @select="getData()"></multiselect> -->
+
+                  <!-- <button @click="clearSelection">Clear selection</button> -->
+
+                  <input type="text" class="form-control" :placeholder="$t('courses.search')" v-model="searchText"
+                    @keyup="getData()">
                 </div>
 
               </div>
@@ -204,7 +214,7 @@ export default {
     return {
 
       min: 0,
-      max: 100,
+      max: 1000,
 
       status: '',
 
@@ -272,7 +282,9 @@ export default {
 
   methods: {
 
-
+    clearSelection() {
+      this.searchText = null;
+    },
     // get courses category data from api
 
     async getCategories() {
@@ -298,10 +310,6 @@ export default {
 
     async getData() {
 
-      // console.log(this.selectedOptions);
-      // console.log(this.$refs.slider.getValue());
-
-
       try {
 
         return await this.$axios.get('courses?type=0', {
@@ -317,7 +325,7 @@ export default {
 
           this.loading = true;
 
-          console.log(response.data.data)
+          // console.log(response.data.data)
 
           this.items = response.data.data;
 
@@ -487,6 +495,13 @@ button {
         flex: 70%;
       }
     }
+  }
+}
+
+html[lang="en-US"] {
+  .fill_check input:checked+label:after {
+    right: auto;
+    left: 26px;
   }
 }
 </style>

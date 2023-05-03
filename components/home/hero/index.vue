@@ -4,6 +4,10 @@
       <div class="row align-items-center">
         <div class="col-lg-6 col-12">
 
+          <!-- <div>
+            <button @click="generatePdf">Generate PDF</button>
+          </div> -->
+
           <!-- <div v-for="checkbox in checkboxes" :key="checkbox.id">
             <label>
               <input type="checkbox" :id="checkbox.id" :value="checkbox.id" v-model="checkbox.value"
@@ -12,7 +16,7 @@
             </label>
           </div> -->
 
-          <div class="hero_content">
+          <div class="hero_content" id="pdf-content">
             <span class="name">{{ name }}</span>
             <h1 class="main_head">{{ title1 }}</h1>
             <p v-html="description"></p>
@@ -88,6 +92,7 @@
 export default {
   name: "hero-component",
 
+
   data() {
     return {
       delay: -1,
@@ -158,6 +163,19 @@ export default {
       }
     },
 
+
+    // generatePdf() {
+    //   const element = document.getElementById('pdf-content')
+    //   const options = {
+    //     margin: 1,
+    //     filename: 'example.pdf',
+    //     image: { type: 'jpeg', quality: 0.98 },
+    //     html2canvas: { scale: 2 },
+    //     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    //   }
+
+    //   this.$html2pdf().from(element).set(options).save()
+    // }
 
   }
 }

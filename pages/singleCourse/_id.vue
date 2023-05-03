@@ -259,9 +259,13 @@
           <div class="col-lg-4 col-12">
             <div class="side_info">
               <div class="image_video">
-                <img :data-src="logo" title="learn" v-lazy-load alt="image" width="100%" height="100%" />
 
-                <div class="video">
+                <div class="video_personal" v-if="video_personal" v-html="video_personal" style="width:100%;height:100%">
+                </div>
+
+                <img v-else :data-src="logo" title="learn" v-lazy-load alt="image" width="100%" height="100%" />
+
+                <div class="video d-none">
                   <div class="icon">
                     <font-awesome-icon :icon="['fas', 'play']" />
                   </div>
@@ -359,6 +363,8 @@ export default {
 
   layout: 'second-layout',
 
+  middleware: ['checkId'],
+
 
   // define all properties
 
@@ -373,6 +379,7 @@ export default {
       title: '',
       description: '',
       logo: '',
+      video_personal: '',
       duration_houres: '',
       duration_days: '',
       education_time: '',
@@ -501,11 +508,12 @@ export default {
           this.title = response.data.data.title;
           this.description = response.data.data.description;
           this.logo = response.data.data.logo;
+          this.video_personal = response.data.data.video;
           this.duration_houres = response.data.data.duration_houres;
           this.duration_days = response.data.data.duration_days;
           this.education_time = response.data.data.education_time;
           this.start_at = response.data.data.start_at;
-          this.place = response.data.data.place;
+          this.place = response.data.data.map;
           this.price = response.data.data.price;
           this.is_subscribe = response.data.data.is_subscribe;
           this.site_rate = response.data.data.site_rate;
@@ -538,4 +546,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.video_personal {
+  iframe {
+    width: 100% !important;
+    height: 100% !important
+  }
+}
+</style>

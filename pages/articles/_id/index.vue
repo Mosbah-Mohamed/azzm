@@ -10,8 +10,8 @@
         <li><a href="#" aria-label="articles" target="_blank" rel="noopener"><nuxt-link :to="localePath('/articles')">{{
           $t('navbar.articles') }}</nuxt-link></a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">{{ $t('pages.article_title')
-        }}</a></li>
+        <li>{{ $t('pages.article_title')
+        }}</li>
       </ul>
     </div>
 
@@ -57,6 +57,8 @@ export default {
   name: "termsPage",
 
   layout: 'second-layout',
+
+  middleware: ['checkId'],
 
 
   // define all properties

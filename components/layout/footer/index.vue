@@ -191,9 +191,9 @@ export default {
         slidesToShow: 9,
         arrows: false,
         "autoplay": true,
-        "speed": 2000,
-        "autoplaySpeed": 2000,
-        "cssEase": "linear",
+        "speed": 200,
+        "autoplaySpeed": 200,
+        // "cssEase": "linear",
         "responsive": [
           {
             "breakpoint": 1024,

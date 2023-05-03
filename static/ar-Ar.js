@@ -14,6 +14,8 @@ export default {
     englishLettersOnly: "{_field_} يجب ان يحتوي على حروف انجليزية فقط ",
     max_value: "{_field_} يجب ان يكون اقل من او يساوي {max}",
     "15numbersOnly": "{_field_} يجب ان يكون 9 او 15 رقم",
+    min_value: "{_field_} يجب ان يكون اقل من او يساوي {max}",
+    pa: "{_field_} يجب أن تحتوي كلمة المرور على رمز واحد وحرف كبير على الأقل وأكثر من 9 أحرف",
   },
 
   navbar: {
@@ -169,7 +171,8 @@ export default {
     back_home: "الرجوع للرئيسية",
     Enter_course: "الدخول للدوره",
     Enter_diploma: "الدخول للدبلومه",
-    pay_now:"ادفع الان"
+    pay_now: "ادفع الان",
+    success_pay: "تم الدفع بنجاح",
   },
 
   buttons: {
@@ -234,17 +237,20 @@ export default {
     home: "Home ar",
     contacts: "Contacts",
     about: "من نحن ",
-
     guidetrainer: "الدليل",
   },
   validations: {
-    required: "هذا الحقل مطلوب",
+    required: " {_field_} مطلوب",
     alpha: "هذا الحقل يجب ان يحتوي على حروف ابجدية فقط",
     decimal: "{_field_} يجب ان يحتوي على رقم صحيح او عشري",
-    min: "{_field_} يجب ألا يقل  عن 3 أحرف ",
     englishLettersOnly: "{_field_} يجب ان يحتوي على حروف انجليزية فقط ",
     email: "يجب أن يكون حقل البريد الإلكتروني بريدًا إلكترونيًا صالحًا",
     confirmed: "يجب مطابقة كلمة المرور",
+    min: "{_field_} يجب ان يكون اكبر من او يساوي {value} {min} {length}",
+    pa: "{_field_} يجب أن تحتوي كلمة المرور على رمز واحد وحرف كبير على الأقل وأكثر من 9 أحرف",
+    email_end:
+      "يجب أن يكون الحقل {_field_} بريدًا إلكترونيًا صالحًا وينتهي بـ @ gmail.com أو @ yahoo.com",
+
     // min: "ةنةة",
   },
 };

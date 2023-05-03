@@ -184,7 +184,9 @@ export default {
     Enter_course: "Enter Course",
     Enter_diploma: "Enter Diploma",
 
-    pay_now:"pay now"
+    pay_now: "pay now",
+
+    success_pay: "success payment",
   },
 
   buttons: {
@@ -255,13 +257,13 @@ export default {
     guidetrainer: "guide Trainer",
   },
   validations: {
-    required: "This field is required",
+    required: "{_field_} is required",
     alpha: "This field must only have alphanumerical characters",
     decimal: "{_field_} field must contain only decimal values",
-    min: "The {_field_} field must be at least 3 characters",
     englishLettersOnly: "{_field_} must contains english letters only",
     email: "The E-mail field must be a valid email",
     min: "mkmjok",
     confirmed: "The password confirmation does not match",
+    min: "{_field_}  must be equal or greater than {value}",
   },
 };

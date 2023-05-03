@@ -31,14 +31,14 @@
             <ValidationObserver v-slot="{ invalid }" ref='observer'>
               <form action="" @submit.prevent="login">
 
-                <ValidationProvider rules="required|email" v-slot="{ errors }">
+                <ValidationProvider rules="required|email" v-slot="{ errors }" :name="$t('login.email')">
                   <div class="form-group">
                     <input type="email" :placeholder="$t('login.email')" v-model="form.email" />
                     <span>{{ errors[0] }}</span>
                   </div>
                 </ValidationProvider>
 
-                <ValidationProvider rules="required|min:3" name="password" v-slot="{ errors }">
+                <ValidationProvider rules="required|min:3" :name="$t('login.password')" v-slot="{ errors }">
                   <div class="form-group position-relative">
                     <input :type="[showPassword ? 'text' : 'password']" placeholder="******" required
                       v-model="form.password">
@@ -84,6 +84,12 @@ export default {
   name: "loginPage",
 
   layout: 'auth-layout',
+
+  head() {
+    return {
+      title: "Login",
+    }
+  },
 
   // middleware: 'auth',
 
@@ -232,13 +238,32 @@ export default {
 
     async login() {
       try {
-        await this.$auth.loginWith('local', { data: { email: this.form.email, password: this.form.password } })
+        await this.$auth.loginWith('local', { data: { email: this.form.email, password: this.form.password } }).then(response => {
 
-        // console.log(response)
-        console.log('$auth user' + this.$auth)
-        this.$router.push(this.localePath({ path: "/" }));
+          this.$swal.fire({
+            position: 'center',
+            type: 'success',
+            // title: 'message sent Successfully',
+            text: `${response.data.msg}`,
+            showConfirmButton: false,
+            timer: 2000
+          })
+
+
+          console.log('$auth user' + this.$auth)
+          this.$router.push(this.localePath({ path: "/" }));
+        })
+
+
       } catch (error) {
-        console.error(error)
+        console.error(error.response.data.msg);
+
+        this.$swal.fire({
+          type: 'error',
+          text: `${error.response.data.msg}`,
+          timer: 2000,
+          // confirmButtonColor: '#ff7400',
+        })
       }
     }
 

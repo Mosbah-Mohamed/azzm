@@ -60,6 +60,11 @@ html[lang="en-US"] body {
     left: auto;
     right: 20px;
   }
+
+  .courses_component .card_content .trainer_desc {
+    flex-direction: row-reverse;
+    // justify-content: flex-end;
+  }
 }
 
 // ============ style en ===========

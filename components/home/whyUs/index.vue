@@ -74,7 +74,7 @@ export default {
           this.items = response.data.data.why_choose;
           this.image = response.data.data.image;
           this.video = response.data.data.video;
-          console.log(response.data.data.why_choose)
+          // console.log(response.data.data.why_choose)
         }).catch(error => {
           console.log(error)
         })

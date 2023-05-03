@@ -4,7 +4,7 @@ export default async function ({ app, redirect }) {
   // const user = await app.$cookies.get("auth._token.local");
   const user = await app.$cookies.get("auth._token.local");
 
-  console.log(user);
+  // console.log(user);
 
   if (user) {
     // let the user see the page

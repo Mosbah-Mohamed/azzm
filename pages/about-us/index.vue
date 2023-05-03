@@ -91,6 +91,12 @@ export default {
 
   layout: 'second-layout',
 
+  head() {
+        return {
+            title: "About Us",
+        }
+    },
+
 
   // define all properties
 

@@ -59,10 +59,10 @@
                   <button class="main--btn">{{ $t('exam.View_test_certificate') }}</button>
                 </nuxt-link>
 
-                <nuxt-link v-if="score_percent > 50"
+                <!-- <nuxt-link v-if="score_percent > 50"
                   :to="localePath({ path: `/DiplomaAttendance/${diploma_or_course_id}` })">
                   <button class="main--btn">{{ $t('exam.go_to_course') }}</button>
-                </nuxt-link>
+                </nuxt-link> -->
 
                 <nuxt-link v-if="score_percent < 50" :to="localePath({ path: `/exam/${exam_id}` })">
                   <button class="main--btn">{{ $t('exam.retest') }}</button>
@@ -89,6 +89,12 @@ export default {
   name: "termsPage",
 
   layout: 'second-layout',
+
+  head() {
+    return {
+      title: "Exam Result",
+    }
+  },
 
 
   // define all properties

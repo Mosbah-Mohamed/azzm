@@ -58,6 +58,7 @@
                       </b-button>
 
                       <b-collapse :id="'collapse-' + index" class="mt-2 inner" accordion="my-accordion">
+
                         <div class="lessons" v-for="(lesson, index) in level.lessons" :key="'b' + index">
                           <div class="lesson">
                             <span><font-awesome-icon :icon="['fas', 'book']" /></span>
@@ -70,6 +71,24 @@
                             <font-awesome-icon :icon="['fas', 'lock']" />
                           </span>
                         </div>
+
+
+                        <div class="lessons" v-for="(test, index) in level.exams" :key="'b' + index">
+
+                          <nuxt-link :to="localePath({ path: `/exam/${test.id}` })" class="flex-between w-100">
+                            <div class="lesson">
+                              <span><font-awesome-icon :icon="['fas', 'book']" /></span>
+                              <span>{{ test.title }}</span>
+                            </div>
+
+                            <span>
+                              <font-awesome-icon :icon="['fas', 'lock']" />
+                            </span>
+                          </nuxt-link>
+
+
+                        </div>
+
                       </b-collapse>
 
                     </b-card-header>
@@ -248,7 +267,7 @@
 
             </div>
 
-            <div class="attachment" data-aos="fade-up" v-if="is_subscribe">
+            <div class="attachment" data-aos="fade-up" v-if="is_subscribe && file">
               <h4 class="main_head">{{ $t('attendance.Lesson_extensions') }}</h4>
               <div class="content">
                 <p>{{ $t('attendance.download_hint') }}</p>
@@ -529,7 +548,23 @@ export default {
 
       console.log(lesson)
 
+
+      // try {
+      //   this.$axios.$post('attend/lesson', { diploma_id: `${this.$route.params.id}`, lesson_id: `${lesson.id}` }).then(response => {
+
+      //     console.log('ouuo')
+
+      //   }).catch(error => {
+      //     console.log(error);
+
+      //   })
+      // } catch (error) {
+      //   console.log('try catch =>', error);
+      // }
+
+
     },
+
 
 
     // get qr code image

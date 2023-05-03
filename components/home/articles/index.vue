@@ -22,7 +22,7 @@
 
                   <div class="card_content">
 
-                    <h3>{{ item.title }}</h3>
+                    <h3 class="text-ellipsis-1">{{ item.title }}</h3>
                     <div class="appoint">
                       <div class="calender">
                         <font-awesome-icon :icon="['fas', 'calendar-days']" />

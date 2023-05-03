@@ -142,16 +142,13 @@ export default {
 
   layout: 'second-layout',
 
-  // validate({ params }) {
-  //   // Check if id parameter is present in the URL
-  //   if (!params.id) {
-  //     return {
-  //       path: '/error', // redirect to 404 page
-  //       statusCode: 404 // set status code to 404
-  //     }
-  //   }
-  // },
+  middleware: ['checkId'],
 
+  head() {
+    return {
+      title: "Exam",
+    }
+  },
 
   // define all properties
 
@@ -524,5 +521,12 @@ export default {
   border: solid #0079bf;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+html[lang="en-US"] {
+  .fill_check input:checked+label:after {
+    right: auto;
+    left: 26px;
+  }
 }
 </style>

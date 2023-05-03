@@ -23,26 +23,11 @@ export const mutations = {
     state.verify_token = user;
   },
 
-  // LOGIN(state, user) {
-  //   state.loggedIn = true;
-  //   state.user = user;
-  // },
-
-  // LOGOUT(state) {
-  //   state.loggedIn = false;
-  //   state.user = {};
-  // },
 };
 
 // like methods  it call  with :  this.$store.dispatch('mutation_method_name',updated value)
 
 export const actions = {
-  updateLogin({ commit }, user) {
-    commit("LOGIN", user);
-  },
-  updateLogout({ commit }) {
-    commit("LOGOUT");
-  },
 
   update_token({ commit }) {
     commit("SET_token");

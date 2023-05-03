@@ -10,8 +10,10 @@ import {
   alpha,
   max,
   min,
+  min_value,
   email,
   confirmed,
+  regex,
 } from "vee-validate/dist/rules";
 
 Vue.component("ValidationObserver", ValidationObserver);
@@ -21,6 +23,7 @@ extend("required", required);
 extend("alpha", alpha);
 extend("max", max);
 extend("min", min);
+extend("min_value", min_value);
 extend("email", email);
 extend("confirmed", confirmed);
 
@@ -30,6 +33,20 @@ export default function VeeValidatePlugin({ app }) {
       app.i18n.t(`validations.${values._rule_}`, values),
   });
 }
+
+extend("pa", {
+  ...regex,
+  validate: (value) => /^(?=.*?[A-Z])(?=.*?[^\w\s]).{9,}$/.test(value),
+});
+
+extend("email_end", {
+  ...email,
+  validate: (value) => {
+    const emailRegex = /^[\w-.]+@(gmail|yahoo)\.com$/;
+    // const emailRegex = /^[\w-.]+@(gmail|yahoo)\.com$/i; // i for  case-insensitive
+    return emailRegex.test(value);
+  },
+});
 
 extend("decimal", {
   validate: (value, { decimals = "*", separator = "." } = {}) => {

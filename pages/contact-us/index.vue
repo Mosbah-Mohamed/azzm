@@ -59,6 +59,7 @@
 
                   </div>
                 </div>
+                
                 <div class="col-lg-6 col-12">
                   <div class="left_box" data-aos="fade-right">
 

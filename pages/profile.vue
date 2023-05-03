@@ -6,12 +6,12 @@
         <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener"><nuxt-link :to="localePath('/')">{{
           $t('navbar.home') }}</nuxt-link></a></li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">{{
-          $t('profile.profile_per') }}</a></li>
+        <li>{{
+          $t('profile.profile_per') }}</li>
         <li><font-awesome-icon :icon="['fas', 'caret-left']" /></li>
-        <li><a href="#" aria-label="breadcrumb" target="_blank" rel="noopener noreferrer">{{
+        <li>{{
           $t(`profile.${childPageName}`)
-        }}</a></li>
+        }}</li>
       </ul>
     </div>
 

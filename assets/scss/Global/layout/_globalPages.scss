@@ -34,7 +34,8 @@ body::-webkit-scrollbar,
 }
 
 .table-responsive::-webkit-scrollbar,
-.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar {
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar,
+.courses_component .card-header::-webkit-scrollbar {
   height: 7px;
 }
 
@@ -42,7 +43,8 @@ body::-webkit-scrollbar-track,
 .profile .tabs .tab-content .table-responsive::-webkit-scrollbar-track,
 .table-responsive::-webkit-scrollbar-track,
 .all_ranges::-webkit-scrollbar-track,
-.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-track {
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-track,
+.courses_component .card-header::-webkit-scrollbar-track {
   border-radius: 1rem;
   box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
 }
@@ -51,7 +53,8 @@ body::-webkit-scrollbar-thumb,
 .profile .tabs .tab-content .table-responsive::-webkit-scrollbar-thumb,
 .table-responsive::-webkit-scrollbar-thumb,
 .all_ranges::-webkit-scrollbar-thumb,
-.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-thumb {
+.courses_before_subscribe .all_content .tabs > div::-webkit-scrollbar-thumb,
+.courses_component .card-header::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background-color: $mainColor;
 }
@@ -209,6 +212,12 @@ p {
   margin-bottom: 0 !important;
 }
 
+.eye {
+  svg {
+    font-size: 16px;
+  }
+}
+
 button,
 input,
 textarea {
@@ -329,6 +338,9 @@ textarea:focus {
         }
         p {
           cursor: pointer;
+          color: #000;
+          font-size: 18px;
+          font-family: "Calibri-Regular";
         }
       }
     }

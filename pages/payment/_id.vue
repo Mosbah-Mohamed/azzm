@@ -192,6 +192,8 @@
             <img data-src="@/assets/images/icon.svg" title="partner" v-lazy-load alt="partner image" width="100%"
               height="100%" />
 
+            <h2>{{ $t('pages.success_pay') }}</h2>
+
             <p>{{ $t('courses.put_coupon') }}</p>
 
 
@@ -343,6 +345,8 @@ export default {
         await this.$axios.$post('coubone', { enrollment_id: `${this.$route.params.id}`, cobone_code: this.cobone_code, marketer_code: this.marketer_code }).then(response => {
 
           this.cobone_code = '';
+
+          this.price = response.data.price_after_cobone
 
 
           this.$swal.fire({

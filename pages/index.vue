@@ -6,7 +6,7 @@
     <LazyHomeWhyUs />
     <LazyHomeArticles />
 
-    <div class="chat_icon flex-center">
+    <div class="chat_icon flex-center" @click="whenUpload">
       <img data-src="@/assets/images/chat.svg" title="chat" v-lazy-load alt="chat image" width="100%" height="100%" />
     </div>
 
@@ -23,16 +23,30 @@ export default {
 
   name: "indexPage",
 
+  head() {
+    return {
+      title: "Home",
+    }
+  },
+
+  // favicon
+
   // head() {
   //   return {
-  //     title: "temp page",
-  //     meta: [
-  //       // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-  //       { hid: 'description', name: 'description', content: 'My custom description' }
+  //     link: [
+  //       {
+  //         rel: 'icon',
+  //         type: 'image/x-icon',
+  //         href: this.faviconUrl
+  //       }
   //     ]
   //   }
   // },
 
+  // async asyncData({ $axios }) {
+  //   const { data } = await $axios.get('https://your-api.com/favicon')
+  //   return { faviconUrl: data.url }
+  // },
 
 
   data() {
@@ -79,6 +93,16 @@ export default {
     },
     handleScroll() {
       this.showButton = window.pageYOffset > 300;
+    },
+
+    whenUpload() {
+      this.$swal.fire({
+        position: 'center',
+        type: 'warning',
+        title: 'بيتم تنفيذها علي الدومين الرسمي',
+        showConfirmButton: false,
+        timer: 3000
+      });
     }
 
   }
