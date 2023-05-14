@@ -47,24 +47,22 @@
                     <div class="col-md-6 col-12">
                       <div class="form-group">
                         <label for="vue3">{{ $t('courses.from') }}</label>
-                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue3" v-model="value_2[0]"
-                          max="100" readonly>
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue3" v-model="value_2[0]">
                       </div>
                     </div>
                     <div class="col-md-6 col-12">
                       <div class="form-group">
                         <label for="vue2">{{ $t('courses.to') }}</label>
-                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue2" v-model="value_2[1]"
-                          max="100" readonly>
+                        <input type="number" :placeholder="$t('courses.ryal')" min="0" id="vue2" v-model="value_2[1]">
                       </div>
                     </div>
 
                   </div>
 
                   <div class="form-group slide_slide">
-                    <vue-slider ref="slider" v-model="value_2" :adsorb="true" :interval="200" :marks="true"
-                      @change="getData" :min="min" :max="max"></vue-slider>
 
+                    <vue-slider ref="slider" v-model="value_2" :interval="50" @change="getData" :min="min"
+                      :max="max"></vue-slider>
 
                   </div>
                   <!-- {{ value_2[0] }} -->
@@ -214,11 +212,11 @@ export default {
     return {
 
       min: 0,
-      max: 1000,
+      max: 10000,
 
       status: '',
 
-      value_2: [0, 70],
+      value_2: [100, 1000],
 
       // select order
 

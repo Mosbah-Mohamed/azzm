@@ -11,12 +11,10 @@
           <div class="advantages">
             <div class="box" data-aos="fade-up" v-for="(item, index) in items" :key='index'>
               <div class="image_advantage" :class="{
-                'green': item.id == 4,
-                'red': item.id == 5,
-                'pink': item.id == 7
-              }">
-                <!-- <img data-src="@/assets/images/learn.png" title="course" v-lazy-load alt="course image" width="100%"
-                  height="100%" /> -->
+                  'green': item.id == 4,
+                  'red': item.id == 5,
+                  'pink': item.id == 7
+                }">
                 <font-awesome-icon :icon="['fas', 'user-group']" />
               </div>
 
@@ -61,27 +59,27 @@ export default {
     }
   },
 
+  async fetch() {
+    try {
+      return await this.$axios.get(`setting/whyChoose`).then(response => {
+        this.items = response.data.data.why_choose;
+        this.image = response.data.data.image;
+        this.video = response.data.data.video;
+        // console.log(response.data.data.why_choose)
+      }).catch(error => {
+        console.log(error)
+      })
+    } catch (error) {
+      console.log("catch : " + error)
+    }
+  },
+
   mounted() {
-    this.getData()
   },
 
 
   methods: {
 
-    async getData() {
-      try {
-        return await this.$axios.get(`setting/whyChoose`).then(response => {
-          this.items = response.data.data.why_choose;
-          this.image = response.data.data.image;
-          this.video = response.data.data.video;
-          // console.log(response.data.data.why_choose)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
 
   }
 }

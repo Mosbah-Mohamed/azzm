@@ -33,8 +33,8 @@
         <div class="col-lg-6 col-12">
           <div class="all_images">
             <div class="hero_image">
-              <img :data-src="image" title="hero" onerror="this.src='@/assets/images/trainer.png'" v-lazy-load
-                alt="hero image" width="100%" height="100%" />
+              <img :data-src="image" title="hero" onerror="this.src='@/assets/images/trainer.png'" v-lazy-load alt=""
+                width="100%" height="100%" />
             </div>
 
             <div class="image_back">
@@ -133,37 +133,32 @@ export default {
     }
   },
 
+  // get description data in hero section
 
+  async fetch() {
+    try {
+      return await this.$axios.get(`setting/description`).then(response => {
+        this.loading = true;
+        this.name = response.data.data.name;
+        this.title1 = response.data.data.title;
+        this.description = response.data.data.short_description;
+        this.image = response.data.data.image;
+        this.trainersCount = response.data.data.trainersCount;
+        this.traineesCount = response.data.data.traineesCount;
+        this.courseCount = response.data.data.courseCount;
+        // console.log(response.data.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    } catch (error) {
+      console.log("catch : " + error)
+    }
+  },
 
   mounted() {
-    this.getData()
   },
 
   methods: {
-
-    // get description data in hero section
-
-    async getData() {
-      try {
-        return await this.$axios.get(`setting/description`).then(response => {
-          this.loading = true;
-          this.name = response.data.data.name;
-          this.title1 = response.data.data.title;
-          this.description = response.data.data.short_description;
-          this.image = response.data.data.image;
-          this.trainersCount = response.data.data.trainersCount;
-          this.traineesCount = response.data.data.traineesCount;
-          this.courseCount = response.data.data.courseCount;
-          // console.log(response.data.data)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
-
-
     // generatePdf() {
     //   const element = document.getElementById('pdf-content')
     //   const options = {

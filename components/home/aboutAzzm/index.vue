@@ -67,33 +67,30 @@ export default {
     }
   },
 
+  async fetch() {
+    try {
+      return await this.$axios.get(`setting/description/section2`).then(response => {
+        this.loading = true;
+        this.title = response.data.data.title;
+        this.description = response.data.data.description;
+        this.year = response.data.data.year;
+        this.image = response.data.data.image;
+        // console.log(response.data.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    } catch (error) {
+      console.log("catch : " + error)
+    }
+  },
+
 
 
   mounted() {
-    this.getData()
   },
 
 
   methods: {
-
-    // get articles data in hero section
-
-    async getData() {
-      try {
-        return await this.$axios.get(`setting/description/section2`).then(response => {
-          this.loading = true;
-          this.title = response.data.data.title;
-          this.description = response.data.data.description;
-          this.year = response.data.data.year;
-          this.image = response.data.data.image;
-          // console.log(response.data.data)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
 
   }
 

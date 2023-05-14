@@ -44,113 +44,6 @@
 
                 </div>
 
-                <!-- <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div> -->
 
               </VueSlickCarousel>
 
@@ -225,29 +118,28 @@ export default {
     }
   },
 
+  // get articles data in hero section
+
+  async fetch() {
+    try {
+      return await this.$axios.get(`setting/articles`).then(response => {
+        this.loading = true;
+        this.items = response.data.data;
+        // console.log(response.data.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    } catch (error) {
+      console.log("catch : " + error)
+    }
+  },
+
 
   mounted() {
-    this.getData()
   },
 
 
   methods: {
-
-    // get articles data in hero section
-
-    async getData() {
-      try {
-        return await this.$axios.get(`setting/articles`).then(response => {
-          this.loading = true;
-          this.items = response.data.data;
-          // console.log(response.data.data)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
 
   }
 }

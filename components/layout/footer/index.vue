@@ -1,60 +1,18 @@
 <template>
   <footer>
 
-    <div class="partners auth_lay">
+    <div class="partners auth_lay" data-aos="fade-up">
 
       <div class="container">
         <VueSlickCarousel v-bind="slickOptions" v-if=items.length>
           <div v-for="(item, index) in items" :key="index" class="img-wrapper">
-            <!-- <img :src="`./${i}-200x100.jpg`" /> -->
             <img :data-src="item.logo" :title="item.name" v-lazy-load :alt="item.name" width="100%" height="100%" />
           </div>
-          <!-- <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div>
-          <div>
-            <img data-src="@/assets/images/icon-partner-1.png" title="partner" v-lazy-load alt="partner image"
-              width="100%" height="100%" />
-          </div> -->
-
         </VueSlickCarousel>
       </div>
     </div>
 
-    <div class="footer_content auth_lay">
+    <div class="footer_content auth_lay" data-aos="fade-up">
       <div class="container">
 
         <div class="row ">
@@ -219,52 +177,76 @@ export default {
     }
   },
 
-  created() {
-    // this.getData()
+  async fetch() {
+
+
+    const [response1, response2] = await Promise.all([
+      this.$axios.get(`setting/layout`),
+      this.$axios.get(`setting/partners`)
+    ])
+
+
+    this.loading = true;
+
+    // response 1
+
+    this.logoImage = response1.data.data.logo_footer;
+    this.email = response1.data.data.email;
+    this.phone = response1.data.data.phone;
+    this.address = response1.data.data.address;
+    this.fb = response1.data.data.fb;
+    this.tw = response1.data.data.tw;
+    this.inst = response1.data.data.inst;
+    this.youtube = response1.data.data.youtube;
+    this.whatsapp_phone = response1.data.data.whatsapp_phone;
+    this.map = response1.data.data.map;
+
+
+    this.items = response2.data.data;
+
+
   },
 
   mounted() {
-    this.getData();
-    this.getPartner()
   },
 
 
   methods: {
 
-    async getData() {
-      try {
-        return await this.$axios.get(`setting/layout`).then(response => {
-          this.logoImage = response.data.data.logo_footer;
-          this.email = response.data.data.email;
-          this.phone = response.data.data.phone;
-          this.address = response.data.data.address;
-          this.fb = response.data.data.fb;
-          this.tw = response.data.data.tw;
-          this.inst = response.data.data.inst;
-          this.youtube = response.data.data.youtube;
-          this.whatsapp_phone = response.data.data.whatsapp_phone;
-          this.map = response.data.data.map;
-          // console.log(response.data.data.logo)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
+    // async getData() {
+    //   try {
+    //     return await this.$axios.get(`setting/layout`).then(response => {
+    //       this.logoImage = response.data.data.logo_footer;
+    //       this.email = response.data.data.email;
+    //       this.phone = response.data.data.phone;
+    //       this.address = response.data.data.address;
+    //       this.fb = response.data.data.fb;
+    //       this.tw = response.data.data.tw;
+    //       this.inst = response.data.data.inst;
+    //       this.youtube = response.data.data.youtube;
+    //       this.whatsapp_phone = response.data.data.whatsapp_phone;
+    //       this.map = response.data.data.map;
+    //       // console.log(response.data.data.logo)
+    //     }).catch(error => {
+    //       console.log(error)
+    //     })
+    //   } catch (error) {
+    //     console.log("catch : " + error)
+    //   }
+    // },
 
-    async getPartner() {
-      try {
-        return await this.$axios.get(`setting/partners`).then(response => {
-          this.items = response.data.data;
-          // console.log(response.data.data)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
+    // async getPartner() {
+    //   try {
+    //     return await this.$axios.get(`setting/partners`).then(response => {
+    //       this.items = response.data.data;
+    //       // console.log(response.data.data)
+    //     }).catch(error => {
+    //       console.log(error)
+    //     })
+    //   } catch (error) {
+    //     console.log("catch : " + error)
+    //   }
+    // },
 
 
 

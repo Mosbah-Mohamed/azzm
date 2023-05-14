@@ -75,148 +75,6 @@
 
                 </div>
 
-                <!-- <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="time">
-                        <font-awesome-icon :icon="['fas', 'clock']" />
-                        <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
-                        </div>
-                      </div>
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="trainer_desc">
-
-                      <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
-                      </div>
-
-                      <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
-                      </div>
-
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="time">
-                        <font-awesome-icon :icon="['fas', 'clock']" />
-                        <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
-                        </div>
-                      </div>
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="trainer_desc">
-
-                      <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
-                      </div>
-
-                      <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
-                      </div>
-
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="time">
-                        <font-awesome-icon :icon="['fas', 'clock']" />
-                        <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
-                        </div>
-                      </div>
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="trainer_desc">
-
-                      <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
-                      </div>
-
-                      <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
-                      </div>
-
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div> -->
-
 
               </VueSlickCarousel>
 
@@ -291,149 +149,6 @@
                 </div>
 
 
-                <!-- <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="time">
-                        <font-awesome-icon :icon="['fas', 'clock']" />
-                        <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
-                        </div>
-                      </div>
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="trainer_desc">
-
-                      <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
-                      </div>
-
-                      <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
-                      </div>
-
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="time">
-                        <font-awesome-icon :icon="['fas', 'clock']" />
-                        <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
-                        </div>
-                      </div>
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="trainer_desc">
-
-                      <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
-                      </div>
-
-                      <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
-                      </div>
-
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div>
-                <div class="card_course">
-                  <div class="image_course">
-                    <img data-src="@/assets/images/course_image.png" title="course" v-lazy-load alt="partner image"
-                      width="100%" height="100%" />
-                  </div>
-
-                  <div class="card_content">
-                    <h3>عنوان الدورة يوضع هنا بشكل واضح ومفصل</h3>
-
-                    <div class="appoint">
-                      <div class="time">
-                        <font-awesome-icon :icon="['fas', 'clock']" />
-                        <div class="info">
-                          <span>20</span>
-                          <span>ساعة</span>
-                        </div>
-                      </div>
-                      <div class="calender">
-                        <font-awesome-icon :icon="['fas', 'calendar-days']" />
-                        <span>20/2/2022</span>
-                      </div>
-                    </div>
-
-                    <div class="trainer_desc">
-
-                      <div class="image">
-                        <img data-src="@/assets/images/trainer.png" title="partner" v-lazy-load alt="partner image"
-                          width="100%" height="100%" />
-                      </div>
-
-                      <div class="trainer_name">
-                        <h4>سعد حسان الغامدي</h4>
-                        <span>مدرب معتمد في علوم الادارة</span>
-                      </div>
-
-                    </div>
-
-                    <div class="course_link">
-                      <a href="#" target="_blank" aria-label="course_link" rel="noopener noreferrer">
-                        <span>تفاصيل الدورة</span>
-                        <span><font-awesome-icon :icon="['fas', 'arrow-left']" /></span>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </div> -->
-
-
               </VueSlickCarousel>
 
               <nuxt-link :to="localePath('/diplomaFilter')">
@@ -503,10 +218,27 @@ export default {
     }
   },
 
+  async fetch() {
+
+
+    const [response1, response2] = await Promise.all([
+      this.$axios.get(`courses?type=0`),
+      this.$axios.get(`courses?type=1`)
+    ])
+
+
+    this.loading = true;
+
+    this.courses = response1.data.data;
+
+    this.Diplomas = response2.data.data;
+
+
+
+  },
+
 
   mounted() {
-    this.getCourses();
-    this.getDiplomas()
   },
 
 
@@ -514,35 +246,35 @@ export default {
 
     // get courses and diploma data in courses section
 
-    async getCourses() {
-      try {
-        return await this.$axios.get(`courses?type=0`).then(response => {
-          this.loading = true;
-          this.courses = response.data.data;
-          // console.log(response.data.data)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
+    // async getCourses() {
+    //   try {
+    //     return await this.$axios.get(`courses?type=0`).then(response => {
+    //       this.loading = true;
+    //       this.courses = response.data.data;
+    //       // console.log(response.data.data)
+    //     }).catch(error => {
+    //       console.log(error)
+    //     })
+    //   } catch (error) {
+    //     console.log("catch : " + error)
+    //   }
+    // },
 
     // get Diplomas and diploma data in courses section
 
-    async getDiplomas() {
-      try {
-        return await this.$axios.get(`courses?type=1`).then(response => {
-          this.loading = true;
-          this.Diplomas = response.data.data;
-          // console.log(response.data.data)
-        }).catch(error => {
-          console.log(error)
-        })
-      } catch (error) {
-        console.log("catch : " + error)
-      }
-    },
+    // async getDiplomas() {
+    //   try {
+    //     return await this.$axios.get(`courses?type=1`).then(response => {
+    //       this.loading = true;
+    //       this.Diplomas = response.data.data;
+    //       // console.log(response.data.data)
+    //     }).catch(error => {
+    //       console.log(error)
+    //     })
+    //   } catch (error) {
+    //     console.log("catch : " + error)
+    //   }
+    // },
 
   }
 }

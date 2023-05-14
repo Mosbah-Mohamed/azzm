@@ -344,7 +344,7 @@ export default {
       try {
         await this.$axios.$post('coubone', { enrollment_id: `${this.$route.params.id}`, cobone_code: this.cobone_code, marketer_code: this.marketer_code }).then(response => {
 
-          this.cobone_code = '';
+          // this.cobone_code = '';
 
           this.price = response.data.price_after_cobone
 
